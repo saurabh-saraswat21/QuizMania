@@ -28,7 +28,7 @@ label.title{
 } 
 nav ul{
     float: right;
-    margin-right: 20px;
+    margin-left: 20px;
 } 
 nav ul li{
     display: inline-block;
@@ -78,11 +78,11 @@ a.nav--option,a:hover{
     }
     ul{
         position: fixed;
-        width: 100%;
+        width: 50%;
         height: 100vh;
         background:rgb(4, 136, 153) ;
         top:80px;
-        left : -100%;
+        right : -100%;
         text-align: center;
         transition: all .5s;
 
@@ -102,13 +102,14 @@ a.nav--option,a:hover{
        
     }
     #check:checked ~ ul {
-        left:0
+        right:0
     }
 }
 @media(max-width:500px){
     label.title{
-        font-size: 20px;
+        font-size: 30px;
         padding-left: 3px;
+        
     }
     nav ul li a {
         font-size: 12px;
