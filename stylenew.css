@@ -105,3 +105,17 @@ a.nav--option,a:hover{
         left:0
     }
 }
+@media(max-width:500px){
+    label.title{
+        font-size: 20px;
+        padding-left: 3px;
+    }
+    nav ul li a {
+        font-size: 12px;
+
+    }
+    .checkbtn{
+        font-size: 20px;
+    }
+
+}
