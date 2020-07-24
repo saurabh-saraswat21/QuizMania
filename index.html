@@ -7,17 +7,8 @@
 </head>
 <style>
    @import url('https://fonts.googleapis.com/css2?family=Lexend+Zetta&family=Neucha&display=swap');
-header{
-    margin:auto;
-    width: 60%
-}
     body{
         background-color: rgb(59, 238, 238);
-    }
-    .navbar{
-        background-color:rgb(15, 248, 248);
-         border-radius: 5px;
-         border-radius: 13px;
     }
     .navbar li{
         float:right;
@@ -33,31 +24,41 @@ header{
         font-weight: bold;
     }
     .navbar ul {
-        overflow: auto;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        margin-bottom: 0;
+        list-style: none;
+        float: right;
     
 }
-.navbar h1{
-    display: inline-block;
-
+.navbar--main h1{
+    text-align: center;
+    background-color:rgb(15, 248, 248);
+    box-sizing: border-box;
+     border-radius: 13px;
     font-family:'Lexend Zetta', sans-serif;
-    padding-bottom: 5px;
-    float: left;
+    
 }    
 </style>
 <body>
-     <header>
+     <header> </header>
 
-        <nav class="navbar">
-            <h1 class="title ">QuizoMania</h1>
-            
-            <ul>
-                 <li><a href = "none">Contact</a>    </li>
-                <li><a href = "none">About</a></li>
-                <li><a href = "none">FindQuiz</a>
-                <li><a href = "none">Login</a></li>
-            </ul>
-         </nav>
-     </header>
+         <div class= navbar--main>
+            <h1 class="title">QuizOMania</h1>
+             <nav class="navbar" >
+                 <ul>
+                     <li><a href = "none">Login</a></li>
+                     <li><a href = "none">FindQuiz</a>
+                     <li><a href = "none">Contact</a></li>
+                    <li><a href = "none">About</a></li>
+                 </ul>
+              </nav>
+
+         </div>
+
+     
             
     
 </body>
