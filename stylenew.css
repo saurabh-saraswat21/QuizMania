@@ -78,9 +78,9 @@ a.nav--option,a:hover{
     }
     ul{
         position: fixed;
-        width: 50%;
+        width: 20%;
         height: 100vh;
-        background:rgb(4, 136, 153) ;
+        background:rgb(4, 136, 153);
         top:80px;
         right : -100%;
         text-align: center;
@@ -119,4 +119,32 @@ a.nav--option,a:hover{
         font-size: 20px;
     }
 
+}
+#startbutton{
+    width:23%;
+    margin:auto;
+    margin-top: 100px;
+}
+
+.playbtn{
+    border: 10px solid rgb(4, 153, 146);
+    text-align: center;
+    border-radius: 500px;
+    border-width: 20px;
+    padding: 40px;
+    background: rgb(67, 64, 243);
+    cursor: pointer;
+    font-size: 20px;
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    margin: auto;
+    outline: none;
+}
+.playbtn:hover{
+    border :10px solid rgb(6, 90, 90);
+    font-weight: bold;
+    background:rgb(106, 104, 233); 
+    transition: .3s;
+    font-family: cursive;
+    
 }
