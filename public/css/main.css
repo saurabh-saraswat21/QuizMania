@@ -1,0 +1,41 @@
+body{
+   background-color: #F24738;
+}
+.navbarcss{
+    background-color: #0597F2;
+}
+span{
+    text-align: center;
+}
+.header{
+    font-size: 30px;
+    text-decoration: none;
+    text-emphasis: none;
+    text-decoration-style: none;
+    text-decoration-line: none;
+}
+.header:hover{
+    text-decoration: none;
+}
+.cl{
+    border: solid;
+    /* border-left: solid; */
+    background-color: #0597F2;
+    height: 100px;
+    text-align: center;
+    padding: 4%;
+}
+.cl a{
+    color: white;
+    text-decoration: none;
+}
+@media only screen and (max-width:991px){
+    .btn1{
+        background-color: white;
+        color: white;
+        text-align: center;
+    }
+    .d1{
+        text-align: center;
+    }
+}

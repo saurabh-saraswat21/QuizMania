@@ -1,0 +1,24 @@
+{
+  "name": "miniproject",
+  "version": "1.0.0",
+  "description": "using monogodb,express and nodejs with espress as dependency",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhanupratapsinghcs/MiniProject.git"
+  },
+  "author": "Bhanu Pratp Singh Along with his team.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhanupratapsinghcs/MiniProject/issues"
+  },
+  "homepage": "https://github.com/bhanupratapsinghcs/MiniProject#readme",
+  "dependencies": {
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.27"
+  }
+}
