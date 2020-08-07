@@ -2,9 +2,9 @@ const express = require('express');
 
 const mongoose = require('mongoose');
 // quiz model import
-const Quiz = require('./models/quiz');
+const { Quiz, Question } = require('./models/quiz');
 
-let db;
+let db = 1;
 
 // let dbURI =
 
@@ -38,7 +38,7 @@ app.use(express.static('public'));
 // routing using app 
 // home page route
 app.get('/', (req, res) => {
-    res.render('index.ejs');
+    res.render('index.ejs', { title: 'Home' });
 })
 // create quiz route
 app.get('/create-quiz', (req, res) => {
@@ -50,18 +50,76 @@ app.post('/add-question', (req, res) => {
     let a = req.body.quizId;
     console.log(a);
 
-    const quiz = new Quiz({ quizId: 'bhanu' });
+    const quiz = new Quiz({ quizId: a });
     quiz.save()
         .then((result) => {
-            res.redirect('/add-question');
+            let redirect = `/add-question/${result._id}`;
+            // console.log(result.questions.length);
+            res.redirect(redirect)
         })
         .catch((err) => {
             console.log(err);
         })
 })
 
-app.get('/add-question', (req, res) => {
-    res.render('add-question');
+app.get('/add-question/:id', (req, res) => {
+    const id = req.params.id;
+    Quiz.findById(id)
+        .then((result) => {
+            console.log(result.questions);
+            res.render('add-question', { quiz: result, title: 'Add Question' })
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+
 })
+
+app.post('/add-question/:id', (req, res) => {
+    const id = req.params.id;
+    Quiz.findById(id)
+        .then((record) => {
+            // console.log(result);
+            record.questions.push(req.body);
+            record.save()
+                .then((result) => {
+                    res.redirect(id);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+})
+
+app.get('/start-quiz', (req, res) => {
+    res.render('start-quiz', { title: 'start Quiz' });
+})
+
+app.post('/answer-the-question', (req, res) => {
+    const qid = req.body.quizId;
+    console.log(qid);
+    Quiz.findOne({ quizId: qid })
+        .then((result) => {
+            res.render('ans_the_ques', { quiz: result, title: 'answer it' });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+})
+app.get('/answer-the-question/:id', (req, res) => {
+    const id = req.body.id;
+    console.log(id + 'jnksaj');
+    Quiz.findById(id)
+        .then((result) => {
+            res.render('ans_the_ques', { title: 'Answer the Question', quiz: result });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+})
+
 
 

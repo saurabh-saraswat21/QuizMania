@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Question</title>
-</head>
+<!-- <%- include('./partials/head.ejs')  %> -->
+
+<%-include('./partials/head.ejs')  %>
 
 <body>
-    <h1>Add Question</h1>
-    <form action="/add-question" method="POST">
-        <label for="body">Blog body</label>
-        <textarea id="body" name="body" required></textarea><br><br>
-        <label for="body">Blog body</label>
-        <textarea id="body" name="body" required></textarea><br><br>
-        <label for="body">Blog body</label>
-        <textarea id="body" name="body" required></textarea><br><br>
-        <label for="body">Blog body</label>
-        <textarea id="body" name="body" required></textarea><br><br>
-    </form>
+    <%- include('./partials/nav.ejs')  %>
+    <div class="container" style="border: solid red; border-radius: 2%; height:auto; width: auto; padding: 2%;">
+        <h1>Add Question</h1>
+        <form action="/add-question/<%= quiz._id  %> " method="POST">
+            <label for="question">Question :</label>
+            <textarea id="question" name="question" required></textarea><br><br>
+            <label for="option1">option 1:</label>
+            <textarea id="option1" name="option1" required></textarea><br><br>
+            <label for="option2">option 2:</label>
+            <textarea id="option2" name="option2" required></textarea><br><br>
+            <label for="answer">Answer :</label>
+            <textarea id="answer" name="answer" required></textarea><br><br>
+            <button>submit</button>
+        </form>
+        <br>
+        <br>
+
+        s="snippet" style="font-size: 20px;"><%=  question.option2%></p>
+        <h3>Answer :-</h3>
+        <p class="snippet" style="font-size: 20px;"><%=  question.answer%></p>
+        <% }) %>
+        <% } %><button>finish</button>
+        <h2 style="font-size: 49px;"> Added Question:</h2>
+        <% if(quiz.questions.length>0){ %>
+        <% quiz.questions.forEach(question=>{%>
+        <h3>Question:-</h3>
+        <h3 class="question" style="font-size: 50px;"><%= question.question %> </h3>
+        <h4>Option 1:-</h4>
+        <p class="snippet" style="font-size: 20px;"><%=  question.option1%></p>
+        <h4>Option 2:-</h4>
+        <p clas </div>
+            <script src="/jquery/jquery-3.5.1.min.js"></script>
+            <script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
