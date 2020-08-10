@@ -1,0 +1,24 @@
+{
+  "name": "quiz-mania",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssroyal/MiniProject.git"
+  },
+  "author": "ssroyal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ssroyal/MiniProject/issues"
+  },
+  "homepage": "https://github.com/ssroyal/MiniProject#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.28",
+    "pug": "^3.0.0"
+  }
+}
