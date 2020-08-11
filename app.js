@@ -60,7 +60,7 @@ app.post('/add-question', (req, res) => {
         .catch((err) => {
             console.log(err);
         })
-})
+});
 
 app.get('/add-question/:id', (req, res) => {
     const id = req.params.id;
@@ -73,7 +73,7 @@ app.get('/add-question/:id', (req, res) => {
             console.log(err);
         });
 
-})
+});
 
 app.post('/add-question/:id', (req, res) => {
     const id = req.params.id;
@@ -92,23 +92,28 @@ app.post('/add-question/:id', (req, res) => {
         .catch((err) => {
             console.log(err);
         });
-})
+});
 
 app.get('/start-quiz', (req, res) => {
     res.render('start-quiz', { title: 'start Quiz' });
-})
+});
 
 app.post('/answer-the-question', (req, res) => {
     const qid = req.body.quizId;
     console.log(qid);
     Quiz.findOne({ quizId: qid })
         .then((result) => {
-            res.render('ans_the_ques', { quiz: result, title: 'answer it' });
+            console.log(result)
+            if (result !== null) {
+                res.render('ans_the_ques', { quiz: result, title: 'answer it' });
+            } else {
+                res.redirect('404!');
+            }
         })
         .catch((err) => {
             console.log(err);
-        })
-})
+        });
+});
 app.get('/answer-the-question/:id', (req, res) => {
     const id = req.body.id;
     console.log(id + 'jnksaj');
@@ -118,8 +123,11 @@ app.get('/answer-the-question/:id', (req, res) => {
         })
         .catch((err) => {
             console.log(err);
-        })
-})
+        });
+});
 
+app.use((req, res) => {
+    res.status(404).render('404', { title: '404' });
+})
 
 
