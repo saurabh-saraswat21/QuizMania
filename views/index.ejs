@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+     <title>QuizMania</title>
+</head>
+<body>
+         <%- include ('./partials/navbar.ejs') %>
+    <div id="btn">
+       <button class="create">Create Quiz</button>
+    </div>
+    <div class="createid" >
+        <input  type="number" name="quizId" placeholder="Enter new quiz ID">
+        <a  class ="create" href="/insertques">create</a>
+    </div>
+</body>
+</html>
