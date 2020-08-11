@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- <%- include('./partials/head.ejs')  %> -->
-
 <%-include('./partials/head.ejs')  %>
 
 <body>
@@ -22,12 +20,7 @@
         </form>
         <br>
         <br>
-
-        s="snippet" style="font-size: 20px;"><%=  question.option2%></p>
-        <h3>Answer :-</h3>
-        <p class="snippet" style="font-size: 20px;"><%=  question.answer%></p>
-        <% }) %>
-        <% } %><button>finish</button>
+        <button>finish</button>
         <h2 style="font-size: 49px;"> Added Question:</h2>
         <% if(quiz.questions.length>0){ %>
         <% quiz.questions.forEach(question=>{%>
@@ -36,9 +29,15 @@
         <h4>Option 1:-</h4>
         <p class="snippet" style="font-size: 20px;"><%=  question.option1%></p>
         <h4>Option 2:-</h4>
-        <p clas </div>
-            <script src="/jquery/jquery-3.5.1.min.js"></script>
-            <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <p class="snippet" style="font-size: 20px;"><%=  question.option2%></p>
+        <h3>Answer :-</h3>
+        <p class="snippet" style="font-size: 20px;"><%=  question.answer%></p>
+        <% }) %>
+        <% } %>
+
+    </div>
+    <script src="/jquery/jquery-3.5.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
