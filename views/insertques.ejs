@@ -10,18 +10,15 @@
     <%- include ('./partials/navbar.ejs') %>
      <div class="insertform ">
         <h1>Enter a question</h1>
-        <p>
-            <h1><%=qs.quizId %></h1>
-        </p>
-        <form id="form" method="POST" action="/insertques">
-            <!-- <div class="quesfield"><input type="number" name="quizId" placeholder="Quiz ID" value="<%=qs.quizId %>"></div> -->
+        <form id="form" method="POST" action="/submitques">
+            <div class="quesfield quizId"><input type="number" name="quizId" placeholder="Quiz ID" value="<%=data.quizId%>" readonly> QuizID</div>
             <div class="quesfield"><input type="text" name="questionString" placeholder="Enter your Question"></div>
             <div class="quesfield"><input type="text" name="option1" placeholder="Option1"></div>
             <div class="quesfield"><input type="text" name="option2" placeholder="Option2"></div>
             <div class="quesfield"><input type="text" name="option3" placeholder="Option3"></div>
             <div class="quesfield"><input type="text" name="option4" placeholder="Option4"></div>
             <div class="quesfield"><input type="text" name="correct" placeholder="Correct Answer"></div>
-            <div><button class="submit">Submit</button></div>
+            <div><input type="submit" class="submit"> </div>
         </form>
     </div>
 </body>
