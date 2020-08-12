@@ -8,12 +8,12 @@
 </head>
 <body>
          <%- include ('./partials/navbar.ejs') %>
+
     <div id="btn">
-       <button class="create">Create Quiz</button>
+        <form action="/createquiz" method="GET">
+        <div><button class="submit">create Quiz</button></div>
+    </form>
     </div>
-    <div class="createid" >
-        <input  type="number" name="quizId" placeholder="Enter new quiz ID">
-        <a  class ="create" href="/insertques">create</a>
-    </div>
+    
 </body>
 </html>
