@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema;
 
-const QuizManiaSchema = new schema({
+const QuestionSchema = new schema({
 
     question: {
 
@@ -36,11 +36,32 @@ const QuizManiaSchema = new schema({
         type: String,
         required: true
 
+    },
+
+    answer: {
+
+        type: String,
+        required: true
+
     }
 
 
 });
 
-const QuizMania = mongoose.model('quizzes', QuizManiaSchema);
+const QuizSchema = new schema ({
 
-module.exports = QuizMania;
+    quizId: {
+
+        type: String,
+        required: true
+
+    },
+
+    questions: [QuestionSchema]
+
+});
+
+const Questions = mongoose.model('questions', QuestionSchema);
+const Quiz = mongoose.model('quizzes', QuizSchema);
+
+module.exports = {Questions, Quiz};

@@ -9,22 +9,53 @@
 
     <h1>insert question</h1>
 
-    <form method="POST" action="/insert">
+    <form method="POST" action="/insert/<%=data._id%>">
     
-        <label for="ques">Question</label>
-        <input type="text" id="ques" name="ques"><br><br>
+        <label for="question">Question</label>
+        <input type="text" id="ques" name="question"><br><br>
         <label for="opt1">Option 1</label>
-        <input type="text" id="opt1" name="opt1"><br><br>
+        <input type="text" id="opt1" name="option_1"><br><br>
         <label for="opt2">Option 2</label>
-        <input type="text" id="opt2" name="opt2"><br><br>
+        <input type="text" id="opt2" name="option_2"><br><br>
         <label for="opt3">Option 3</label>
-        <input type="text" id="opt3" name="opt3"><br><br>
+        <input type="text" id="opt3" name="option_3"><br><br>
         <label for="opt4">Option 4</label>
-        <input type="text" id="opt4" name="opt4"><br><br>
+        <input type="text" id="opt4" name="option_4"><br><br>
+        <label for="ans">Answer</label>
+        <input type="text" id="ans" name="answer"><br><br>
         <input type="submit" value="Submit">
 
     </form>
 
+    <br>
+    <br>
+    <button>finish</button>
+
+    <h2> Added Question:</h2>
+
+    <% if(data.length>0){ %>
+    <%  data.forEach(question=>{%>
+
+    <h3>Question:-</h3>
+    <h3><%= question.question %> </h3>
+
+    <h4>Option 1:-</h4>
+    <p><%=  question.option_1%></p>
+
+    <h4>Option 2:-</h4>
+    <p><%=  question.option_2%></p>
+
+    <h4>Option 3:-</h4>
+    <p><%=  question.option_3%></p>
+
+    <h4>Option 4:-</h4>
+    <p><%=  question.option_4%></p>
+
+    <h4>Answer:-</h4>
+    <p><%=  question.answer%></p>
+
+    <% }) %>
+    <% } %>
 
     
 </body>

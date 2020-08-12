@@ -1,23 +1,36 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
-var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({ extended: true});
-const QuizMania = require('./models/quizmania');
+const {Quiz, Questions} = require('./models/quizmania');
 
-mongoose.connect('mongodb://localhost/quiz', {useNewUrlParser: true, useUnifiedTopology: true});
+const app = express();
+
+mongoose.connect('mongodb://localhost/quizmania', {useNewUrlParser: true, useUnifiedTopology: true})
+        .then(function(){
+
+            app.listen(3000, function(){
+
+                console.log('Listening at port 3000...')
+
+            });
+
+        })
+        .catch(function(err){
+
+            console.log(err);
+
+        });
 
 mongoose.connection.once('open', function(){
 
-    console.log('connection successfull');
+    console.log('Connected to database...');
 
 }).on('error', function(error){
-
-    console.log('connection error: ', error);
-
+    console.log('Database connection error: ', error);
 });
 
 app.set('view engine', 'ejs');
+
+app.use(express.urlencoded({extended: true}));
 
 app.use(express.static('public'));
 
@@ -25,40 +38,60 @@ app.get('/', function(req, res){
 
     res.render('index');
 
-}).listen(3000);
+});
 
-app.get('/insert', function(req, res){
+app.get('/create_quiz', function(req, res){
 
-    res.render('insert');
+    res.render('create_quiz');
 
 });
 
-app.post('/insert', urlencodedParser , function(req, res){
-    
-    let a = req.body.ques;
-    let b = req.body.opt1;
-    let c = req.body.opt2;
-    let d = req.body.opt3;
-    let e = req.body.opt4;
+app.post('/insert', function(req, res){
 
-    const quiz = new QuizMania({
+    let _id = req.body.id;
 
-        question: a,
-        option_1: b,
-        option_2: c,
-        option_3: d,
-        option_4: e
+    const quiz = new Quiz({quizId: _id});
+
+    quiz.save().then(function(result){
+
+        res.redirect('/insert/' + result._id);
 
     });
 
-    quiz.save();
-    res.render('saved');
+})
+
+app.get('/insert/:id', function(req,res){
+
+    const _id = req.params.id;
+
+    Quiz.findById(_id)
+        .then(function(result){
+
+            console.log(result);
+            res.render('insert', {data: result});
+
+        });
 
 });
 
-app.get('/start', function(req, res){
+app.post('/insert/:id', function(req,res){
 
-    res.render('start');
+    const _id = req.params.id;
+
+    Quiz.findById(_id)
+        .then(function(result){
+
+            console.log(req.body);
+
+            result.questions.push(req.body);
+            console.log(result.questions);
+            result.save()
+                    .then(function(){
+
+                        res.redirect(_id);
+
+                    });
+
+        })
 
 })
-
