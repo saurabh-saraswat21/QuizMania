@@ -54,7 +54,7 @@ app.post('/insert', function(req, res){
 
     quiz.save().then(function(result){
 
-        res.redirect('/insert/' + result._id);
+        res.redirect('/insert/' + result._id);  //here result._id is the id of DB
 
     });
 

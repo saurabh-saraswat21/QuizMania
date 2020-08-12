@@ -27,36 +27,6 @@
 
     </form>
 
-    <br>
-    <br>
-    <button>finish</button>
-
-    <h2> Added Question:</h2>
-
-    <% if(data.length>0){ %>
-    <%  data.forEach(question=>{%>
-
-    <h3>Question:-</h3>
-    <h3><%= question.question %> </h3>
-
-    <h4>Option 1:-</h4>
-    <p><%=  question.option_1%></p>
-
-    <h4>Option 2:-</h4>
-    <p><%=  question.option_2%></p>
-
-    <h4>Option 3:-</h4>
-    <p><%=  question.option_3%></p>
-
-    <h4>Option 4:-</h4>
-    <p><%=  question.option_4%></p>
-
-    <h4>Answer:-</h4>
-    <p><%=  question.answer%></p>
-
-    <% }) %>
-    <% } %>
-
     
 </body>
 </html>
