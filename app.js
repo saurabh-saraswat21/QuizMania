@@ -48,7 +48,7 @@ app.get('/create_quiz', function(req, res){
 
 app.post('/insert', function(req, res){
 
-    let _id = req.body.id;
+    let _id = req.body.id;                  //req.body = post data
 
     const quiz = new Quiz({quizId: _id});
 
@@ -91,6 +91,26 @@ app.post('/insert/:id', function(req,res){
                         res.redirect(_id);
 
                     });
+
+        })
+
+})
+
+app.get('/start_id', function(req, res){
+
+    res.render('start_id');
+
+})
+
+app.post('/start_id', function(req, res){
+
+    const _id = req.body.id;            //req.body = post data
+
+    Quiz.findOne({quizId: _id})         //{condition: value}
+        .then(function(result){
+
+            console.log(result);
+            res.render('start_quiz', {data: result});
 
         })
 
