@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const queSchema = new schema({
+    quizId: {
+        type: String,
+        required: true
+    },
     questionString :{
         type:String,
         required:true
