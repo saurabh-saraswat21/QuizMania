@@ -28,6 +28,9 @@ body {
     color: white;
 
 }
+.quesfield.quizId input{
+    background: rgb(202, 191, 191);
+}
 .submit{
     background:transparent;
     border: 2px solid tan;
