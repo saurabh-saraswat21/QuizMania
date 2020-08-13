@@ -1,0 +1,94 @@
+body {
+
+    background-color: skyblue;
+    align-items: center;
+    text-align: center;
+
+
+}
+
+.welcome {
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    text-transform: uppercase;
+    font-size: 40px;
+    margin: auto;
+    text-align: center;
+
+}
+
+.create {
+
+    width: 20%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.start {
+
+    width: 20%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+
+}
+
+.buttons {
+
+    position:relative;
+  width: auto;
+  color:#ecf0f1;
+  text-decoration:none;
+  border-radius:5px;
+  border:solid 1px #f39c12;
+  background:#e67e22;
+  text-align:center;
+  padding:16px 18px 14px;
+
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  transition: all 0.1s;
+
+  -webkit-box-shadow: 0px 6px 0px #d35400;
+  -moz-box-shadow: 0px 6px 0px #d35400;
+  box-shadow: 0px 6px 0px #d35400;
+
+
+}
+
+.buttons:active{
+    -webkit-box-shadow: 0px 2px 0px #d35400;
+    -moz-box-shadow: 0px 2px 0px #d35400;
+    box-shadow: 0px 2px 0px #d35400;
+    position:relative;
+    top:4px;
+}
+
+.naviagtion {
+    width: 100%;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111;
+  }

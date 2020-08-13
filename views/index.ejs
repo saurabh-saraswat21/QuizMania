@@ -3,26 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>Quiz Mania</title>
 </head>
 <body>
 
+
+    <%- include ('./partials/nav.ejs') %>
+
     <div class="welcome">
 
-        <h1>Welcome to Quiz Mania</h1>
+        <h1>Welcome to quiz mania</h1>
 
     </div>
 
     <div class="create">
 
-        <a href="/create_quiz">Create Quiz</a>
+        <a href="/create_quiz">
+        
+            <button class="buttons">Create Quiz</button>
+        
+        </a>
 
     </div>
 
     <div class="start">
 
-        <a href="/start_id">Start quiz</a>
+        <a href="/start_id">
+            
+            <button class="buttons">Start Quiz</button>
+        
+        </a>
 
     </div>
 

@@ -77,7 +77,7 @@ app.get('/insert/:id', function(req,res){
 
 });
 
-app.post('/insert/:id', function(req,res){      //runs as soon as submit button is
+app.post('/insert/:id', function(req,res){      //runs as soon as submit button is clicked
 
     const _id = req.params.id;
 
