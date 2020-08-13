@@ -1,6 +1,7 @@
 /* Contains styles for 
 index.ejs
 createquiz.ejs
+insertques.ejs
  */
 
 
@@ -23,6 +24,7 @@ body {
     background-repeat: no-repeat;
    
 }
+
 .logo a{
     text-decoration: none;
     color: white;
@@ -31,7 +33,7 @@ body {
 .quesfield.quizId input{
     background: rgb(202, 191, 191);
 }
-.submit{
+.submit.btn{
     background:transparent;
     border: 2px solid tan;
     border-radius: 6rem;
@@ -44,7 +46,7 @@ body {
     width:60%;
 
 }
-.submit:hover{
+.submit.btn:hover{
     background: tan;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
@@ -195,6 +197,24 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+.btn.container{
+    border: 2px solid white;
+    display: flex;
+    border-radius: 5em;;
+    flex-direction: row;
+    justify-content: center;
+    width: 40%;
+    height: 90px;
+    margin: auto;
+    
+}
+.main.btn{
+  text-decoration:none;
+  color: wheat;
+   font-family: Oswald,cursive;
+    margin: auto;
+    font-size: large;
 }
 
 
