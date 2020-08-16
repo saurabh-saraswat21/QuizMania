@@ -1,3 +1,4 @@
+const http = require('http');
 const express = require('express');
 const mongoose = require('mongoose');
 const {Quiz, Questions} = require('./models/quizmania');
@@ -68,7 +69,7 @@ app.get('/insert/:id', function(req,res){
     Quiz.findById(_id)                          //for verifying if that db exist with that id
         .then(function(result){
 
-            console.log(result);
+            // console.log(result);
             res.render('insert', {data: result});       //passing data: result so that
                                                         // we can redirect to same page
                                                         //for adding more ques after clicking submit button
@@ -84,10 +85,11 @@ app.post('/insert/:id', function(req,res){      //runs as soon as submit button 
     Quiz.findById(_id)                      //for verifying if db exist before saving data
         .then(function(result){
 
-            console.log(req.body);          //conatins ques and ans
+            // console.log(req.body);          //conatins ques and ans
 
             result.questions.push(req.body);    //result.questions refers to questions array
-            console.log(result.questions);
+            // console.log(result.questions);
+            
             result.save()
                     .then(function(){
 
@@ -99,22 +101,52 @@ app.post('/insert/:id', function(req,res){      //runs as soon as submit button 
 
 })
 
+
+
 app.get('/start_id', function(req, res){
 
     res.render('start_id');
 
 })
 
-app.post('/start_id', function(req, res){
+app.post('/start_quiz', function(req, res){
 
     const _id = req.body.id;            //req.body = post data
 
     Quiz.findOne({quizId: _id})         //{condition: value}
         .then(function(result){
 
-            console.log(result);
+            // console.log(result);
+            res.redirect('/start_quiz/' + _id);
+
+        })
+
+})
+
+app.get('/start_quiz/:id', function(req, res){
+
+    const _id = req.params.id;
+
+    Quiz.findOne({quizId: _id})
+        .then(function(result){
+
+            console.log(result.questions);
             res.render('start_quiz', {data: result});
 
         })
+
+})
+
+app.get('/start_quiz/:id/json', function(req,res){
+
+    const _id = req.params.id;
+
+    Quiz.findOne({quizId:_id})
+        .then(function(result){
+
+            console.log(result);
+            res.send(JSON.stringify(result.questions));
+
+        });
 
 })

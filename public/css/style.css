@@ -66,29 +66,33 @@ body {
     top:4px;
 }
 
-.naviagtion {
-    width: 100%;
+.navbar {
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #eeeeee;
 }
 
-ul {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover {
-    background-color: #111;
-  }
+.navbar li {
+
+  float: left;
+
+}
+
+.navbar li a {
+
+  display: block;
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 16px;
+}
+
+.navbar li a:hover {
+
+  background-color: orange;
+  color: white;
+}
