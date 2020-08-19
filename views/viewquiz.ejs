@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" , initial-scale=1.0">
+  <title>View Quizzes</title>
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="style/style2.css">
+</head>
+
+<body>
+  <%- include ('./partials/navbar.ejs') %>
+  <form class="searchform" action="/searchbyID" method="POST">
+    <div class="quesfield quizid"><input type="number" placeholder="Enter quiz ID"></div>
+    <div class="postbtn"><input type="submit"> </div>
+  </form>
+  <div class="viewquizfield">
+    <% for(var i=0;i<quizes.length;i++){ %>
+    <div class="quizzes">
+      <img class="quizimage" src="#" alt="IMAGE OF QUIZ">
+      <a href="/getQuiz/<%= quizes[i].quizId %>" class="quizids"><%= quizes[i].quizId %></a>
+    </div>
+    <%}%>
+  </div>
+</body>
+</html>
