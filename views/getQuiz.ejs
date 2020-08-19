@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/style2.css">
+</head>
+
+<body>
+    <%- include ('./partials/navbar.ejs') %>
+    <ul>
+        <% for(var i=0;i<questions.length;i++){ %>
+        <div class="questions">
+            <a class="questionString" href="#"><%= questions[i].questionString %></a>
+            <button class="show n<%=i%>" value="View more">viewmore</button>
+            <div class="optionsbox n<%=i%>">
+                <li class="options">Option1:- <%= questions[i].option1 %> </li>
+                <li class="options ">Option2:- <%= questions[i].option2 %></li>
+                <li class="options" >Option3:- <%= questions[i].option3 %></li>
+                <li class="options">Option4:- <%= questions[i].option4 %></li>
+                <li class="options correct">Correct:- <%= questions[i].correct %></li>
+            </div>
+        </div>
+    
+        <%}%>
+    </ul>
+   
+</body>
+<script src="/js/script2.js"></script>
+</html>
