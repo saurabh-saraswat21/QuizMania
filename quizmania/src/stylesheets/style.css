@@ -17,7 +17,7 @@ body {
     color: white;
     text-decoration: none;
     list-style: none;
-    background: url(./bg.jpg);
+    background: url(../images/bg.jpg);
     /* background: black; */
     height: 100px;
     background-size: 1400px 1000px;
