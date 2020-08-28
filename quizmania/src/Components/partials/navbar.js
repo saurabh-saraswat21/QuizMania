@@ -9,7 +9,7 @@ const Navbar = () => {
                     <li className="items main"><a href="#">Login</a></li>
                     <li className="items main secondary"><a href="#">JoinQuiz</a></li>
                     <li className="items"><a href="#">SignUp</a></li>
-                    <li className="items"><a href="/contact ">Contact</a></li>
+                    <li className="items"><a href="#">Contact</a></li>
                     <li className="items"><a href=" # ">About us</a></li>
                     <li className="toggle"><span className="hamburger"></span></li>
 
