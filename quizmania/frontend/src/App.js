@@ -4,6 +4,8 @@ import Navbar from './Components/partials/navbar';
 import {BrowserRouter,Route} from 'react-router-dom'
 import createQuiz from './Components/HomePageComp/createQuiz';
 import insertques from './Components/HomePageComp/insertques';
+import viewQuiz from './Components/HomePageComp/viewQuiz';
+import getQuiz from './Components/quizzesInfo/getQuiz'
 
 
 
@@ -25,7 +27,8 @@ class App extends Component {
         <Route exact path ='/' component={Home}/>
         <Route exact path ='/createquiz' component={createQuiz}/> 
         <Route path = '/insertques/:quiz_id' component={insertques}/>
-        
+        <Route path = '/viewquiz' component={viewQuiz}/>
+        <Route path = '/getQuiz/:quiz_id' component ={getQuiz}/>
 
 
       </div>
