@@ -1,3 +1,5 @@
+const router = require('./routers/submitQues')
+const router2 = require('./routers/viewQuiz')
 const express = require('express');
 const { urlencoded } = require('body-parser');
 const mongoose = require('mongoose')
@@ -17,3 +19,5 @@ mongoose.connection.once('open', () => {
 }).on('err', (err) => {
     console.log(err);
 })
+router2(app);
+router(app);
