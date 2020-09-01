@@ -10,7 +10,6 @@ class insertques extends Component {
         option3: '',
         option4: '',
         correct: '',
-
     }
     handleChange = (e) => {
         console.log(this.state)
@@ -20,8 +19,7 @@ class insertques extends Component {
 
     }
     handleClick = (e) => {
-        e.preventDefault();
-        var question = {
+        const question = {
             quiz_id: this.state.quiz_id,
             questionString: this.state.questionString,
             option1: this.state.option1,
@@ -31,7 +29,8 @@ class insertques extends Component {
             correct: this.state.correct,
 
         }
-        axios.post('http://localhost:80/submitques',question)
+        axios.post('http://localhost:80/submitques/',question)
+        this.props.history.push('/insertques/'+this.state.quiz_id)
     }
 
 
