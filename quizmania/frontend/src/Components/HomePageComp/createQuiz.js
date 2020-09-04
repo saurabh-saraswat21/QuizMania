@@ -2,18 +2,22 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
 class createQuiz extends Component {
-
+    
+        //initailly state that will be updated by the quiz id entered so that in can be passed to the insertques compopnent
     state = {
         quiz_id:0
     }
 
+    // the function to be called when user enters something in the quiz id field
+      //  "e" is the event
+
     handleChange = (e) => {
-        console.log(e.target.id)
-        console.log(e.target.value)
-        this.setState({
+
+        //updating the state with the entered value 
+            this.setState({
             [e.target.id]: e.target.value
         })
-        console.log(this.state.quiz_id)
+        
     }
     render() {
         
