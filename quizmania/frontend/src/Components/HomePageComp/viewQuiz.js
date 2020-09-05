@@ -1,19 +1,40 @@
 import React, { Component } from 'react'
 import Quizlist from '../quizzesInfo/quizlist'
 class viewQuiz extends Component {
-    componentDidMount() {
-        const quiz_id_array =[];
+    
+    //initial state
+         state = {
+             
+        quiz_ids: []
 
-        fetch("http://localhost:80/viewquizes")
+        }
+
+    componentDidMount() {
+        
+    
+         //array that will store ids of quiz
+       const quiz_id_array =[];
+
+
+         //making request to server to give the data
+       fetch("http://localhost:80/viewquizes")
+        
+            // converting output data to JSON format
             .then(res => res.json())
             .then(res2 =>{
 
+                // just storing quizid in arrray
                 for (let i = 0; i < res2.length; i++) {
                     quiz_id_array[i] = res2[i].quiz_id;
                     
                     
+                   
                 }
-                this.setState({
+           
+                 // setting state with the ids
+               this.setState({
+                   
+                    //...  is spread operator it breaks array in seprate elements 
                     quiz_ids :[...quiz_id_array]
                 })
                
@@ -21,10 +42,7 @@ class viewQuiz extends Component {
 
 
     }
-    state = {
-        quiz_ids: []
-
-    }
+   
 
 
     render() {
@@ -34,7 +52,9 @@ class viewQuiz extends Component {
                 <div className="viewquizfield">
                     <div className="quizzes">
                         <img src="#" alt="quiz logo" className="quizimage" />
-                        <Quizlist list={this.state.quiz_ids} />
+
+                        {/* Passing the fethed list to the component to use */}
+                        <Quizlist id_list={this.state.quiz_ids} />
 
                     </div>
                 </div>

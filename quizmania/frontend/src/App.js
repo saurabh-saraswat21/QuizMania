@@ -1,7 +1,12 @@
+// import react 
 import React, { Component } from 'react';
+
+//import router for routing
+import {BrowserRouter,Route} from 'react-router-dom'
+
+// import various components to be rendered  
 import Home from './Components/MainPagesComp/home'
 import Navbar from './Components/partials/navbar';
-import {BrowserRouter,Route} from 'react-router-dom'
 import createQuiz from './Components/HomePageComp/createQuiz';
 import insertques from './Components/HomePageComp/insertques';
 import viewQuiz from './Components/HomePageComp/viewQuiz';
