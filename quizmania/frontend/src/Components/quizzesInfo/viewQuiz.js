@@ -51,8 +51,7 @@ class viewQuiz extends Component {
             <div className="viewQuiz">
                 <div className="viewquizfield">
                     <div className="quizzes">
-                        <img src="#" alt="quiz logo" className="quizimage" />
-
+                        <h1> Choose the quiz</h1>
                         {/* Passing the fethed list to the component to use */}
                         <Quizlist id_list={this.state.quiz_ids} />
 
