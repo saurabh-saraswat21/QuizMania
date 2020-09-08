@@ -20,6 +20,8 @@ const quizlist = ({id_list}) =>{
                                     //  a unique key that is quiz id itself
                 <div className="quiz" key = {quiz_id}>
 
+                    <img src="#" alt="quiz logo" className="quizimage" />
+                    
                     {/* link every quiz id to view all the questions of the quiz */}
                     <Link to ={{
                         pathname :'/getquiz/'+quiz_id,
