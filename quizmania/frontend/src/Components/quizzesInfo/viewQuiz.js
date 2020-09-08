@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Quizlist from '../quizzesInfo/quizlist'
+import Quizlist from './quizlist'
 class viewQuiz extends Component {
     
     //initial state
