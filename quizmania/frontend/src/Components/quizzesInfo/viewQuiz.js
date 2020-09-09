@@ -1,65 +1,56 @@
-import React, { Component } from 'react'
-import Quizlist from './quizlist'
-class viewQuiz extends Component {
-    
-    //initial state
-         state = {
-             
-        quiz_ids: []
+import React from 'react'
+import {connect} from 'react-redux'
+import { useSelector } from "react-redux";
+import {Link} from 'react-router-dom'
+const ViewQuiz=()=> {
+    const store = useSelector(state=>state)
+    const id_list =store.quiz_ids
+    const Quiz_List = id_list.length ?
 
-        }
+    // if not empty
+    (
+        // mapping quiz one by one
+        id_list.map(quiz_id =>{
 
-    componentDidMount() {
-        
-    
-         //array that will store ids of quiz
-       const quiz_id_array =[];
+            // retutrning some JSX
+            return(
+                
+                
+                                    // {/* //  a unique key that is quiz id itself */}
+                <div className="quiz" key = {quiz_id}>
 
-
-         //making request to server to give the data
-       fetch("http://localhost:80/viewquizes")
-        
-            // converting output data to JSON format
-            .then(res => res.json())
-            .then(res2 =>{
-
-                // just storing quizid in arrray
-                for (let i = 0; i < res2.length; i++) {
-                    quiz_id_array[i] = res2[i].quiz_id;
+                    <img src="#" alt="quiz logo" className="quizimage" />
                     
-                    
+                    {/* link every quiz id to view all the questions of the quiz */}
+                    <Link to ={{
+                        pathname :'/getquiz/'+quiz_id,
+                        
+                    }}>{quiz_id}</Link>
                    
-                }
-           
-                 // setting state with the ids
-               this.setState({
-                   
-                    //...  is spread operator it breaks array in seprate elements 
-                    quiz_ids :[...quiz_id_array]
-                })
                
-            })
-
-
-    }
-   
-
-
-    render() {
-        console.log(this.state)
-        return (
-            <div className="viewQuiz">
-                <div className="viewquizfield">
-                    <div className="quizzes">
-                        <h1> Choose the quiz</h1>
-                        {/* Passing the fethed list to the component to use */}
-                        <Quizlist id_list={this.state.quiz_ids} />
-
-                    </div>
+                    
+                
+                
                 </div>
+            )
+        })
+    )
+    // if Empty 
+    :(
+        <h1>No quizzes</h1>
+    )
+    return(
+        <div className="quizList">
+            {Quiz_List}
+            
+        </div>
+    )
 
-            </div>
-        )
+   
+}
+const MapStateToProps=(state)=>{
+    return{
+        quiz_ids : state.quiz_ids 
     }
 }
-export default viewQuiz
+export default connect(MapStateToProps)(ViewQuiz)
