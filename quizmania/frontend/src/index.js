@@ -4,8 +4,9 @@ import App from './App';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux'
 import * as serviceWorker from './serviceWorker';
+import acessListReducer from './reducers/acessListReducer'
 
-const quizStore = createStore();
+const quizStore = createStore(acessListReducer);
 
 ReactDOM.render(
   <React.StrictMode>
