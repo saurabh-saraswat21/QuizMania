@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import "../../stylesheets/style2.css"
 import { Link } from 'react-router-dom'
 
 class Quiz extends Component {

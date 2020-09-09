@@ -1,14 +1,6 @@
-/* Contains styles for 
-index.ejs
-createquiz.ejs
-insertques.ejs
- */
-
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Oswald:wght@300&display=swap');
-html{
-    font-size: 16px;
-}
+
 body {
     box-sizing: border-box;
     padding: 0;
@@ -18,7 +10,6 @@ body {
     text-decoration: none;
     list-style: none;
     background: url(../images/bg.jpg);
-    /* background: black; */
     height: 100px;
     background-size: 1400px 1000px;
     background-repeat: no-repeat;
@@ -28,46 +19,8 @@ body {
 .logo a{
     text-decoration: none;
     color: white;
-
-}
-.quesfield.quizId input{
-    background: rgb(202, 191, 191);
-}
-.submit.btn{
-    background:transparent;
-    border: 2px solid tan;
-    border-radius: 6rem;
-    margin: 10px;
-    padding: 7px 15px;
-    color: white;
-    outline-style: none;
-    font-family: 'Fredoka One', cursive;
-    cursor: pointer;
-    width:60%;
-
-}
-.submit.btn:hover{
-    background: tan;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-.insertform{
-    position: relative;
-    margin: 4px auto;
-    border: 2px solid white;
-    width: 60%;
-    text-align: center;
-    outline: none;
-    border-radius: 2rem;
-    display: block;
-
-}
-.insertform.active{
-    display: none;
 }
 
-
-
-/* mobile view */
 
 .logo {
     font-family: 'Fredoka One', cursive;
@@ -125,7 +78,6 @@ body {
     position: relative;
 }  
 .toggle{
-    /* border: 1px solid blue; */
     order: 1;
     margin-right: 15px;
     cursor: pointer;
@@ -144,78 +96,15 @@ body {
 .hamburger::after{
     bottom:6px;
 }
-#btn{
-    display: flex;
-    justify-content: center;
-}
-.quesfield input{
-    width: 60%;
-    margin: 5px;
-    padding: 5px;
-    font-size: large;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-    border: 2px solid white;
-    border-radius: 4rem;
-    outline: none;
-}
-.create{
-    text-decoration: none;
-    background:transparent;
-    border: 1px solid tan;
-    border-radius: 6rem;
-    padding: 7px 15px;
-    color: white;
-    cursor: pointer;
-    outline-style: none;
-    font-family: 'Fredoka One', cursive;
-}
-.create:hover{
-    background: tan;
-    transition:  ease .25s;
-    
-}
-.createid{
-    display: flex;
-    justify-content: center;
-}
-.createid input{
-    width: 30%;
-    margin: 5px;
-    padding: 5px;
-    font-size: large;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-    border: 2px solid white;
-    border-radius: 4rem;
-    outline: none;
 
-}
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
-.btn.container{
-    border: 2px solid white;
-    display: flex;
-    border-radius: 5em;;
-    flex-direction: row;
-    justify-content: center;
-    width: 40%;
-    height: 90px;
-    margin: auto;
-    
-}
-.main.btn{
-  text-decoration:none;
-  color: wheat;
-   font-family: Oswald,cursive;
-    margin: auto;
-    font-size: large;
-}
+
+
+
 
 
 /* Tablet View */
