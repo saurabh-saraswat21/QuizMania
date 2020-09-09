@@ -10,8 +10,9 @@ const quizStore = createStore(acessListReducer);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store ={quizStore}></Provider>
-    <App />
+    <Provider 
+    store ={quizStore}><App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
