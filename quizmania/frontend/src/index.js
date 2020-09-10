@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {createStore} from 'redux';
+import thunk from 'redux-thunk'
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux'
 import * as serviceWorker from './serviceWorker';
 import acessListReducer from './reducers/acessListReducer'
+import {fetchData} from './Actions/getQuizData'
 
-const quizStore = createStore(acessListReducer);
+const quizStore = createStore(
+    acessListReducer,
+    applyMiddleware(thunk)
+  );
+  quizStore.dispatch(fetchData())
+  quizStore.subscribe(()=>{
+    console.log("update")
+
+  })
 
 ReactDOM.render(
   <React.StrictMode>
