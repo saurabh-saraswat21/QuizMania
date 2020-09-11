@@ -87,15 +87,23 @@ class Quiz extends Component {
 
     }
 }
+
 // Dispatching action to fetch data
 const mapDispatchToProps = (dispatch) => {
     return {
         getData: () => { dispatch(fetchData) }
     }
 }
+
+//Maping quiz to props that are stored in the store by dispatching action
+const MapStateToProps = (state, defaultProps) => {
+
+    const id = parseInt(defaultProps.match.params.quiz_id)
     return {
-        questions: state.questions
+        quiz: state.quizzes.find(quiz => quiz.quiz_id === id),
+
     }
+
 }
 
 export default connect(MapStateToProps)(Quiz)
