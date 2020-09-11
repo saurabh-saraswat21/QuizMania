@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import '../../stylesheets/quiz.css'
-import { fetchData } from '../../Actions/getQuizData'
+
 
 class Quiz extends Component {
 
@@ -102,14 +102,7 @@ class Quiz extends Component {
     }
 }
 
-// Dispatching action to fetch data
-const mapDispatchToProps = (dispatch) => {
-    return {
 
-    
-        getData: () => { dispatch(fetchData) }
-    }
-}
 
 //Maping quiz to props that are stored in the store by dispatching action
 const MapStateToProps = (state, defaultProps) => {
@@ -130,4 +123,4 @@ const MapStateToProps = (state, defaultProps) => {
 }
 
 //exporting the components wrapped with HOC
-export default connect(MapStateToProps, mapDispatchToProps)(Quiz)
+export default connect(MapStateToProps)(Quiz)
