@@ -1,7 +1,12 @@
-export const getQuizDataSucess = (data)=>{
-    return {
-        type : 'GET_QUIZ_DATA_SUCCESS',
-        data:data
+export const getQuizDataSucess = (data) => {
+    return dispatch => {
+        return new Promise((resolve, reject) => {
+            dispatch({
+                type: 'GET_QUIZ_DATA_SUCCESS',
+                data: data
+            });
+            resolve()
+        })
     }
 }
 
