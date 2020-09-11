@@ -1,22 +1,5 @@
 const initState ={
-    quizzes: [
-        {
-            _id: "000",
-            questions:[
-            {
-
-                questionString: 'sample question',
-                option1: 'sample option 1',
-                option2: 'sample option 2',
-                option3: 'sample option 3',
-                option4: 'sample option 4',
-                correct: 'sample correct '
-            }
-
-            ]
-
-        }
-    ],
+    quizzes: [],
      quiz_ids :[]
 }
 const acessListReducer =(state=initState,action)=>{
