@@ -25,10 +25,9 @@ class Quiz extends Component {
             showbtn: newShowbtn
         })
     }
-
     render() {
-        const questions = this.props.questions;
 
+        const quiz = this.props.quiz
 
         // getting questions from the state and mapping one by one
         const queslist = questions.map((question, index) => {
