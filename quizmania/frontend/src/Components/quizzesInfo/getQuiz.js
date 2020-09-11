@@ -87,7 +87,12 @@ class Quiz extends Component {
 
     }
 }
-const MapStateToProps = (state) => {
+// Dispatching action to fetch data
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getData: () => { dispatch(fetchData) }
+    }
+}
     return {
         questions: state.questions
     }
