@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import '../../stylesheets/quiz.css'
+import { fetchData } from '../../Actions/getQuizData'
+
 class Quiz extends Component {
 
-
-    // Empty state structure
     state = {
         showbtn: []
     }
-    
     show = (index) => {
 
         // store current staus array in a new arrray
