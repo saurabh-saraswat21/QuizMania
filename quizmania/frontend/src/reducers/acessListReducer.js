@@ -12,7 +12,7 @@ const acessListReducer =(state=initState,action)=>{
         
     }
       return{
-          quizzes:action.data,
+          quizzes:[...action.data],
           quiz_ids : quiz_ids
       }
       
