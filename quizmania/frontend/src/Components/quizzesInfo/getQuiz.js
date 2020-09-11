@@ -34,13 +34,14 @@ class Quiz extends Component {
                 <h1>hi</h1>
             )
         }
+        else {
 
 
-            return (
 
 
-                <div className="question" key={question._id}>
+            const questions = quiz.questions
 
+            const questionsList = questions.length ? (
                     <h4>{question.questionString}</h4>
 
                     {/* Link is used for future use */}
