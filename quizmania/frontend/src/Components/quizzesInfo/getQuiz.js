@@ -77,11 +77,12 @@ class Quiz extends Component {
                 : (
                     <h1> No questions</h1>
                 )
-            <div className="quizone">
-                {queslist}
-
-            </div>
-        )
+            return (
+                <div>
+                    {questionsList}
+                </div>
+            )
+        }
 
 
     }
