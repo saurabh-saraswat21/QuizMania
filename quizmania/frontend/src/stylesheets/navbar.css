@@ -15,7 +15,9 @@ body {
     background-repeat: no-repeat;
    
 }
-
+a{
+    color:white
+}
 .logo a{
     text-decoration: none;
     color: white;
