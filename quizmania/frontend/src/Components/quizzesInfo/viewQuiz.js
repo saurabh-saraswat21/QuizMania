@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 
 
 const ViewQuiz=(props)=> {
+    const id_list =props.quiz_ids
     const Quiz_List = id_list.length ?
 
     // if not empty
