@@ -4,7 +4,10 @@ import {Link} from 'react-router-dom'
 
 
 const ViewQuiz=(props)=> {
+    // getting quiz id list from props
     const id_list =props.quiz_ids
+
+    // checking if list is empty
     const Quiz_List = id_list.length ?
 
     // if not empty
@@ -39,6 +42,8 @@ const ViewQuiz=(props)=> {
     :(
         <h1>No quizzes</h1>
     )
+
+    //main return component
     return(
         <div className="quizList">
             {Quiz_List}
@@ -48,9 +53,15 @@ const ViewQuiz=(props)=> {
 
    
 }
+
+//mapping state to props of component
 const MapStateToProps=(state)=>{
     return{
+
+        //quiz_ids will be available in the props of the component
         quiz_ids : state.quiz_ids 
     }
 }
+
+// wrapping the component with the HOC
 export default connect(MapStateToProps)(ViewQuiz)
