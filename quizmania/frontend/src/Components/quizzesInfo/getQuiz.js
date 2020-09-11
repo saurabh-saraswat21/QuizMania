@@ -26,27 +26,36 @@ class Quiz extends Component {
         })
     }
     render() {
-
+        //getting the quizData from redux store state 
         const quiz = this.props.quiz
+
+        //on initial render the methods on the quiz may generate an error as the quiz will be undefined
+        // so this is a check if the quiz is undefined just render no questions 
 
         if (quiz === undefined) {
             return (
-                <h1>hi</h1>
+                <h1>No questions</h1>
             )
         }
+
+        //if the quiz have some data then
         else {
 
-
-
-
+            // getting questions from that quiz 
             const questions = quiz.questions
 
+            //checking if their exists some questions on that quiz and will store the whole data in "questionList"
             const questionsList = questions.length ? (
+
+                //if questions exist that map the questions one by one
                 questions.map((question, index) => {
 
-
+                    //render every question and its details
                     return (
+
+                        //rendering a div of every question with the key value the id of that question
                         <div className="question-container" key={question._id}>
+
                             <h4>{question.questionString}</h4>
 
                             {/* Link is used for future use */}
@@ -73,11 +82,16 @@ class Quiz extends Component {
                     )
                 })
             )
-
+                    //if questions doesnt exist just render no questions
                 : (
                     <h1> No questions</h1>
                 )
+
+
+                // the main return method of the component
             return (
+
+                //rendering the questionList created above with all the data
                 <div>
                     {questionsList}
                 </div>
@@ -91,19 +105,29 @@ class Quiz extends Component {
 // Dispatching action to fetch data
 const mapDispatchToProps = (dispatch) => {
     return {
+
+    
         getData: () => { dispatch(fetchData) }
     }
 }
 
 //Maping quiz to props that are stored in the store by dispatching action
 const MapStateToProps = (state, defaultProps) => {
+                                //defaultProps are the basic props of the component that can give access to route params 
+                                // so that we know which quiz to fetch
 
+    // getting  id from router params and cnverting to int so that is is able to be compared 
     const id = parseInt(defaultProps.match.params.quiz_id)
+
+//returning the particular quiz that is to be viewed
     return {
-        quiz: state.quizzes.find(quiz => quiz.quiz_id === id),
+
+            // find method iterates every quiz in the quizzes and return that quiz whose id matches the id we get from the params above
+                quiz: state.quizzes.find(quiz => quiz.quiz_id === id),
 
     }
 
 }
 
+//exporting the components wrapped with HOC
 export default connect(MapStateToProps, mapDispatchToProps)(Quiz)
