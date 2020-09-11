@@ -29,9 +29,11 @@ class Quiz extends Component {
 
         const quiz = this.props.quiz
 
-        // getting questions from the state and mapping one by one
-        const queslist = questions.map((question, index) => {
-            console.log(index)
+        if (quiz === undefined) {
+            return (
+                <h1>hi</h1>
+            )
+        }
 
 
             return (
