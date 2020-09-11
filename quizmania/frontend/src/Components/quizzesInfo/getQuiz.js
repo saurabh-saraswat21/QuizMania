@@ -106,4 +106,4 @@ const MapStateToProps = (state, defaultProps) => {
 
 }
 
-export default connect(MapStateToProps)(Quiz)
+export default connect(MapStateToProps, mapDispatchToProps)(Quiz)
