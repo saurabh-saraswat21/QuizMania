@@ -1,10 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { useSelector } from "react-redux";
 import {Link} from 'react-router-dom'
-const ViewQuiz=()=> {
-    const store = useSelector(state=>state)
-    const id_list =store.quiz_ids
+
+
+const ViewQuiz=(props)=> {
     const Quiz_List = id_list.length ?
 
     // if not empty
