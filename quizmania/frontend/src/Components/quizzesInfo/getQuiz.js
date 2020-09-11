@@ -42,29 +42,36 @@ class Quiz extends Component {
             const questions = quiz.questions
 
             const questionsList = questions.length ? (
-                    <h4>{question.questionString}</h4>
-
-                    {/* Link is used for future use */}
-                    <Link to="#">
-
-                        {/* Calling function  passing the current index  */}
-                        <button onClick={(e) => {
-                            this.show(index)
-                        }} value="View more">viewmore</button>
-                    </Link>
-
-                    {/* classname is decided by the showbtn status at that index */}
-                    <div className={this.state.showbtn[index] ? "boxhidden" : "boxactive" + index}>
-                        <li className="options">Option1:-{question.option1}</li>
-                        <li className="options">Option2:-{question.option2}</li>
-                        <li className="options">Option3:-{question.option3}</li>
-                        <li className="options">Option4:-{question.option4}</li>
-                        <li className="options correct ">Correct:-{question.correct}</li>
-                    </div>
-
-                </div>
+                questions.map((question, index) => {
 
 
+                    return (
+                        <div className="question-container" key={question._id}>
+                            <h4>{question.questionString}</h4>
+
+                            {/* Link is used for future use */}
+                            <Link to="#">
+
+                                {/* Calling function  passing the current index  */}
+                                <button onClick={(e) => {
+                                    this.show(index)
+                                }} value="View more">viewmore</button>
+                            </Link>
+
+                            {/* classname is decided by the showbtn status at that index */}
+                            <div className={this.state.showbtn[index] ? "boxactive" : "boxhidden " + index}>
+                                <li className="options">Option1:-{question.option1}</li>
+                                <li className="options">Option2:-{question.option2}</li>
+                                <li className="options">Option3:-{question.option3}</li>
+                                <li className="options">Option4:-{question.option4}</li>
+                                <li className="options correct ">Correct:-{question.correct}</li>
+                            </div>
+
+                        </div>
+
+
+                    )
+                })
             )
 
         }
