@@ -1,7 +1,7 @@
 // Use state is used to use state in function components
 import React, { useState } from 'react'
 
-import '../../stylesheets/style.css'
+import '../../stylesheets/navbar.css'
 import { Link } from 'react-router-dom'
 
 
@@ -31,7 +31,7 @@ const Navbar = () => {
 
                     <li className={clas ? "active items main" : "items main "}><Link to="#">Login</Link></li>
 
-                    <li className={clas ? "active items main secondary" : "items main secondary "}><Link to="#">JoinQuiz</Link></li>
+                    <li className={clas ? "active items main secondary" : "items main secondary "}><Link to="/JoinQuiz">JoinQuiz</Link></li>
 
                     <li className={clas ? "active items" : "items "}> <Link to="#">SignUp</Link></li>
 

@@ -1,58 +1,14 @@
 import React, { Component } from 'react'
-import "../../stylesheets/style2.css"
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import '../../stylesheets/quiz.css'
+
 
 class Quiz extends Component {
 
-    componentDidMount = () => {
-        // getting the quiz id for which the quiz is to be matched
-        const { quiz_id } = this.props.match.params
-
-        // the   array that will store the status of the view more buttons if its pressed or not
-        const showbtn = [];
-
-        // requesting server to get details of the quiz
-        fetch("http://localhost:80/viewquizes/" + quiz_id)
-
-            // conversion to JSON
-            .then(res => res.json())
-
-            .then(res2 => {
-                // initial status for the showbtn if false and size is equal to the number of buttons
-                for (let i = 0; i < res2.questions.length; i++) {
-                    showbtn[i] = "false";
-
-                }
-
-                // setting state with the initial showbtn array  and the quiz questions fetched from server
-                this.setState({
-                    questions: [...res2.questions],
-                    showbtn: showbtn
-                })
-
-            })
-
-    }
-
-    // Empty state structure
     state = {
-        questions: [
-            {
-                _id: "",
-                questionString: '',
-                option1: '',
-                option2: '',
-                option3: '',
-                option4: '',
-                correct: ''
-
-            }
-        ],
         showbtn: []
-
     }
-
-    // show method that takes the index of the button and toggle it by making the corresonding state value to "true"
     show = (index) => {
 
         // store current staus array in a new arrray
@@ -69,55 +25,102 @@ class Quiz extends Component {
             showbtn: newShowbtn
         })
     }
-
     render() {
+        //getting the quizData from redux store state 
+        const quiz = this.props.quiz
 
-        // getting questions from the state and mapping one by one
-        const queslist = this.state.questions.map((question, index) => {
+        //on initial render the methods on the quiz may generate an error as the quiz will be undefined
+        // so this is a check if the quiz is undefined just render no questions 
 
-
+        if (quiz === undefined) {
             return (
-
-                 
-                <div className="question" key={question._id}>
-
-                    <h4>{question.questionString}</h4>
-
-                    {/* Link is used for future use */}
-                    <Link to="#">
-
-                        {/* Calling function  passing the current index  */}
-                        <button  onClick={(e) => {
-                            this.show(index)
-                        }}  value="View more">viewmore</button>
-                    </Link>
-
-                            {/* classname is decided by the showbtn status at that index */}
-                    <div className={this.state.showbtn[index] ? "boxhidden" : "boxactive" + index}>
-                        <li className="options">Option1:-{question.option1}</li>
-                        <li className="options">Option2:-{question.option2}</li>
-                        <li className="options">Option3:-{question.option3}</li>
-                        <li className="options">Option4:-{question.option4}</li>
-                        <li className="options correct ">Correct:-{question.correct}</li>
-                    </div>
-
-                </div>
-
-
+                <h1>No questions</h1>
             )
-
         }
 
-        )
-        return (
-            <div className="quizone">
-                {queslist}
+        //if the quiz have some data then
+        else {
 
-            </div>
-        )
+            // getting questions from that quiz 
+            const questions = quiz.questions
+
+            //checking if their exists some questions on that quiz and will store the whole data in "questionList"
+            const questionsList = questions.length ? (
+
+                //if questions exist that map the questions one by one
+                questions.map((question, index) => {
+
+                    //render every question and its details
+                    return (
+
+                        //rendering a div of every question with the key value the id of that question
+                        <div className="question-container" key={question._id}>
+
+                            <h4>{question.questionString}</h4>
+
+                            {/* Link is used for future use */}
+                            <Link to="#">
+
+                                {/* Calling function  passing the current index  */}
+                                <button onClick={(e) => {
+                                    this.show(index)
+                                }} value="View more">viewmore</button>
+                            </Link>
+
+                            {/* classname is decided by the showbtn status at that index */}
+                            <div className={this.state.showbtn[index] ? "boxactive" : "boxhidden " + index}>
+                                <li className="options">Option1:-{question.option1}</li>
+                                <li className="options">Option2:-{question.option2}</li>
+                                <li className="options">Option3:-{question.option3}</li>
+                                <li className="options">Option4:-{question.option4}</li>
+                                <li className="options correct ">Correct:-{question.correct}</li>
+                            </div>
+
+                        </div>
+
+
+                    )
+                })
+            )
+                    //if questions doesnt exist just render no questions
+                : (
+                    <h1> No questions</h1>
+                )
+
+
+                // the main return method of the component
+            return (
+
+                //rendering the questionList created above with all the data
+                <div>
+                    {questionsList}
+                </div>
+            )
+        }
 
 
     }
 }
 
-export default Quiz
+
+
+//Maping quiz to props that are stored in the store by dispatching action
+const MapStateToProps = (state, defaultProps) => {
+                                //defaultProps are the basic props of the component that can give access to route params 
+                                // so that we know which quiz to fetch
+
+    // getting  id from router params and cnverting to int so that is is able to be compared 
+    const id = parseInt(defaultProps.match.params.quiz_id)
+
+//returning the particular quiz that is to be viewed
+    return {
+
+            // find method iterates every quiz in the quizzes and return that quiz whose id matches the id we get from the params above
+                quiz: state.quizzes.find(quiz => quiz.quiz_id === id),
+
+    }
+
+}
+
+//exporting the components wrapped with HOC
+export default connect(MapStateToProps)(Quiz)

@@ -9,8 +9,9 @@ import Home from './Components/MainPagesComp/home'
 import Navbar from './Components/partials/navbar';
 import createQuiz from './Components/HomePageComp/createQuiz';
 import insertques from './Components/HomePageComp/insertques';
-import viewQuiz from './Components/HomePageComp/viewQuiz';
-import getQuiz from './Components/quizzesInfo/getQuiz'
+import viewQuiz from './Components/quizzesInfo/viewQuiz';
+import getQuiz from './Components/quizzesInfo/getQuiz';
+import joinQuiz from './Components/HomePageComp/joinQuiz';
 
 
 
@@ -34,6 +35,7 @@ class App extends Component {
         <Route path = '/insertques/:quiz_id' component={insertques}/>
         <Route path = '/viewquiz' component={viewQuiz}/>
         <Route path = '/getQuiz/:quiz_id' component ={getQuiz}/>
+        <Route path = '/JoinQuiz' component ={joinQuiz}/>
 
 
       </div>
