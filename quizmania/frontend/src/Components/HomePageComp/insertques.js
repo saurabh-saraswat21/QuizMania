@@ -35,6 +35,12 @@ class insertques extends Component {
     }
 
 
+    //  a function to check all the options are unique 
+    checkAllUnique = (arr) => {
+        return (new Set(arr)).size === arr.length;
+
+    }
+
     //  the function that will check that all the values are entered or not
     checkAllFilled = () => {
 
