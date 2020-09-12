@@ -13,6 +13,17 @@ class insertques extends Component {
         option3: '',
         option4: '',
         correct: '',
+
+        // the flag to ensure all the fields are entered
+        questionStringflag: false,
+        option1flag: false,
+        option2flag: false,
+        option3flag: false,
+        option4flag: false,
+        correctflag: false,
+
+        // a universal flag that will enable submit btn  
+        allflag: false
     }
 
         // setting quiz id to the state
