@@ -7,6 +7,7 @@
 /quizmania/frontend/node_modules
 # testing
 /coverage
+/quizmania/mongoScript.mongodb
 
 # production
 /build
