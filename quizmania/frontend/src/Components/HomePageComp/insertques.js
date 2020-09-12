@@ -40,7 +40,7 @@ class insertques extends Component {
 
         // getting state for all the input fields
         const ques = this.state.questionString
-        const one = this.st4ate.option1
+        const one = this.state.option1
         const two = this.state.option2
         const three = this.state.option3
         const four = this.state.option4
