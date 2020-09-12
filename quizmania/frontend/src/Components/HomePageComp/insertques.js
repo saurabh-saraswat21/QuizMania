@@ -101,6 +101,15 @@ componentDidMount() {
 
     }
         
+    // this will insert the correct value to the correct field t be saved in the database
+    setCorrect = (e) => {
+        this.setState({ correct: e.target.value }, () => {
+
+            // after the value is set then check if to turn the submit btn on and off 
+            this.checkSubmit()
+        })
+    }
+
     handleClick = (e) => {
         // get the values from state and store in a variable  
         // so that it can be passed to the backend server to be stored in the database
