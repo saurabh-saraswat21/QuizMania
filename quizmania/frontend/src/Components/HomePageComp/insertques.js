@@ -45,11 +45,12 @@ class insertques extends Component {
     checkAllFilled = () => {
 
         // getting state for all the input fields
-        const ques = this.state.questionStringflag
-        const one = this.state.option1flag
-        const two = this.state.option2flag
-        const three = this.state.option3flag
-        const four = this.state.option4flag
+        const ques = this.state.questionString
+        const one = this.st4ate.option1
+        const two = this.state.option2
+        const three = this.state.option3
+        const four = this.state.option4
+    
 
         // all will store true only if all the entered fields are true
         const all = ques && one && two && three && four
