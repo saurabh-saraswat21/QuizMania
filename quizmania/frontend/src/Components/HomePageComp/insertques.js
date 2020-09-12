@@ -54,6 +54,10 @@ componentDidMount() {
 
         })
     }
+
+
+
+    // updating the state as the user enters the value
     handleChange = (e) => {
 
         // getting the value based on the input 
@@ -81,6 +85,18 @@ componentDidMount() {
 
     }
 
+
+   
+
+     // this will check if the submit btn is to be set on or not by setting the all flag
+    checkSubmit = () => {
+
+        // getting the value of the correctflag
+        const allFlag = this.state.correctflag
+        
+        // seeting the value of correct flag with the all flag 
+        this.setState({
+            allflag: allFlag
         })
 
     }
