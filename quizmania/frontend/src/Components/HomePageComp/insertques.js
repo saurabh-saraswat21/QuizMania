@@ -6,6 +6,8 @@ class insertques extends Component {
     
     // initial state with empty values  will be updated  and passed to be saved in the database
     state = {
+
+        //the fields for question that is to be entered
         quiz_id: 0,
         questionString: '',
         option1: '',
@@ -26,8 +28,11 @@ class insertques extends Component {
         allflag: false
     }
 
-        // setting quiz id to the state
-componentDidMount() {
+
+
+
+    // setting quiz id to the state
+    componentDidMount() {
         const QuizID = this.props.match.params.quiz_id
         this.setState({
             quiz_id: QuizID
@@ -35,6 +40,8 @@ componentDidMount() {
         })
     }
 
+
+    //  the function that will check that all the values are entered or not
     checkAllFilled = () => {
 
         // getting state for all the input fields
@@ -100,7 +107,8 @@ componentDidMount() {
         })
 
     }
-        
+
+
     // this will insert the correct value to the correct field t be saved in the database
     setCorrect = (e) => {
         this.setState({ correct: e.target.value }, () => {
@@ -110,7 +118,13 @@ componentDidMount() {
         })
     }
 
-    handleClick = (e) => {
+
+
+
+
+     // after the submit button is pressed
+
+     handleClick = (e) => {
         // get the values from state and store in a variable  
         // so that it can be passed to the backend server to be stored in the database
 
@@ -133,32 +147,44 @@ componentDidMount() {
     }
 
 
-    
     render() {
-
         return (
             <div className="insertques">
                 <div className="insertform">
 
                     <form id="form">
 
+                        {/* Basic input fields of the form */}
                         <div className="quesfield"><input type="number" placeholder="QuizID" value={this.state.quiz_id} readOnly /></div>
                         <div className="quesfield"><input type="text" id="questionString" placeholder="question" onChange={this.handleChange} /></div>
                         <div className="quesfield"><input type="text" id="option1" placeholder="option1" onChange={this.handleChange} /></div>
                         <div className="quesfield"><input type="text" id="option2" placeholder="option2" onChange={this.handleChange} /></div>
                         <div className="quesfield"><input type="text" id="option3" placeholder="option3" onChange={this.handleChange} /></div>
                         <div className="quesfield"><input type="text" id="option4" placeholder="option4" onChange={this.handleChange} /></div>
-                        <div className="quesfield"><input type="text" id="correct" placeholder="Correct" onChange={this.handleChange} /></div>
+                        <div className="quesfield">
 
+                            {/* The correct value dropdown */}
+                            {/* disabled will be set to opposite value of correctflag */}
+                            <select name="correct" id="correct" disabled={!this.state.correctflag} value={this.state.correct} onChange={this.setCorrect}>
 
-                        <button className="submit btn" onClick={this.handleClick}>Submit</button>
+                                {/* The default value that is to be shown but not to be selected  */}
+                                <option value="none" hidden>correct</option>
 
+                                {/* The options  that are nothing but the entered values */}
+                                <option value={this.state.option1}>{this.state.option1}</option>
+                                <option value={this.state.option2}>{this.state.option2}</option>
+                                <option value={this.state.option3}>{this.state.option3}</option>
+                                <option value={this.state.option4}>{this.state.option4}</option>
+
+                            </select>
+
+                        </div>
+
+                        {/* The submit buttton that is enabled if both the correctflag and the all flag are true */}
+                        <button disabled={!(this.state.allflag && this.state.correctflag)} className="submit btn" onClick={this.handleClick}>Submit</button>
+                   
                     </form>
                 </div>
-
-
-
-
             </div>
         )
     }
