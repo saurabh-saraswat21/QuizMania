@@ -37,7 +37,7 @@ class App extends Component {
 
 
           {/* Routing for the different pages */}
-          <switch>
+          <Switch>
 
             <Route exact path='/' component={Home} />
             <Route path='/createquiz' component={createQuiz} />
@@ -45,7 +45,7 @@ class App extends Component {
             <Route path='/insertques/:quiz_id' component={insertques} />
             <Route path='/viewquiz' component={viewQuiz} />
 
-          </switch>
+          </Switch>
 
 
 
