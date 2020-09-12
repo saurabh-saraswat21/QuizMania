@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.get('/viewquizes', (req, res) => {
     quizmodel.find({}, (err, output) => {
         if (err) throw err;
-        console.log(output[1].questions)
+        console.log(output)
         res.send(output)
     })
 })
