@@ -50,17 +50,19 @@ class insertques extends Component {
         const two = this.state.option2
         const three = this.state.option3
         const four = this.state.option4
-    
+
         //  to check all the options entered are unique or not
         const allVaild = this.checkAllUnique([one, two, three, four])
 
         // all will store true only if all the entered fields are true
-        const all = ques && one && two && three && four
+        const allFilled = ques && one && two && three && four
 
-        // setting the correct flag with the value all if any of the input flag is false the correct flag is false
+        const allCorrect = allVaild && allFilled;
+
+        // setting the correct flag with the value all if any of the input flag is false or duplicate  the correctflag is false
         this.setState({
 
-            correctflag: all
+            correctflag: allCorrect
 
         })
     }
