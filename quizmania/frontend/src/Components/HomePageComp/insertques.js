@@ -54,16 +54,33 @@ componentDidMount() {
 
         })
     }
-        // updating the state as the user enters the value
-        handleChange = (e) => {
+    handleChange = (e) => {
 
-                    //we have set the  id  input field with the same name as its corresponding state field name
-        
-                    //the id of the button on which the event has taken place this is same name by which we have stored in state
-              this.setState({
-            [e.target.id]: e.target.value
-                            // the  entered value of the input field 
-                              
+        // getting the value based on the input 
+        const flag = e.target.value ? true : false
+
+        //we have set the  id  input field with the same name as its corresponding state field name
+        //the id of the button on which the event has taken place this is same name by which we have stored in state
+        this.setState({
+
+            // setting the question filled  value 
+            [e.target.id]: e.target.value,
+            // the  entered value of the input field 
+
+            // setting that corresponding flag value
+            [e.target.id + "flag"]: flag
+
+
+
+        }, () => {
+
+            // after the state is set then check all the fields to enable the correct  dropdown 
+            this.checkAllFilled()
+
+        })
+
+    }
+
         })
 
     }
