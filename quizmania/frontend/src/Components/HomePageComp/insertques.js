@@ -35,6 +35,25 @@ componentDidMount() {
         })
     }
 
+    checkAllFilled = () => {
+
+        // getting state for all the input fields
+        const ques = this.state.questionStringflag
+        const one = this.state.option1flag
+        const two = this.state.option2flag
+        const three = this.state.option3flag
+        const four = this.state.option4flag
+
+        // all will store true only if all the entered fields are true
+        const all = ques && one && two && three && four
+
+        // setting the correct flag with the value all if any of the input flag is false the correct flag is false
+        this.setState({
+
+            correctflag: all
+
+        })
+    }
         // updating the state as the user enters the value
         handleChange = (e) => {
 
