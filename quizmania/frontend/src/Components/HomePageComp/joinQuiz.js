@@ -28,7 +28,7 @@ const joinQuiz=(props)=> {
                     <Link to ={{
                         pathname :'/startQuiz/'+quiz_id,
                         
-                    }} >{quiz_id}</Link>
+                    }} target="_blank">{quiz_id}</Link>
                    
                
                     
