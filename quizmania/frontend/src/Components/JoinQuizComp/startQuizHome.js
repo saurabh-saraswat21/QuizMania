@@ -24,3 +24,6 @@ const mapStateToProps = (state, defaultProps) => {
 
     }
 }
+
+// wrapping up the map function with a high order component function that will run before the component renders   
+export default connect(mapStateToProps)(startQuizHome)
