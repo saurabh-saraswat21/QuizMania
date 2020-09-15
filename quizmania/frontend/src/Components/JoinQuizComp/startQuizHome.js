@@ -21,6 +21,42 @@ export class startQuizHome extends Component {
             )
 
         }
+
+        // if the quiz has value  then 
+        else {
+            return (
+
+                <div className="Start_quiz_container">
+
+                    
+                    <div className="quizinfobox">
+                       <h1>Quiz ID : {quiz.quiz_id}</h1>
+                        <h1>No of questions:{quiz.questions.length}</h1>
+
+                        {/* start button to start the quiz and passing the quiz as the state as it will be used  for displaying questions  */}
+                    <Link to={{
+
+                        // pathname is same without parameters to prevent the direct acess of the quiz 
+                        pathname : '/start',
+
+                        // the state will be available at the location of the component that renders after
+                        state: {quiz}
+                        
+                    }}> <h2>Start</h2>
+                    
+                    </Link>
+                    </div>
+
+                </div>
+            )
+        }
+    }
+}
+
+
+
+
+
 // a  function that will map the quiz to the props before it renders for the first time
 const mapStateToProps = (state, defaultProps) => {
 
