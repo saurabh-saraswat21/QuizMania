@@ -7,6 +7,20 @@ export class startQuizHome extends Component {
 
 
     render() {
+        // getting quiz from the props because it is available because we have already mapped it
+        const quiz = this.props.quiz;
+
+        // cross checking the quiz if it is undefined  
+        if (quiz === undefined) {
+
+            // just render please wait message
+            return (
+                <div>
+                    <h1>Please Wait</h1>
+                </div>
+            )
+
+        }
 // a  function that will map the quiz to the props before it renders for the first time
 const mapStateToProps = (state, defaultProps) => {
 
