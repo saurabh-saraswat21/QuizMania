@@ -13,9 +13,11 @@ const joinQuiz=(props)=> {
     // if not empty
     (
         // mapping quiz one by one
+        
         id_list.map(quiz_id =>{
 
             // retutrning some JSX
+            // this will be displayed for every quiz that is saved in the database
             return(
                 
                 
@@ -24,16 +26,18 @@ const joinQuiz=(props)=> {
 
                     <img src="#" alt="quiz logo" className="quizimage" />
                     
-                    {/* link every quiz id to view all the questions of the quiz */}
+                    {/* link every quiz id to start that quiz */}
                     <Link to ={{
                         pathname :'/startQuiz/'+quiz_id,
                         
-                    }} target="_blank">{quiz_id}</Link>
-                   
-               
-                    
-                
-                
+                    }}
+                    // the target field is here so that the quiz opens in a new tab 
+                    target="_blank">
+
+                        {/* Displaying   Id of the quiz */}
+                        {quiz_id}
+
+                        </Link>              
                 </div>
             )
         })
