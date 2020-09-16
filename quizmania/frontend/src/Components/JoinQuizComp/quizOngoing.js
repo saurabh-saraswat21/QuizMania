@@ -188,3 +188,83 @@ class quizOngoing extends Component {
             500)
 
     }
+
+    // if the option is correct
+    rightChosen = () => {
+
+        // updating the values of state
+
+        // currentState is the current values of state
+        this.setState(currentState => ({
+
+            // setting background classs to false as the background needs to change 
+            backgroundClass: true,
+
+            // setting choice true for green color
+            choice: true,
+
+            // increasing  no of answered question by 1 
+            numberOfAnsweredQuestions: currentState.numberOfAnsweredQuestions + 1,
+
+            // increasing the score as the option chosen is right
+            score: currentState.score + 1,
+        }),
+
+
+            // called when the state is updated  
+            () => {
+
+                // time out function to show the background color for a while
+                setTimeout(
+
+                    // a self executing function
+                    function () {
+
+                        //  getting the updated values of state
+
+                        const {
+
+                            // the array of questions  
+                            questions
+
+                            // the current question that is answered 
+                            , currentQuestion,
+
+                            // the next question to be displayed
+                            nextQuestion,
+
+                            // the updated index for the next question as this will update the current question 
+                            currentQuestionIndex }
+
+                            = this.state;
+
+                        // calling the display question function to update the current displayed question
+                        this.displayQuestions(questions, currentQuestion, nextQuestion, currentQuestionIndex + 1)
+
+
+                    }
+                        // binding this with the timeout function this keyword is used in the function  
+                        .bind(this),
+
+                    // the time interval for the timeut function 
+                    1100
+                );
+
+
+                //  another timeout function to set the background back to normal
+                setTimeout
+                    (
+
+                        function () {
+
+                            this.setState({
+                                backgroundClass: false
+                            })
+
+                        }.bind(this), 1000
+                    );
+
+
+            })
+    }
+
