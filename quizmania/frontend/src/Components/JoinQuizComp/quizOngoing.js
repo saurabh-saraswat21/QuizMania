@@ -169,3 +169,22 @@ class quizOngoing extends Component {
         1000)
 
     }
+
+    //  a function to end the quiz
+    endQuiz = () => {
+
+        //  alerting that the quiz has ended
+        alert('quizENDED')
+
+        //  after a while
+        setTimeout(() => {
+
+            //  close the new opened tab
+            window.close()
+
+        },
+
+            // half second wait 
+            500)
+
+    }
