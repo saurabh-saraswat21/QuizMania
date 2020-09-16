@@ -11,6 +11,9 @@ import createQuiz from './Components/HomePageComp/createQuiz';
 import insertques from './Components/HomePageComp/insertques';
 import viewQuiz from './Components/quizzesInfo/viewQuiz';
 import getQuiz from './Components/quizzesInfo/getQuiz';
+import joinQuiz from './Components/HomePageComp/joinQuiz'
+import startQuiz from './Components/JoinQuizComp/startQuizHome'
+import quizOngoing from './Components/JoinQuizComp/quizOngoing';
 
 
 
