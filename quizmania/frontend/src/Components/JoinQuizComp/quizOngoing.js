@@ -189,6 +189,28 @@ class quizOngoing extends Component {
 
     }
 
+    // when any option is clicked
+    handleSubmit = (e) => {
+
+        // comparing the clicked optin with the answer of the question
+
+        // if the answer is correct
+        if (e.target.innerHTML === this.state.answer) {
+
+            // execute the right option function
+            this.rightChosen()
+        }
+
+        // if the answer is wrong
+        else {
+
+            // execute the wrong option function
+            this.wrongChosen()
+        }
+
+    }
+
+
     // if the option is correct
     rightChosen = () => {
 
