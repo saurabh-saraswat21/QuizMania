@@ -268,3 +268,43 @@ class quizOngoing extends Component {
             })
     }
 
+    // if the answer chosen is wrong
+    wrongChosen = () => {
+
+        this.setState(currentState => ({
+            backgroundClass: true,
+
+            // choice set to false for red color
+            choice: false,
+
+            numberOfAnsweredQuestions: currentState.numberOfAnsweredQuestions + 1,
+
+            // increasing the wrong answers
+            wrongAnswers: currentState.wrongAnswers + 1,
+        }), () => {
+
+            // time out functions same as above
+            setTimeout(
+                function () {
+
+                    const { questions, currentQuestion, nextQuestion, currentQuestionIndex } = this.state;
+                    this.displayQuestions(questions, currentQuestion, nextQuestion, currentQuestionIndex + 1)
+
+
+                }
+                    .bind(this),
+                1100
+            );
+            setTimeout(
+                function () {
+
+                    this.setState({
+                        backgroundClass: false
+                    })
+                }
+                    .bind(this),
+                1000
+            );
+        })
+    }
+
