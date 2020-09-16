@@ -369,3 +369,125 @@ class quizOngoing extends Component {
         })
     }
 
+
+
+
+    render() {
+
+        // if the state is not defined (direct acess)
+
+        if (this.state.quiz === undefined) {
+
+            // render the error component
+            return (
+                <Directacess />
+            )
+        }
+
+        // if the quiz is valid 
+        else {
+
+            // getting details for rendering 
+
+            const {
+
+                // to be displayed   
+                currentQuestion,
+
+                // to be displayed  as information   
+                numberOfQuestions,
+
+                // for current number of question
+
+                currentQuestionIndex,
+
+                // time alloted for quiz
+                time,
+                backgroundClass,
+                choice
+            } = this.state
+
+
+            //  if question is loading because of any issue
+            if (currentQuestion === {}) {
+
+                return (
+
+                    // just display loading message 
+                    <h1>Loading</h1>
+                )
+            }
+
+            // if fetched
+            else {
+
+                return (
+
+                    // setting class of the background dyanamically
+
+                    <div
+
+                        // checking if the the normal  background 
+                        className={backgroundClass ?
+
+                            //  if background is to be changed i.e, any one option is selected
+                            (choice ?
+                                // if choice is true add green to class  
+                                ' questions green' :
+
+                                // if option is wrong add red to class 
+                                'questions red ') :
+
+                            // if background is normal no color is set
+                            'questions'}>
+
+                        <div className="details-container">
+                            <p>
+
+
+                                <span > TimeLeft <span className="timer">
+
+                                    {/* getting time from the state */}
+                                    {time.minutes}
+                                    :
+                                    {time.seconds}
+                                </span> </span>
+                            </p>
+                            <p>
+                                <span>
+                                    <span className="question-no">
+                                        {currentQuestionIndex + 1} of {numberOfQuestions}
+                                    </span>
+                                </span>
+                            </p>
+
+                        </div>
+                        <div className="questionString">
+                            
+                            {/* Displaying current question string  */}
+                            <h1>{currentQuestion.questionString}</h1>
+                        </div>
+                        <div className="options-container">
+
+                                    {/* Displaying option */}
+                            <p onClick={this.handleSubmit} className="option">{currentQuestion.option1}</p>
+                            <p onClick={this.handleSubmit} className="option">{currentQuestion.option2}</p>
+
+                        </div>
+                        <div className="options-container">
+                            <p onClick={this.handleSubmit} className="option">{currentQuestion.option3}</p>
+                            <p onClick={this.handleSubmit} className="option">{currentQuestion.option4}</p>
+
+                        </div>
+                        <div className="btn-container">
+                            <button onClick={this.endQuiz} className="quit-btn">Quit</button>
+                        </div>
+                    </div>
+                )
+            }
+        }
+
+
+    }
+
+}
