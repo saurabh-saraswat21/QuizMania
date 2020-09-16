@@ -9,7 +9,7 @@ import Directacess from '../errComponents/DirectAccess'
 import '../../stylesheets/quiz.css'
 
 class quizOngoing extends Component {
-    
+
     // constructor fr initally setting state values 
     constructor(props) {
         super(props)
@@ -48,14 +48,53 @@ class quizOngoing extends Component {
 
             // time alloted for the quiz
             time: {
-                minutes :0,
-                seconds :0
+                minutes: 0,
+                seconds: 0
             }
         }
 
         // for setting time current interval is 0 
         this.timeInterval = null
     }
+
+
+    componentDidMount = () => {
+
+        // getting data from the location
+        const Data = this.props.location.state;
+
+        // checking if the data is undefined (in case of direct access)
+
+        if (Data !== undefined) {
+
+            // getting quiz from the state if is not undefined
+            const quiz = Data.quiz
+
+            //  setting state of the component with the details of the quiz fetched
+            this.setState({
+                quiz: quiz,
+                questions: quiz.questions,
+
+            },
+
+                //  callback function that is executed after the state is set 
+                () => {
+
+                    //  getting the  values from state as the function is called after the state is set so this wil not be undefined
+                    const { questions, currentQuestion, nextQuestion } = this.state;
+
+                    //  calling the display question option
+                    this.displayQuestions(questions, currentQuestion, nextQuestion)
+                })
+
+            // starting the timer
+            this.startTimer(quiz.questions.length);
+        }
+    }
+
+
+
+
 
     //  function to display questions in the quiz takes four arguments
     displayQuestions =
