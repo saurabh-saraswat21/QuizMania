@@ -209,6 +209,7 @@ class quizOngoing extends Component {
 
     }
 
+
     //  a function to end the quiz
     endQuiz = () => {
 
@@ -491,3 +492,4 @@ class quizOngoing extends Component {
     }
 
 }
+export default withRouter(quizOngoing)
