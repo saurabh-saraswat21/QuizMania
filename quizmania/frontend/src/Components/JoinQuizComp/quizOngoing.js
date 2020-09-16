@@ -56,3 +56,56 @@ class quizOngoing extends Component {
         // for setting time current interval is 0 
         this.timeInterval = null
     }
+
+    //  function to display questions in the quiz takes four arguments
+    displayQuestions =
+
+        //  the questions array that has all the questions of the quiz
+        (questions = this.state.questions,
+
+            //  the current question to be displayed
+            currentQuestion,
+
+            //  the next question to be displayed
+            nextQuestion,
+
+            // the index of the current question for transition  
+            currentQuestionIndex = 0) => {
+
+            // if the index is equal to the length i.e., all the questions are answered 
+            if (currentQuestionIndex === (questions.length)) {
+
+                //  end the quiz
+                this.endQuiz();
+
+            }
+
+            //  if the current index is less i.e, questions are left to be answered
+            if (currentQuestionIndex <= questions.length - 1) {
+
+                //  fetching the current question index 
+                // this step is necassry because we will keep updationg the current index for next question 
+                currentQuestion = questions[currentQuestionIndex];
+
+                //  getting next question 
+                nextQuestion = questions[currentQuestionIndex + 1];
+
+                // storing the correct answer
+                const answer = currentQuestion.correct;
+
+                // setting the total number of questions as it is to be displayed as a info 
+                const numberOfQuestions = questions.length
+
+                // setting the state with the details
+                this.setState({
+                    currentQuestionIndex,
+                    currentQuestion,
+                    nextQuestion,
+                    answer,
+                    numberOfQuestions
+
+                })
+            }
+
+
+        }
