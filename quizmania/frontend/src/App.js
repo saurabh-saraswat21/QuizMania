@@ -51,7 +51,12 @@ class App extends Component {
 
 
 
-        </div>
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route path='/start' component ={quizOngoing}/>
+          <Route component={defaultRoutes} />
+        </Switch>
       </BrowserRouter>
     );
   }
