@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import '../../stylesheets/quiz.css'
+import '../../stylesheets/quizDetails.css'
 
 
 class Quiz extends Component {

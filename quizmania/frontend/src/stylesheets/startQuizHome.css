@@ -1,0 +1,19 @@
+body{
+    background :black
+}
+.Start_quiz_container{
+    border: 2px solid red;
+    /* display: flex; */
+    align-items: center;
+    
+}
+.quizinfobox{
+    position: relative;
+    margin: 4% auto;
+    border: 2px solid white;
+    width: 60%;
+    text-align: center;
+    outline: none;
+    border-radius: 2rem;
+    display: block;
+}
