@@ -109,3 +109,63 @@ class quizOngoing extends Component {
 
 
         }
+
+        // start timer function takes total no of questions as input
+    startTimer = (numberOfQuestions) => {
+
+        // setting the timer according to number of questions
+        const countDown = Date.now() + (numberOfQuestions * 60) * 500 
+        
+        // 2 sec more to cumpunsate the loading time 
+        + 2000;
+
+
+        // setting the time interval that will keep executing again and again after a certain time limit
+        this.timeInterval = setInterval(() => {
+            const now = new Date();
+            const distance = countDown - now
+
+            // getting left minutes and seconds
+            const minutes = Math.floor((distance) % (1000 * 60 * 60) / (1000 * 60))
+            const seconds = Math.floor((distance) % (1000 * 60) / (1000))
+
+            // if the time is up 
+            if (distance < 0) {
+
+                // clear the interval
+                clearInterval(this.innerHTML);
+                
+                // setting time to zero
+                this.setState({
+                    time: {
+                        minutes: 0,
+                        seconds: 0
+
+                    }
+                },
+
+                // end the quiz 
+                () => {
+                    this.endQuiz();
+                })
+            }
+
+            // if time is left 
+            else {
+
+                // setting state every 1 sec
+                this.setState({
+                    time: {
+
+                        minutes,
+                        seconds
+                    }
+
+                })
+            }
+        }, 
+        
+        // time interval of 1 sec
+        1000)
+
+    }
