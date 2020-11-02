@@ -77,7 +77,12 @@ var socket
             )
 
         }
+        else if (! this.state.myusername){
+            return(
+                <Direct></Direct>
+            )
 
+        }
         // if the quiz has value  then 
         else {
             return (
