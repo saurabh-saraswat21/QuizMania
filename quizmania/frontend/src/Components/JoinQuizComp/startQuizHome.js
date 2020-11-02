@@ -93,7 +93,8 @@ var socket
                     <div className="quizinfobox">
                        <h1>Quiz ID : {quiz.quiz_id}</h1>
                         <h1>No of questions:{quiz.questions.length}</h1>
-
+                        <h1> myname = {this.state.myusername} </h1>
+                        <h2>user = {this.state.no_of_users} </h2>
                         {/* start button to start the quiz and passing the quiz as the state as it will be used  for displaying questions  */}
                     <Link to={{
 
