@@ -1,3 +1,4 @@
+module.exports = (app, server) => {
     const mongoose = require('mongoose')
     const users_model = require("../DatabaseModel/users")
     const usermodel = mongoose.model('user', users_model.usersListSchema);
@@ -53,7 +54,7 @@
                 io.emit('update_user_list',socket.quiz_id)
              })         
         })
-                
+
     
 
         socket.on('disconnect', () => {
@@ -88,4 +89,21 @@
             })
         })
     })
+
+     app.get('/getusers/:quiz_id',(req,res)=>{
+         console.log(req.params.quiz_id);
+        const quiz_id = parseInt(req.params.quiz_id);
+        usermodel.findOne({quiz_id:quiz_id},(err,response)=>{
+            if(err) 
+                console.log(err);
+            else
+          
+            res.send(response)
         })
+
+     })
+
+        
+
+
+}
