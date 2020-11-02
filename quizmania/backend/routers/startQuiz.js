@@ -8,6 +8,37 @@
     const socket = require('socket.io');
     const io = socket(server);
 
+
+  const saveUser = (userdata, quiz_id)=>{
+      return new Promise (function(resolve,reject){
+
+        usermodel.findOne({ quiz_id: quiz_id }, (err, response) => {
+            if(err) reject(err)
+            var newuser = usermodel({
+                quiz_id: quiz_id,
+                userList: userdata
+            })
+            if (response == null) {
+
+                newuser.save().then(() => {
+                    resolve()
+                })
+            }
+            else {
+                response.userList.push(userdata)
+                response.save().then(() => {
+                    resolve()
+                })
+            }
+        })
+
+      })
+
+       
+
+    }
+
+
     io.on('connection', socket => {
         console.log("new socket connection");
         socket.on('update_socket', (data) => {
