@@ -63,6 +63,8 @@ var socket
     render() {
         // getting quiz from the props because it is available because we have already mapped it
         const quiz = this.props.quiz;
+        const username = this.state.myusername
+        const all_users = this.state.all_users;
 
         // cross checking the quiz if it is undefined  
         if (quiz === undefined) {
