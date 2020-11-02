@@ -36,6 +36,30 @@ var socket
         
      }
      
+     updateUserList=(quiz_id)=>{
+         axios.get("http://192.168.43.91:80/getusers/"+quiz_id,{
+            
+         }).then(response =>{
+            if(response != null){
+
+
+            //  console.log(response.data.userList.length);
+            var length = response.data.userList.length
+
+            if(this.state.no_of_users != length)
+            {
+               var all_users = response.data.userList
+                this.setState({
+                    no_of_users: length,
+                    all_users : all_users
+                })
+                console.log(length);
+            }
+        }
+        }
+         )
+         
+     }
     render() {
         // getting quiz from the props because it is available because we have already mapped it
         const quiz = this.props.quiz;
