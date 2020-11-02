@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import '../../stylesheets/startQuizHome.css'
 import { connect } from 'react-redux'
 import{Link} from 'react-router-dom'
+import io from 'socket.io-client'
+import axios from 'axios'
+const ENDPOINT = "192.168.43.91:80"
+var socket
 
 export class startQuizHome extends Component {
 
