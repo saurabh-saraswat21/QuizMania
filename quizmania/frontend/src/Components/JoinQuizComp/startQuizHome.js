@@ -17,6 +17,19 @@ var socket
      }
 
 
+
+     componentDidMount() {
+
+         if(this.state.myusername){
+            const  socket_data = {
+                username : this.state.myusername,
+                quiz_id :this.state.quiz_id
+         }
+            
+         }
+        
+     }
+     
     render() {
         // getting quiz from the props because it is available because we have already mapped it
         const quiz = this.props.quiz;
