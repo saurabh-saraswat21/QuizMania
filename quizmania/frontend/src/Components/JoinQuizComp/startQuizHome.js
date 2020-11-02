@@ -11,8 +11,12 @@ export class startQuizHome extends Component {
      constructor(props){
          super(props)
          this.state= {
+
              quiz_id : this.props.location.state ?this.props.location.state.quiz_id:null,
+            
+            //   the username is passed in the props by the HOC function below
              myusername : this.props.username,
+
              no_of_users : 0
              
          }
@@ -23,40 +27,46 @@ export class startQuizHome extends Component {
      componentDidMount() {
 
          if(this.state.myusername){
-            const  socket_data = {
+                const  socket_data = {
                 username : this.state.myusername,
                 quiz_id :this.state.quiz_id
          }
+                // estabishing a new socket connection 
             socket = io(ENDPOINT)
-    
+
+            // emmiting the update socket event 
             socket.emit('update_socket',socket_data)
             
+            // handling the event emiited from server side
              socket.on('update_user_list',(quiz_id)=>{
+
+                // calling the update userlist function
                 this.updateUserList(quiz_id)
             })
          }
         
      }
      
+    //  method to update userlist whenever called
      updateUserList=(quiz_id)=>{
+
+        //  making get request to server and fetching the data
          axios.get("http://192.168.43.91:80/getusers/"+quiz_id,{
             
          }).then(response =>{
+             
+            //  if the response is not empty 
             if(response != null){
 
-
-            //  console.log(response.data.userList.length);
+                
             var length = response.data.userList.length
-
-            if(this.state.no_of_users != length)
-            {
-               var all_users = response.data.userList
+            var all_users = response.data.userList
+            
+                // updating the current state
                 this.setState({
                     no_of_users: length,
                     all_users : all_users
-                })
-                console.log(length);
-            }
+                })            
         }
         }
          )
