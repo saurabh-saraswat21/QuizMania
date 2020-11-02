@@ -28,6 +28,10 @@ var socket
             socket = io(ENDPOINT)
     
             socket.emit('update_socket',socket_data)
+            
+             socket.on('update_user_list',(quiz_id)=>{
+                this.updateUserList(quiz_id)
+            })
          }
         
      }
