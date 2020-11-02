@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import '../../stylesheets/startQuizHome.css'
 import { connect } from 'react-redux'
+import Direct from '../errComponents/DirectAccess'
 import{Link} from 'react-router-dom'
 import io from 'socket.io-client'
 import axios from 'axios'
 const ENDPOINT = "192.168.43.91:80"
 var socket
+export class startQuizHome extends Component {
      constructor(props){
          super(props)
          this.state= {
@@ -60,7 +62,7 @@ var socket
          )
          
      }
-    render() {
+     render() { 
         // getting quiz from the props because it is available because we have already mapped it
         const quiz = this.props.quiz;
         const username = this.state.myusername
@@ -83,8 +85,11 @@ var socket
             )
 
         }
+
         // if the quiz has value  then 
         else {
+            
+
             return (
 
                 <div className="Start_quiz_container">
@@ -133,6 +138,7 @@ const mapStateToProps = (state, defaultProps) => {
 
         // find method iterates every quiz in the quizzes and return that quiz whose id matches the id we get from the params above
         quiz: state.quizzes.find(quiz => quiz.quiz_id === id),
+        username : defaultProps.location.state?defaultProps.location.state.username:null
 
     }
 }
