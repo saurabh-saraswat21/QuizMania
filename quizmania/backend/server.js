@@ -1,5 +1,6 @@
 const router = require('./routers/submitQues')
 const router2 = require('./routers/viewQuiz')
+const router3 = require('./routers/startQuiz')
 const express = require('express');
 const { urlencoded } = require('body-parser');
 const mongoose = require('mongoose')
@@ -25,3 +26,4 @@ mongoose.connection.once('open', () => {
 
 router2(app);
 router(app);
+router3(app,server);
