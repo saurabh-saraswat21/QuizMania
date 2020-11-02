@@ -26,7 +26,8 @@ var socket
                 quiz_id :this.state.quiz_id
          }
             socket = io(ENDPOINT)
-            
+    
+            socket.emit('update_socket',socket_data)
          }
         
      }
