@@ -25,6 +25,7 @@ var socket
                 username : this.state.myusername,
                 quiz_id :this.state.quiz_id
          }
+            socket = io(ENDPOINT)
             
          }
         
