@@ -6,8 +6,15 @@ import io from 'socket.io-client'
 import axios from 'axios'
 const ENDPOINT = "192.168.43.91:80"
 var socket
-
-export class startQuizHome extends Component {
+     constructor(props){
+         super(props)
+         this.state= {
+             quiz_id : this.props.location.state ?this.props.location.state.quiz_id:null,
+             myusername : this.props.username,
+             no_of_users : 0
+             
+         }
+     }
 
 
     render() {
