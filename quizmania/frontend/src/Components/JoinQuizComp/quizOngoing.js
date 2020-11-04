@@ -69,10 +69,13 @@ class quizOngoing extends Component {
 
             // getting quiz from the state if is not undefined
             const quiz = Data.quiz
+            const username = Data.username
+            const all_users = Data.all_users
 
             //  setting state of the component with the details of the quiz fetched
             this.setState({
                 quiz: quiz,
+                username:username,
                 questions: quiz.questions,
 
             },
@@ -452,7 +455,9 @@ class quizOngoing extends Component {
                                     {time.minutes}
                                     :
                                     {time.seconds}
-                                </span> </span>
+                            </span> score: {this.state.score}</span>
+                            <span> myname  {this.state.username}</span>
+                                
                             </p>
                             <p>
                                 <span>

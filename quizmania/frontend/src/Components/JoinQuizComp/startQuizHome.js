@@ -1,14 +1,82 @@
 import React, { Component } from 'react'
 import '../../stylesheets/startQuizHome.css'
 import { connect } from 'react-redux'
+import Direct from '../errComponents/DirectAccess'
 import{Link} from 'react-router-dom'
-
+import io from 'socket.io-client'
+import axios from 'axios'
+const ENDPOINT = "192.168.43.91:80"
+var socket
 export class startQuizHome extends Component {
+     constructor(props){
+         super(props)
+         this.state= {
+
+             quiz_id : this.props.location.state ?this.props.location.state.quiz_id:null,
+            
+            //   the username is passed in the props by the HOC function below
+             myusername : this.props.username,
+
+             no_of_users : 0
+             
+         }
+     }
 
 
-    render() {
+
+     componentDidMount() {
+
+         if(this.state.myusername){
+                const  socket_data = {
+                username : this.state.myusername,
+                quiz_id :this.state.quiz_id
+         }
+                // estabishing a new socket connection 
+            socket = io(ENDPOINT)
+
+            // emmiting the update socket event 
+            socket.emit('update_socket',socket_data)
+            
+            // handling the event emiited from server side
+             socket.on('update_user_list',(quiz_id)=>{
+
+                // calling the update userlist function
+                this.updateUserList(quiz_id)
+            })
+         }
+        
+     }
+     
+    //  method to update userlist whenever called
+     updateUserList=(quiz_id)=>{
+
+        //  making get request to server and fetching the data
+         axios.get("http://192.168.43.91:80/getusers/"+quiz_id,{
+            
+         }).then(response =>{
+             
+            //  if the response is not empty 
+            if(response != null){
+
+                
+            var length = response.data.userList.length
+            var all_users = response.data.userList
+            
+                // updating the current state
+                this.setState({
+                    no_of_users: length,
+                    all_users : all_users
+                })            
+        }
+        }
+         )
+         
+     }
+     render() { 
         // getting quiz from the props because it is available because we have already mapped it
         const quiz = this.props.quiz;
+        const username = this.state.myusername
+        const all_users = this.state.all_users;
 
         // cross checking the quiz if it is undefined  
         if (quiz === undefined) {
@@ -21,9 +89,17 @@ export class startQuizHome extends Component {
             )
 
         }
+        else if (! this.state.myusername){
+            return(
+                <Direct></Direct>
+            )
+
+        }
 
         // if the quiz has value  then 
         else {
+            
+
             return (
 
                 <div className="Start_quiz_container">
@@ -32,17 +108,18 @@ export class startQuizHome extends Component {
                     <div className="quizinfobox">
                        <h1>Quiz ID : {quiz.quiz_id}</h1>
                         <h1>No of questions:{quiz.questions.length}</h1>
-
+                        <h1> myname = {this.state.myusername} </h1>
+                        <h2>user = {this.state.no_of_users} </h2>
                         {/* start button to start the quiz and passing the quiz as the state as it will be used  for displaying questions  */}
                     <Link to={{
-
+                        
                         // pathname is same without parameters to prevent the direct acess of the quiz 
                         pathname : '/start',
 
                         // the state will be available at the location of the component that renders after
-                        state: {quiz}
+                        state: {quiz,username,all_users}
                         
-                    }}> <h2>Start</h2>
+                    }  }> <h2>Start</h2>
                     
                     </Link>
                     </div>
@@ -71,6 +148,7 @@ const mapStateToProps = (state, defaultProps) => {
 
         // find method iterates every quiz in the quizzes and return that quiz whose id matches the id we get from the params above
         quiz: state.quizzes.find(quiz => quiz.quiz_id === id),
+        username : defaultProps.location.state?defaultProps.location.state.username:null
 
     }
 }

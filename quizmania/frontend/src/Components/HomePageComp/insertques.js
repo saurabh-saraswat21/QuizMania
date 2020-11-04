@@ -144,7 +144,7 @@ class insertques extends Component {
 
         }
         //making request to backend server
-          axios.post('http://localhost:80/submitques/',question)
+          axios.post('http://192.168.43.91:80/submitques/',question)
       
       
         //redirect to the same page after saving question

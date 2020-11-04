@@ -28,7 +28,7 @@ const joinQuiz=(props)=> {
                     
                     {/* link every quiz id to start that quiz */}
                     <Link to ={{
-                        pathname :'/startQuiz/'+quiz_id,
+                        pathname :'/Quiz/enter_info/'+quiz_id,
                         
                     }}
                     // the target field is here so that the quiz opens in a new tab 

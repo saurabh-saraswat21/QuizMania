@@ -14,6 +14,7 @@ import getQuiz from './Components/quizzesInfo/getQuiz';
 import joinQuiz from './Components/HomePageComp/joinQuiz'
 import startQuiz from './Components/JoinQuizComp/startQuizHome'
 import quizOngoing from './Components/JoinQuizComp/quizOngoing';
+import Userinfo from './Components/JoinQuizComp/userinfo';
 
 
 
@@ -38,6 +39,7 @@ class App extends Component {
               <Route path='/insertques/:quiz_id' component={insertques} />
               <Route path='/viewquiz' component={viewQuiz} />
               <Route path='/JoinQuiz' component={joinQuiz} />
+              <Route exact path='/Quiz/enter_info/:quiz_id' component={Userinfo} />
               <Route exact path='/startQuiz/:quiz_id' component={startQuiz} />
             </Switch>
 
