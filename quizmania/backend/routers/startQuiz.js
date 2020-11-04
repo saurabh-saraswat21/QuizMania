@@ -4,7 +4,7 @@ module.exports = (app, server) => {
     const mongoose = require('mongoose')
     
     // require the user schema to save the users  
-    const users_model = require("../DatabaseModel/users")
+    const users_model = require("../databaseModel/users")
 
     // compile the schema to modal
     const usermodel = mongoose.model('user', users_model.usersListSchema);

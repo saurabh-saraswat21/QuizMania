@@ -1,6 +1,6 @@
 module.exports = (app) => {
     const mongoose = require('mongoose')
-    const model = require("../DatabaseModel/quizdata")
+    const model = require("../databaseModel/quizdata")
     const quesmodel = mongoose.model('question', model.queSchema);
     const quizmodel = mongoose.model('quiz', model.QuizSchema);
     const bodyParser = require('body-parser');
