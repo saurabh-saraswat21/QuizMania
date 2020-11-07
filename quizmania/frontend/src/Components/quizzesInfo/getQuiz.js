@@ -20,7 +20,7 @@ class Quiz extends Component {
         // toggling the  status 
         newShowbtn[index] = !currentStatus
 
-        // setting state with the new arrray
+        // setting state with the new array
         this.setState({
             showbtn: newShowbtn
         })
@@ -69,6 +69,8 @@ class Quiz extends Component {
 
                             {/* classname is decided by the showbtn status at that index */}
                             <div className={this.state.showbtn[index] ? "boxactive" : "boxhidden " + index}>
+                                <button>edit</button>
+                                <button>delete{question._id}</button>
                                 <li className="options">Option1:-{question.option1}</li>
                                 <li className="options">Option2:-{question.option2}</li>
                                 <li className="options">Option3:-{question.option3}</li>
