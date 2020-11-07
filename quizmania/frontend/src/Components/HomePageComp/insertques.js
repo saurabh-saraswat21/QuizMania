@@ -84,7 +84,6 @@ class insertques extends Component {
             // the  entered value of the input field 
 
             // setting that corresponding flag value
-            [e.target.id + "flag"]: flag
 
 
 
