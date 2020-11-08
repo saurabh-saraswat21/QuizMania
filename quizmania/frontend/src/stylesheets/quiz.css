@@ -1,0 +1,86 @@
+body{
+    background-color: rgb(53, 44, 33);
+    
+}
+.questions{
+    background-color: tan ;
+    border-left: 5px solid tan;
+    width:80%;
+    margin: 6.5rem;
+    margin-top: 9rem;  
+    padding:30px;
+    border-radius: 30px;  
+}
+.details-container{
+    display:flex;
+    justify-content: space-between;
+    font-size: larger;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+/* to shift the number up or down */
+
+/* .timer{
+    position: relative;
+    top: -3p   x;
+} */
+
+
+
+
+.questionString h1 {
+    font-size:3rem;
+    margin: 7px;
+    line-height: 1.5;
+    text-align: center;
+
+}
+
+
+.options-container{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    /* border: 1px solid red; */
+}
+.option{
+    border-radius: 3rem;
+    padding: 1rem;
+    margin: 8px ;
+    cursor: pointer;
+    transition: 0.1s linear all;
+    font-size: larger;
+    background-color: rgb(172, 117, 44);
+     
+}
+.option:hover{
+    background-color: rgb(92, 62, 22) ;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+    margin: 0px  auto 2rem auto;
+}
+
+.btn-container button{
+    border: none;
+    background-color: rgb(240, 116, 116);
+    cursor: pointer;
+    box-shadow: 1px 1px #7c7575;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    width: 20%;
+    border-radius: 21px;
+
+}
+.btn-container button:hover{
+    background-color: rgb(175, 33, 33);
+}
+.questions.green{
+    background-color: rgb(113, 212, 113);
+}
+.questions.red{
+    background-color: rgb(143, 30, 30);
+}
