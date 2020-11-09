@@ -1,6 +1,5 @@
 // Use state is used to use state in function components
 import React, { useState } from 'react'
-
 import '../../stylesheets/navbar.css'
 import { Link } from 'react-router-dom'
 
