@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 // import various components to be rendered  
 import Home from './Components/MainPagesComp/home'
-import Navbar from './Components/partials/navbar';
+import Navbar from './Components/partials/Navbar';
 import createQuiz from './Components/HomePageComp/createQuiz';
 import insertques from './Components/HomePageComp/insertques';
 import viewQuiz from './Components/quizzesInfo/viewQuiz';

@@ -1,15 +1,19 @@
 import React from 'react'
-import {Link} from 'react-router-dom' 
+import '../../App.css'
+import Cards from '../HomePageComp/Cards';
+import Footer from '../HomePageComp/Footer';
+import Title from '../HomePageComp/Title'
 
-const Home = () => {
+function Home () {
+
     return (
-        <div className="homePage">
-            <div className="btn container">
-
-                <div className="main-btn"><Link to ="/createquiz" >Create Quiz</Link> </div>
-                <div className="main-btn"><Link to ="/viewquiz">View Quiz</Link> </div>
-            </div>
-        </div>
+        <>
+            <Title />
+            <Cards />
+            <Footer />
+        </>
     )
+
 }
-export default Home
+
+export default Home;
