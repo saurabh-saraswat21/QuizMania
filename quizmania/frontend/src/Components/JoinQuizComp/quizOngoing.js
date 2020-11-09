@@ -70,12 +70,12 @@ class quizOngoing extends Component {
             // getting quiz from the state if is not undefined
             const quiz = Data.quiz
             const username = Data.username
-            const all_users = Data.all_users
+            // const all_users = Data.all_users
 
             //  setting state of the component with the details of the quiz fetched
             this.setState({
                 quiz: quiz,
-                username:username,
+                username: username,
                 questions: quiz.questions,
 
             },
@@ -152,14 +152,14 @@ class quizOngoing extends Component {
 
         }
 
-        // start timer function takes total no of questions as input
+    // start timer function takes total no of questions as input
     startTimer = (numberOfQuestions) => {
 
         // setting the timer according to number of questions
-        const countDown = Date.now() + (numberOfQuestions * 60) * 500 
-        
-        // 2 sec more to cumpunsate the loading time 
-        + 2000;
+        const countDown = Date.now() + (numberOfQuestions * 60) * 500
+
+            // 2 sec more to cumpunsate the loading time 
+            + 2000;
 
 
         // setting the time interval that will keep executing again and again after a certain time limit
@@ -176,7 +176,7 @@ class quizOngoing extends Component {
 
                 // clear the interval
                 clearInterval(this.innerHTML);
-                
+
                 // setting time to zero
                 this.setState({
                     time: {
@@ -186,10 +186,10 @@ class quizOngoing extends Component {
                     }
                 },
 
-                // end the quiz 
-                () => {
-                    this.endQuiz();
-                })
+                    // end the quiz 
+                    () => {
+                        this.endQuiz();
+                    })
             }
 
             // if time is left 
@@ -205,10 +205,10 @@ class quizOngoing extends Component {
 
                 })
             }
-        }, 
-        
-        // time interval of 1 sec
-        1000)
+        },
+
+            // time interval of 1 sec
+            1000)
 
     }
 
@@ -455,9 +455,9 @@ class quizOngoing extends Component {
                                     {time.minutes}
                                     :
                                     {time.seconds}
-                            </span> score: {this.state.score}</span>
-                            <span> myname  {this.state.username}</span>
-                                
+                                </span> score: {this.state.score}</span>
+                                <span> myname  {this.state.username}</span>
+
                             </p>
                             <p>
                                 <span>
@@ -469,13 +469,13 @@ class quizOngoing extends Component {
 
                         </div>
                         <div className="questionString">
-                            
+
                             {/* Displaying current question string  */}
                             <h1>{currentQuestion.questionString}</h1>
                         </div>
                         <div className="options-container">
 
-                                    {/* Displaying option */}
+                            {/* Displaying option */}
                             <p onClick={this.handleSubmit} className="option">{currentQuestion.option1}</p>
                             <p onClick={this.handleSubmit} className="option">{currentQuestion.option2}</p>
 
