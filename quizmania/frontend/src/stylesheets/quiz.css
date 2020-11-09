@@ -6,7 +6,9 @@ body{
     background-color: tan ;
     border-left: 5px solid tan;
     width:80%;
-    margin: 6.5rem;
+    
+    margin: auto;
+    
     margin-top: 9rem;  
     padding:30px;
     border-radius: 30px;  
@@ -30,7 +32,7 @@ body{
 
 
 
-.questionString h1 {
+.questionString p{
     font-size:3rem;
     margin: 7px;
     line-height: 1.5;
@@ -83,4 +85,50 @@ body{
 }
 .questions.red{
     background-color: rgb(143, 30, 30);
+}
+
+@media screen and (max-width:768px){
+
+    .questions{
+        margin-top: 8rem;
+        margin-left: 0rem;
+        margin: auto;
+        margin-top: 5rem;
+    }
+
+    .questionString{
+        font-size: 2rem;
+        margin: 7px;
+        line-height: 1.5;
+    }
+
+    .questionString p{
+        font-size: 1.7rem;
+        margin: 7px;
+        margin-bottom: 15px;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+    .options-container {
+        display: inline-block;
+        width: 98%;
+        text-align: center
+    }
+
+    .option {
+        padding: 0.3rem;
+        margin: auto;
+        margin-bottom: 13px;
+        
+    }
+
+    .shiftBelow{
+        display: block;
+    }
+    
+    .btn-container button{
+        padding: 0.5rem;
+    }
+
 }
