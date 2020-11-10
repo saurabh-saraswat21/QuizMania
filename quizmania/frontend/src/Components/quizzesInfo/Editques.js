@@ -52,6 +52,7 @@ class EditQues extends Component {
 
     }
 
+
     //  the function that will check that all the values are entered or not
     checkAllFilled = () => {
 
@@ -71,11 +72,17 @@ class EditQues extends Component {
         const allCorrect = allVaild && allFilled;
 
         // setting the correct flag with the value all if any of the input flag is false or duplicate  the correctflag is false
-        this.setState({
+        
+            this.setState({
 
-            correctflag: allCorrect
+                correctflag: allCorrect
+    
+            },()=>{
+                this.checkSubmit()
+            })
 
-        })
+
+        
     }
 
 
