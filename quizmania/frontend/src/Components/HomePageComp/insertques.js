@@ -73,7 +73,6 @@ class insertques extends Component {
     handleChange = (e) => {
 
         // getting the value based on the input 
-        const flag = e.target.value ? true : false
 
         //we have set the  id  input field with the same name as its corresponding state field name
         //the id of the button on which the event has taken place this is same name by which we have stored in state
