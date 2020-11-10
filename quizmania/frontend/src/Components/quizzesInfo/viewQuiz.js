@@ -50,6 +50,19 @@ const ViewQuiz=(props)=> {
     //main return component
     return(
         <div className="quizList">
+            <input
+            disabled={!props.quiz_ids.length} 
+            onChange={(event)=>{
+                console.log(event);
+                setquiz_id(event.target.value)
+            }
+            
+            } type="number"/>
+
+            <Link to={{
+                pathname: '/getquiz/'+quiz_id
+            }}><button disabled={!quiz_id} >go</button></Link>
+            
             {Quiz_List}
             
         </div>
