@@ -119,12 +119,11 @@ class Quiz extends Component {
                     <Link to={{
                         pathname: '/getquiz/'+this.props.match.params.quiz_id
                     }}><button className={this.state.isRefreshed ? "refresh active" : "refresh"} onClick={this.update} > refresh to update</button></Link>
-
-
-
-                    
-
                     {questionsList}
+
+                    <Link to={{
+                        pathname:'/insertques/'+this.props.match.params.quiz_id
+                    }}> <button>ADD More Questions</button></Link>
                 </div>
             )
         }
