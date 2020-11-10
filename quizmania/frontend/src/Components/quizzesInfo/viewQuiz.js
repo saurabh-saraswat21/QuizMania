@@ -36,6 +36,8 @@ const ViewQuiz=(props)=> {
                         pathname :'/getquiz/'+quiz_id,
                         
                     }}>{quiz_id}</Link>
+
+                    <button onClick={()=>deletequiz(quiz_id)}>delete</button>
                    
                
                     
