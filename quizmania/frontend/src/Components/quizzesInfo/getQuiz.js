@@ -88,6 +88,10 @@ class Quiz extends Component {
                                     state: { question }
 
                                 }}> <button>edit</button> </Link>
+
+                                <button onClick={()=>this.delete(quiz.quiz_id,question)}>delete</button>
+
+
                                 <li className="options">Option1:-{question.option1}</li>
                                 <li className="options">Option2:-{question.option2}</li>
                                 <li className="options">Option3:-{question.option3}</li>
