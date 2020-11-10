@@ -223,6 +223,7 @@ class EditQues extends Component {
                         <button disabled={!(this.state.allflag && this.state.correctflag)} className="submit btn" onClick={this.handleClick}>Submit</button>
                    
                     </form>
+                    <button disabled={!(this.state.allflag && this.state.correctflag)} className="submit btn" onClick={this.handleClick}>Submit</button>
                 </div>
             </div>
         )
