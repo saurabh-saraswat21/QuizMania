@@ -68,6 +68,15 @@ module.exports = (app) => {
              }
          ).then(console.log("hii"))       
     })
-                
-    })
+
+    app.post('/deleteques',(req,res)=>{
+        const quiz_id = req.body.id
+        const question = req.body.question
+        
+       
+        
+
+    }
+    )
+
 }
