@@ -10,6 +10,7 @@ class EditQues extends Component {
 
         //the fields for question that is to be entered
         quiz_id: 0,
+        _id:0,
         questionString: '',
         option1: '',
         option2: '',
