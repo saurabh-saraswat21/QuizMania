@@ -8,7 +8,10 @@ import '../../stylesheets/quizDetails.css'
 class Quiz extends Component {
 
     state = {
-        showbtn: []
+        showbtn: [],
+        isRefreshed: this.props.location.state
+
+    }
     }
     show = (index) => {
 
