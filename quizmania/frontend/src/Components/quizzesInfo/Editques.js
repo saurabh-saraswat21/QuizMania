@@ -182,7 +182,7 @@ class EditQues extends Component {
         }} />
         }
 
-        return (
+    return (
             <div className="insertques">
                 <div className="insertform">
 
@@ -190,11 +190,16 @@ class EditQues extends Component {
 
                         {/* Basic input fields of the form */}
                         <div className="quesfield"><input type="number" placeholder="QuizID" value={this.state.quiz_id} readOnly /></div>
-                        <div className="quesfield"><input type="text" id="questionString" placeholder="question" onChange={this.handleChange} /></div>
-                        <div className="quesfield"><input type="text" id="option1" placeholder="option1" onChange={this.handleChange} /></div>
-                        <div className="quesfield"><input type="text" id="option2" placeholder="option2" onChange={this.handleChange} /></div>
-                        <div className="quesfield"><input type="text" id="option3" placeholder="option3" onChange={this.handleChange} /></div>
-                        <div className="quesfield"><input type="text" id="option4" placeholder="option4" onChange={this.handleChange} /></div>
+
+                        <div className="quesfield"><input type="text" id="questionString" placeholder="question" value={this.state.questionString} onChange={this.handleChange} /></div>
+
+                        <div className="quesfield"><input type="text" id="option1" placeholder="option1"   value={this.state.option1} onChange={this.handleChange} /></div>
+
+                        <div className="quesfield"><input type="text" id="option2" placeholder="option2" value={this.state.option2} onChange={this.handleChange} /></div>
+
+                        <div className="quesfield"><input type="text" id="option3" placeholder="option3" value={this.state.option3} onChange={this.handleChange} /></div>
+
+                        <div className="quesfield"><input type="text" id="option4" placeholder="option4" value={this.state.option4} onChange={this.handleChange} /></div>
                         <div className="quesfield">
 
                             {/* The correct value dropdown */}
