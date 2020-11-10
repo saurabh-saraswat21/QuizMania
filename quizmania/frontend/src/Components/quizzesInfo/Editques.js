@@ -145,15 +145,16 @@ class EditQues extends Component {
 
 
 
-     // after the submit button is pressed
+    // after the submit button is pressed
 
-     handleClick = (e) => {
+    handleClick = (e) => {
         // get the values from state and store in a variable  
         // so that it can be passed to the backend server to be stored in the database
 
         const question = {
             quiz_id: this.state.quiz_id,
             questionString: this.state.questionString,
+            _id : this.state._id,
             option1: this.state.option1,
             option2: this.state.option2,
             option3: this.state.option3,
@@ -162,11 +163,14 @@ class EditQues extends Component {
 
         }
         //making request to backend server
-          axios.post('http://192.168.43.91:80/submitques/',question)
-      
-      
-        //redirect to the same page after saving question
-        this.props.history.push('/insertques/'+this.state.quiz_id)
+        axios.post('http://192.168.43.91:80/editques/', question).then(
+            this.setState({
+                    redirect:true
+            })
+        )
+            
+        
+
     }
 
 
