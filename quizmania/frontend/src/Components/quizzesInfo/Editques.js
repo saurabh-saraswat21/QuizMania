@@ -91,7 +91,6 @@ class EditQues extends Component {
     handleChange = (e) => {
 
         // getting the value based on the input 
-        const flag = e.target.value ? true : false
 
         //we have set the  id  input field with the same name as its corresponding state field name
         //the id of the button on which the event has taken place this is same name by which we have stored in state
@@ -101,8 +100,6 @@ class EditQues extends Component {
             [e.target.id]: e.target.value,
             // the  entered value of the input field 
 
-            // setting that corresponding flag value
-            [e.target.id + "flag"]: flag
 
 
 
@@ -116,14 +113,14 @@ class EditQues extends Component {
     }
 
 
-   
 
-     // this will check if the submit btn is to be set on or not by setting the all flag
+
+    // this will check if the submit btn is to be set on or not by setting the all flag
     checkSubmit = () => {
 
         // getting the value of the correctflag
         const allFlag = this.state.correctflag
-        
+
         // seeting the value of correct flag with the all flag 
         this.setState({
             allflag: allFlag
@@ -220,8 +217,8 @@ class EditQues extends Component {
                         </div>
 
                         {/* The submit buttton that is enabled if both the correctflag and the all flag are true */}
-                        <button disabled={!(this.state.allflag && this.state.correctflag)} className="submit btn" onClick={this.handleClick}>Submit</button>
-                   
+                        
+
                     </form>
                     <button disabled={!(this.state.allflag && this.state.correctflag)} className="submit btn" onClick={this.handleClick}>Submit</button>
                 </div>
@@ -229,4 +226,4 @@ class EditQues extends Component {
         )
     }
 }
-export default insertques
+export default EditQues
