@@ -28,6 +28,8 @@ class EditQues extends Component {
     // setting quiz id to the state
     componentDidMount() {
         const QuizID = this.props.match.params.quiz_id
+        const question = this.props.location.state.question
+        
         this.setState({
             quiz_id: QuizID
 
