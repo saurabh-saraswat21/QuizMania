@@ -59,6 +59,15 @@ module.exports = (app) => {
              correct: req.body.correct,
              
          }
+         quizmodel.update (
+             {"quiz_id" :quiz_id,"questions._id":id},
+             {
+                 "$set":{
+                     "questions.$":question
+                 }
+             }
+         ).then(console.log("hii"))       
+    })
                 
     })
 }
