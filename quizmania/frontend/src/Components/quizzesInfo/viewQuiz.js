@@ -4,6 +4,10 @@ import {Link} from 'react-router-dom'
 
 
 const ViewQuiz=(props)=> {
+
+
+    
+    const[quiz_id,setquiz_id] = useState(null);
     // getting quiz id list from props
     const id_list =props.quiz_ids
 
