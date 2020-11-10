@@ -31,7 +31,15 @@ class EditQues extends Component {
         const question = this.props.location.state.question
         
         this.setState({
-            quiz_id: QuizID
+            quiz_id: QuizID,
+            redirect : false,
+            _id :question._id,
+            questionString: question.questionString,
+            option1: question.option1,
+            option2: question.option2,
+            option3: question.option3,
+            option4: question.option4,
+            correct: question.correct
 
         })
     }
