@@ -72,8 +72,16 @@ module.exports = (app) => {
     app.post('/deleteques',(req,res)=>{
         const quiz_id = req.body.id
         const question = req.body.question
-        
-       
+        quizmodel.update (
+            {"quiz_id" :quiz_id},
+            {
+                "$pull":{
+                    "questions":{"_id" : ObjectId(question._id) }
+                }
+            }
+        ).then((result)=>{
+            console.log(result);
+        })
         
 
     }
