@@ -44,4 +44,21 @@ module.exports = (app) => {
             });
 
     })
+
+    app.post('/editques',(req)=>{
+
+         const quiz_id = req.body.quiz_id;
+         const id = req.body._id;
+
+         const question = {
+             questionString : req.body.questionString,
+             option1: req.body.option1,
+             option2: req.body.option2,
+             option3: req.body.option3,
+             option4: req.body.option4,
+             correct: req.body.correct,
+             
+         }
+                
+    })
 }
