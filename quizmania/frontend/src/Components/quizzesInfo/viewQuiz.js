@@ -11,6 +11,8 @@ const ViewQuiz=(props)=> {
     // getting quiz id list from props
     const id_list =props.quiz_ids
 
+    
+
     // checking if list is empty
     const Quiz_List = id_list.length ?
 
@@ -49,6 +51,7 @@ const ViewQuiz=(props)=> {
 
     //main return component
     return(
+        
         <div className="quizList">
             <input
             disabled={!props.quiz_ids.length} 
@@ -69,6 +72,10 @@ const ViewQuiz=(props)=> {
     )
 
    
+}
+
+const deletequiz=(quiz_id)=>{
+    axios.post('http://192.168.43.91:80/deletequiz',{quiz_id}).then(window.location.reload())
 }
 
 //mapping state to props of component
