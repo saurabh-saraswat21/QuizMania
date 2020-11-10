@@ -107,6 +107,8 @@ class Quiz extends Component {
 
                 //rendering the questionList created above with all the data
                 <div>
+                    <button className={this.state.isRefreshed ? "refresh active" : "refresh"} onClick={this.update} > refresh to update</button>
+
                     {questionsList}
                 </div>
             )
