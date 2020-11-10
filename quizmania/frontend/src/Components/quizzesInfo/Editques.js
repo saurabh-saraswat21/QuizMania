@@ -17,9 +17,7 @@ class EditQues extends Component {
         option3: '',
         option4: '',
         correct: '',
-
-      
-
+        correctflag:true,
         // a universal flag that will enable submit btn  
         allflag: false
     }
