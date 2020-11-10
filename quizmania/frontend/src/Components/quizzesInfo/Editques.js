@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
-class insertques extends Component {
-    
-    
+
+class EditQues extends Component {
+
+
     // initial state with empty values  will be updated  and passed to be saved in the database
     state = {
 
