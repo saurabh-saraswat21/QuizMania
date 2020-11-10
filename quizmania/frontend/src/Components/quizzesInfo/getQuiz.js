@@ -17,6 +17,11 @@ class Quiz extends Component {
         window.location.reload()
 
     }
+    delete = (id,question) =>{
+        axios.post('http://192.168.43.91:80/deleteques',{id,question}).then(
+            window.location.reload()
+        )
+
     }
     show = (index) => {
 
