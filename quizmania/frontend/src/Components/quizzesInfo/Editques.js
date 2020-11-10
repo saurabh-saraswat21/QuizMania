@@ -175,6 +175,13 @@ class EditQues extends Component {
 
 
     render() {
+    if(this.state.redirect){
+        return <Redirect to={{
+            pathname : '/getquiz/'+this.state.quiz_id,
+            state : 1
+        }} />
+        }
+
         return (
             <div className="insertques">
                 <div className="insertform">
