@@ -12,6 +12,11 @@ class Quiz extends Component {
         isRefreshed: this.props.location.state
 
     }
+
+    update = () => {
+        window.location.reload()
+
+    }
     }
     show = (index) => {
 
