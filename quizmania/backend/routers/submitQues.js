@@ -4,6 +4,7 @@ module.exports = (app) => {
     const quesmodel = mongoose.model('question', model.queSchema);
     const quizmodel = mongoose.model('quiz', model.QuizSchema);
     const bodyParser = require('body-parser');
+    var ObjectId = require('mongodb').ObjectID;
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json());
 
