@@ -116,7 +116,13 @@ class Quiz extends Component {
 
                 //rendering the questionList created above with all the data
                 <div>
-                    <button className={this.state.isRefreshed ? "refresh active" : "refresh"} onClick={this.update} > refresh to update</button>
+                    <Link to={{
+                        pathname: '/getquiz/'+this.props.match.params.quiz_id
+                    }}><button className={this.state.isRefreshed ? "refresh active" : "refresh"} onClick={this.update} > refresh to update</button></Link>
+
+
+
+                    
 
                     {questionsList}
                 </div>
