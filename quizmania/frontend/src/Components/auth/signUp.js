@@ -38,6 +38,10 @@ class signIn extends Component {
                         <input type="password" id="password" onChange={this.handleChange} />
                     </div>
                     <div className='input-field'>
+                        <label htmlFor="password">Confirm Password</label>
+                        <input type="password" id="password2" onChange={this.handleChange} />
+                    </div>
+                    <div className='input-field'>
                         <button className="btn white black-text">Sign Up</button>
                     </div>
                 </form>
