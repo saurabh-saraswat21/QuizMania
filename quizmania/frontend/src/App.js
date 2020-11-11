@@ -17,6 +17,7 @@ import quizOngoing from './Components/JoinQuizComp/quizOngoing';
 import Userinfo from './Components/JoinQuizComp/userinfo';
 import Editques from './Components/quizzesInfo/Editques';
 import Dialog from './Components/partials/Dialog'
+import Navbar from './Components/partials/Navbar';
 
 
 
@@ -28,7 +29,7 @@ class App extends Component {
       return (
         <div>
           <div className="App">
-
+          <Navbar/>
 
             {/* Routing for the different pages */}
             <Switch>
