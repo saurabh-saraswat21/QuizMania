@@ -5,6 +5,7 @@ const userRoute = require('./routers/UserCradRoute')
 const express = require('express');
 const { urlencoded } = require('body-parser');
 const mongoose = require('mongoose')
+require('dotenv').config();
 
 const cors = require('cors')
 const app = express();
@@ -13,9 +14,10 @@ const server = app.listen(port, () => { console.log('Listening..') })
 
 app.use(urlencoded({ extended: true }))
 app.use(cors());
+app.use(express.json());
 
 
-mongoose.connect('mongodb://localhost:27017/quizmania', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/quizmania', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then((result) => server)
     .catch((err) => console.log(err));
 
