@@ -2,6 +2,8 @@ module.exports = (app) => {
 
     const userAuth = require('../databaseModel/userAuth');
     const bodyParser = require('body-parser');
+    const jwt = require('jsonwebtoken');
+    const auth = require('../MiddleWare/authMiddleWare')
     const bcrypt = require('bcryptjs')
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json());
@@ -45,7 +47,7 @@ module.exports = (app) => {
     })
 
     //login route
-    app.post('/login', async (res, req) => {
+    app.post('/login', async (req, res) => {
         try {
             const { email, password } = req.body;
             //validate
@@ -54,8 +56,55 @@ module.exports = (app) => {
             const userPresent = await userAuth.findOne({ email: email });
             if (!userPresent)
                 return res.status(400).json({ msg: 'No account find from this email id' });
-        } catch (err) {
+            else
+                console.log("present")
+            // password ValidityState
+            const isPassCorrect = await bcrypt.compare(password, userPresent.password);
+            if (!isPassCorrect)
+                return res.status(400).json({ msg: 'Invalid Credentials' });
+            const token = jwt.sign({ id: userPresent._id }, "fdfjnjbm");
+            res.json({
+                token,
+                userPresent: {
+                    id: userPresent._id,
+                    displayName: userPresent.displayName,
+                },
+            });
+        }
+        catch (err) {
             res.status(500).json({ error: err.message });
         }
     })
+    app.delete("/delete", auth, async (req, res) => {
+        try {
+            const deletedUser = await userAuth.findByIdAndDelete(req.user);
+            res.json(deletedUser);
+        } catch (err) {
+            res.status(500).json({ error: err.message });
+        }
+    });
+
+    app.post("/tokenIsValid", async (req, res) => {
+        try {
+            const token = req.header("x-auth-token");
+            if (!token) return res.json(false);
+
+            const verified = jwt.verify(token, process.env.JWT_SECRET);
+            if (!verified) return res.json(false);
+
+            const user = await userAuth.findById(verified.id);
+            if (!user) return res.json(false);
+
+            return res.json(true);
+        } catch (err) {
+            res.status(500).json({ error: err.message });
+        }
+    });
+    app.get("/", auth, async (req, res) => {
+        const user = await userAuth.findById(req.user);
+        res.json({
+            displayName: user.displayName,
+            id: user._id,
+        });
+    });
 }

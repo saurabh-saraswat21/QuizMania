@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
 class signIn extends Component {
     state = {
@@ -13,6 +14,7 @@ class signIn extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         console.log(this.state);
+        axios.post('http://192.168.0.104:80/login/', this.state)
     }
     render() {
         return (
