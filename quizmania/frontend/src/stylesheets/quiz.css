@@ -1,7 +1,4 @@
-body{
-    background-color: rgb(53, 44, 33);
-    
-}
+
 .questions{
     background-color: tan ;
     border-left: 5px solid tan;
@@ -20,15 +17,6 @@ body{
     
 }
 
-/* to shift the number up or down */
-
-/* .timer{
-    position: relative;
-    top: -3p   x;
-} */
-
-
-
 
 .questionString h1 {
     font-size:3rem;
@@ -43,7 +31,6 @@ body{
     display: inline-block;
     width: 50%;
     text-align: center;
-    /* border: 1px solid red; */
 }
 .option{
     border-radius: 3rem;

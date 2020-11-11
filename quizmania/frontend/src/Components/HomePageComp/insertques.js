@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import Navbar from '../partials/Navbar';
+import '../../stylesheets/insertques.css'
 
 class insertques extends Component {
     
@@ -142,7 +144,7 @@ class insertques extends Component {
 
         }
         //making request to backend server
-          axios.post('http://192.168.43.91:80/submitques/',question)
+          axios.post('http://192.168.43.24:80/submitques/',question)
       
       
         //redirect to the same page after saving question
@@ -153,17 +155,18 @@ class insertques extends Component {
     render() {
         return (
             <div className="insertques">
+                <Navbar/>
                 <div className="insertform">
-
+                    <h1>Enter Questions</h1>
                     <form id="form">
 
                         {/* Basic input fields of the form */}
                         <div className="quesfield"><input type="number" placeholder="QuizID" value={this.state.quiz_id} readOnly /></div>
-                        <div className="quesfield"><input type="text" id="questionString" placeholder="question" onChange={this.handleChange} /></div>
-                        <div className="quesfield"><input type="text" id="option1" placeholder="option1" onChange={this.handleChange} /></div>
-                        <div className="quesfield"><input type="text" id="option2" placeholder="option2" onChange={this.handleChange} /></div>
-                        <div className="quesfield"><input type="text" id="option3" placeholder="option3" onChange={this.handleChange} /></div>
-                        <div className="quesfield"><input type="text" id="option4" placeholder="option4" onChange={this.handleChange} /></div>
+                        <div className="quesfield"><input type="text" id="questionString" placeholder="question" onChange={this.handleChange} autoComplete="off"/></div>
+                        <div className="quesfield"><input type="text" id="option1" placeholder="option1" onChange={this.handleChange} autoComplete="off" /></div>
+                        <div className="quesfield"><input type="text" id="option2" placeholder="option2" onChange={this.handleChange} autoComplete="off" /></div>
+                        <div className="quesfield"><input type="text" id="option3" placeholder="option3" onChange={this.handleChange} autoComplete="off" /></div>
+                        <div className="quesfield"><input type="text" id="option4" placeholder="option4" onChange={this.handleChange} autoComplete="off"/></div>
                         <div className="quesfield">
 
                             {/* The correct value dropdown */}
@@ -171,7 +174,7 @@ class insertques extends Component {
                             <select name="correct" id="correct" disabled={!this.state.correctflag} value={this.state.correct} onChange={this.setCorrect}>
 
                                 {/* The default value that is to be shown but not to be selected  */}
-                                <option value="none" hidden>correct</option>
+                                <option value="none" hidden>Choose a correct option</option>
 
                                 {/* The options  that are nothing but the entered values */}
                                 <option value={this.state.option1}>{this.state.option1}</option>
@@ -184,7 +187,7 @@ class insertques extends Component {
                         </div>
 
                         {/* The submit buttton that is enabled if both the correctflag and the all flag are true */}
-                        <button disabled={!(this.state.allflag && this.state.correctflag)} className="submit btn" onClick={this.handleClick}>Submit</button>
+                        <button disabled={!(this.state.allflag && this.state.correctflag)} className="submitbtn" onClick={this.handleClick}>Submit</button>
                    
                     </form>
                 </div>
