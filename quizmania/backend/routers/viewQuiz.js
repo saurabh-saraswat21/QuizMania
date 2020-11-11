@@ -22,6 +22,11 @@ app.get('/viewquizes/:quiz_id', (req, res) => {
     })
     
 })
+app.post('/deletequiz',(req,res)=>{
+    const quiz_id = req.body.quiz_id;
+    quizmodel.findOneAndDelete({quiz_id:quiz_id}).then((result)=>console.log(result))
+
+})
 
 
 
