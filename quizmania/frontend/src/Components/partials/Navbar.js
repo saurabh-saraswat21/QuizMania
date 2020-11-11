@@ -45,8 +45,8 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className='nav-item ' >
-                        <Link to="/JoinQuiz" className='nav-links' onClick={closeMobileMenu}>
-                            Join Quiz
+                        <Link to="/viewquiz" className='nav-links' onClick={closeMobileMenu}>
+                            View Quiz
                         </Link>
                     </li>
                     <li className='nav-item '>

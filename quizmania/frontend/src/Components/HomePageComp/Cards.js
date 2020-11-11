@@ -13,7 +13,7 @@ function Cards() {
               src='images/img-30.png'
               text='Create Quiz'
               label='Exam Time'
-              path='/'
+              path='/createquiz'
             />
             <CardItem
               src='images/img 31.png'
