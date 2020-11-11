@@ -154,8 +154,8 @@ class insertques extends Component {
 
     render() {
         return (
-            <div className="insertques">
-                <div className="insertform">
+            <div >
+                <div >
 
                     <form id="form">
 
@@ -166,7 +166,8 @@ class insertques extends Component {
                         <div className="quesfield"><input type="text" id="option2" placeholder="option2" onChange={this.handleChange} /></div>
                         <div className="quesfield"><input type="text" id="option3" placeholder="option3" onChange={this.handleChange} /></div>
                         <div className="quesfield"><input type="text" id="option4" placeholder="option4" onChange={this.handleChange} /></div>
-                        <div className="quesfield">
+                        <br /><br />
+                        <div >
 
                             {/* The correct value dropdown */}
                             {/* disabled will be set to opposite value of correctflag */}
