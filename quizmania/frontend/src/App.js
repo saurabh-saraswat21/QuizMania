@@ -6,8 +6,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 // import various components to be rendered  
 import Home from './Components/MainPagesComp/home'
-import Navbar from './Components/partials/Navbar';
-import createQuiz from './Components/HomePageComp/createQuiz';
+// import Navbar from './Components/partials/Navbar';
+// import createQuiz from './Components/HomePageComp/createQuiz';
 import insertques from './Components/HomePageComp/insertques';
 import viewQuiz from './Components/quizzesInfo/viewQuiz';
 import getQuiz from './Components/quizzesInfo/getQuiz';
@@ -29,8 +29,6 @@ class App extends Component {
         <div>
           <div className="App">
 
-            {/* NavBar that is alwasy going to show at the top of the website */}
-            <Navbar />
 
             {/* Routing for the different pages */}
             <Switch>
