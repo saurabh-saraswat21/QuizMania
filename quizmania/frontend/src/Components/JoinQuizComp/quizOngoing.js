@@ -71,6 +71,7 @@ class quizOngoing extends Component {
             const quiz = Data.quiz
             const username = Data.username
 
+
             //  setting state of the component with the details of the quiz fetched
             this.setState({
                 quiz: quiz,
@@ -447,15 +448,12 @@ class quizOngoing extends Component {
                         <div className="details-container">
                             <p>
 
-
-                                <span > TimeLeft <span className="timer">
-
-                                    {/* getting time from the state */}
-                                    {time.minutes}
-                                    :
-                                    {time.seconds}
-                            </span> score: {this.state.score}</span>
-                            <span> myname  {this.state.username}</span>
+                            <span className="timer">
+                            TimeLeft{/* getting time from the state */} {time.minutes}
+                            :
+                            {time.seconds}</span >
+                            <span className="shiftBelow"> Score: {this.state.score}</span>
+                            <span className="shiftBelow"> Myname: {this.state.username}</span>
                                 
                             </p>
                             <p>
@@ -470,7 +468,7 @@ class quizOngoing extends Component {
                         <div className="questionString">
                             
                             {/* Displaying current question string  */}
-                            <h1>{currentQuestion.questionString}</h1>
+                            <p>{currentQuestion.questionString}</p>
                         </div>
                         <div className="options-container">
 
