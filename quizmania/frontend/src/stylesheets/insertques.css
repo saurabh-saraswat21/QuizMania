@@ -5,7 +5,6 @@ body {
 
 .insertform{
     position: fixed;
-    /* top: 50%; */
     left: 50%;
     margin-top: 360px;
     transform: translate(-50%,-50%);
