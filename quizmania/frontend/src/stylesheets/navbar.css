@@ -49,6 +49,17 @@ a{
     text-align: center;
     
     }
+
+    .refresh {
+        display: none;
+    }
+    .refresh.active {
+        display: block;
+    }
+
+
+
+
 .items {
     padding: 3px;
     flex-wrap: wrap;
