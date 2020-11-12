@@ -25,7 +25,7 @@ export const homeObjOne = {
     headline: 'Instantly Join a Quiz by providing the Quiz name',
     description:
       "Once you've joined, you can compete with several other students.",
-    buttonLabel: 'Learn More',
+    buttonLabel: 'Join Now',
     imgStart: '',
     img: require('../../images/svg-2.svg'),
     alt: 'Vault',
@@ -43,7 +43,7 @@ export const homeObjOne = {
       'Quickly create a Quiz in MCQ format with our website!',
     description:
       "Currently we offer to set questions in MCQ format only.",
-    buttonLabel: 'Learn More',
+    buttonLabel: 'Create Now',
     imgStart: 'start',
     img: require('../../images/svg-4.svg'),
     alt: 'Vault',

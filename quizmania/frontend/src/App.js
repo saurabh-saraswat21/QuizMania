@@ -65,7 +65,7 @@ import Dialog from './Components/partials/Dialog'
 
 // export default App;
 
-import { Navbar} from './Components'
+import { Footer, Navbar} from './Components'
 // import React from 'react'
 import GlobalStyle from './globalStyles'
 import home from '../src/Components/MainPagesComp/home'
@@ -87,7 +87,7 @@ function App() {
           <Route exact path='/Quiz/enter_info/:quiz_id' component={Userinfo} />
           <Route exact path='/startQuiz/:quiz_id' component={startQuiz} />
       </Switch>
-      {/* <Footer/> */}
+      <Footer/>
     </Router>
   );
 }
