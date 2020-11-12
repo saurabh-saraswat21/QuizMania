@@ -21,17 +21,17 @@
 // export default Home;
 
 import React from 'react';
-// import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
-// import { InfoSection } from '../../components';
+import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
+import { InfoSection } from '../../Components';
 
 function Home() {
   return (
     <>
-      {/* <InfoSection {...homeObjOne} />
+      <InfoSection {...homeObjOne} />
       <InfoSection {...homeObjThree} />
       <InfoSection {...homeObjTwo} />
       {/* <Pricing /> */}
-      {/* <InfoSection {...homeObjFour} /> */}
+      <InfoSection {...homeObjFour} />
     </>
   );
 }
