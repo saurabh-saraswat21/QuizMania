@@ -7,26 +7,26 @@ export const homeObjOne = {
     topLine: 'Welcome To',
     headline: 'QuizMania',
     description:
-      'A real-time quiz website which can create quizzes competitively and collaboratively by students.',
-    buttonLabel: 'Get Started',
+      'A real-time quiz website which can create quizzes competitively and collaboratively by students. To Create Your Own',
+    buttonLabel: 'Login Now',
     imgStart: '',
     img: require('../../images/svg-1.svg'),
     alt: 'Credit Card',
     start: '',
-    link: '/sign-up'
+    link: '/login'
   };
   
   export const homeObjTwo = {
-    primary: true,
-    lightBg: false,
-    lightTopLine: true,
-    lightText: true,
-    lightTextDesc: true,
+    primary: false,
+    lightBg: true,
+    lightTopLine: false,
+    lightText: false,
+    lightTextDesc: false,
     topLine: 'Instant Join',
-    headline: 'Instantly Join a Quiz by providing the Quiz name',
+    headline: 'Instantly Join a Quiz by Join Code',
     description:
       "Once you've joined, you can compete with several other students.",
-    buttonLabel: 'Join Now',
+    buttonLabel: 'Join a Quiz Now',
     imgStart: '',
     img: require('../../images/svg-2.svg'),
     alt: 'Vault',

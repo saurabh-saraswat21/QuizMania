@@ -7,9 +7,7 @@ import Navbar from '../Navbar/Navbar';
 function Home() {
   return (
     <>
-      <Navbar />
       <InfoSection {...homeObjOne} />
-      <InfoSection {...homeObjThree} />
       <InfoSection {...homeObjTwo} />
       <InfoSection {...homeObjFour} />
       <Footer/>

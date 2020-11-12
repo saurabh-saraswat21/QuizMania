@@ -2,7 +2,7 @@
 
 const initState ={
     quizzes: [],
-     quiz_ids :[]
+     quizInfo :[]
 }
 
 // the reducer that is going to handle all the actions dispatched
@@ -11,8 +11,8 @@ const acessListReducer =(state=initState,action)=>{
     // if the action if of type 'GET_QUIZ_DATA_SUCCESS' 
     if(action.type === 'GET_QUIZ_DATA_SUCCESS')
     {
-        // empty array to store quiz ids
-    var quiz_ids =[];
+        // empty array to store quiz ids and quiz names
+    var quizInfo = [];
     
     // iterating data that is attached by the action of this type 
     // data basically contains the data from the database that are fetched in action creators 
@@ -20,7 +20,11 @@ const acessListReducer =(state=initState,action)=>{
     for (let i = 0; i < action.data.length; i++) {
 
         // storing every data element in the quiz_ids array
-         quiz_ids[i] = action.data[i].quiz_id;
+        //  quiz_ids[i] = action.data[i].quiz_id;
+         quizInfo[i]= {
+           quiz_id : action.data[i].quiz_id,
+           quizName : action.data[i].quizName
+         }
         
     }
 
@@ -31,7 +35,7 @@ const acessListReducer =(state=initState,action)=>{
           quizzes:[...action.data],
 
         //   saving quiz_ids
-          quiz_ids : quiz_ids
+          quizInfo : quizInfo
 
       }
       
