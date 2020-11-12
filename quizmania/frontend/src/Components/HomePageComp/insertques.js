@@ -3,21 +3,22 @@ import axios from 'axios';
 import '../../stylesheets/insertques.css'
 
 class insertques extends Component {
-    
-    
+
+
     // initial state with empty values  will be updated  and passed to be saved in the database
     state = {
 
         //the fields for question that is to be entered
         quiz_id: 0,
         questionString: '',
+        quizName: this.props.location.state,
         option1: '',
         option2: '',
         option3: '',
         option4: '',
         correct: '',
 
-      
+
 
         // a universal flag that will enable submit btn  
         allflag: false
@@ -29,9 +30,10 @@ class insertques extends Component {
     // setting quiz id to the state
     componentDidMount() {
         const QuizID = this.props.match.params.quiz_id
+        const QuizName = this.props.location.state
         this.setState({
-            quiz_id: QuizID
-
+            quiz_id: QuizID,
+            quizName: QuizName
         })
     }
 
@@ -97,14 +99,14 @@ class insertques extends Component {
     }
 
 
-   
 
-     // this will check if the submit btn is to be set on or not by setting the all flag
+
+    // this will check if the submit btn is to be set on or not by setting the all flag
     checkSubmit = () => {
 
         // getting the value of the correctflag
         const allFlag = this.state.correctflag
-        
+
         // seeting the value of correct flag with the all flag 
         this.setState({
             allflag: allFlag
@@ -126,12 +128,12 @@ class insertques extends Component {
 
 
 
-     // after the submit button is pressed
+    // after the submit button is pressed
 
-     handleClick = (e) => {
+    handleClick = () => {
         // get the values from state and store in a variable  
         // so that it can be passed to the backend server to be stored in the database
-
+        const quizName = this.state.quizName
         const question = {
             quiz_id: this.state.quiz_id,
             questionString: this.state.questionString,
@@ -143,29 +145,31 @@ class insertques extends Component {
 
         }
         //making request to backend server
-          axios.post('http://192.168.43.91:80/submitques/',question)
-      
-      
-        //redirect to the same page after saving question
-        this.props.history.push('/insertques/'+this.state.quiz_id)
+        axios.post('http://192.168.43.91:80/submitques/', {quizName,question}).then(
+
+        window.location.reload()
+        )
     }
 
-
     render() {
+
+        // if (this.state.redirect) {
+        //     return 
+        // }
         return (
             <div className="insertques">
-               
+
                 <div className="insertform">
                     <h1>Enter Questions</h1>
                     <form id="form">
 
                         {/* Basic input fields of the form */}
-                        <div className="quesfield"><input type="number" placeholder="QuizID" value={this.state.quiz_id} readOnly /></div>
-                        <div className="quesfield"><input type="text" id="questionString" placeholder="question" onChange={this.handleChange} autoComplete="off"/></div>
+                        <div className="quesfield"><input type="text" placeholder="QuizName" value={this.state.quizName} readOnly /></div>
+                        <div className="quesfield"><input type="text" id="questionString" placeholder="question" onChange={this.handleChange} autoComplete="off" /></div>
                         <div className="quesfield"><input type="text" id="option1" placeholder="option1" onChange={this.handleChange} autoComplete="off" /></div>
                         <div className="quesfield"><input type="text" id="option2" placeholder="option2" onChange={this.handleChange} autoComplete="off" /></div>
                         <div className="quesfield"><input type="text" id="option3" placeholder="option3" onChange={this.handleChange} autoComplete="off" /></div>
-                        <div className="quesfield"><input type="text" id="option4" placeholder="option4" onChange={this.handleChange} autoComplete="off"/></div>
+                        <div className="quesfield"><input type="text" id="option4" placeholder="option4" onChange={this.handleChange} autoComplete="off" /></div>
                         <div className="quesfield">
 
                             {/* The correct value dropdown */}
@@ -186,9 +190,10 @@ class insertques extends Component {
                         </div>
 
                         {/* The submit buttton that is enabled if both the correctflag and the all flag are true */}
-                        <button disabled={!(this.state.allflag && this.state.correctflag)} className="submitbtn" onClick={this.handleClick}>Submit</button>
-                   
+                        
+
                     </form>
+                    <button disabled={!(this.state.allflag && this.state.correctflag)} className="submitbtn" onClick={this.handleClick}>Submit</button>
                 </div>
             </div>
         )
