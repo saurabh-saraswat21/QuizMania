@@ -57,6 +57,7 @@ class Quiz extends Component {
 
             // getting questions from that quiz 
             const questions = quiz.questions
+            const quizName = quiz.quizName
 
             //checking if their exists some questions on that quiz and will store the whole data in "questionList"
             const questionsList = questions.length ? (
@@ -70,10 +71,11 @@ class Quiz extends Component {
                         //rendering a div of every question with the key value the id of that question
                         <div className="question-container" key={question._id}>
 
+                    
                             <h4>{question.questionString}</h4>
                             <Link to={{
                                     pathname: '/edit/' + quiz.quiz_id,
-                                    state: { question}
+                                    state: { question,quizName}
 
                                 }}><button>editquestion</button></Link>
 
@@ -114,7 +116,9 @@ class Quiz extends Component {
             return (
 
                 //rendering the questionList created above with all the data
+                
                 <div>
+                    <h1>{quizName}</h1>
                     <Link to={{
                         pathname: '/getquiz/'+this.props.match.params.quiz_id
                     }}><button className={this.state.isRefreshed ? "refresh active" : "refresh"} onClick={this.update} > refresh to update</button></Link>
