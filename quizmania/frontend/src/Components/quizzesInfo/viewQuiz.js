@@ -3,41 +3,43 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 
-
 const ViewQuiz=(props)=> {
 
-
-    
+    var list =[] ;
     const[quiz_id,setquiz_id] = useState(null);
-    // getting quiz id list from props
-    const id_list =props.quiz_ids
 
-    
+    // getting quiz id list from props
+
+    if(props.quizInfo){
+        list = props.quizInfo
+    }
+
 
     // checking if list is empty
-    const Quiz_List = id_list.length ?
+    const Quiz_List = list.length ?
 
     // if not empty
     (
         // mapping quiz one by one
-        id_list.map(quiz_id =>{
+        list.map(quiz =>{
 
             // retutrning some JSX
             return(
                 
                 
-                                    // {/* //  a unique key that is quiz id itself */}
-                <div className="quiz" key = {quiz_id}>
+               // {/* //  a unique key that is quiz id itself */}
+            
+            <div className="quiz" key = {quiz.quiz_id}>
 
-                    <img src="#" alt="quiz logo" className="quizimage" />
+            <h2>{quiz.quiz_id}</h2>
                     
                     {/* link every quiz id to view all the questions of the quiz */}
                     <Link to ={{
-                        pathname :'/getquiz/'+quiz_id,
+                        pathname :'/getquiz/'+quiz.quiz_id,
                         
-                    }}>{quiz_id}</Link>
+                    }}> <h2>{quiz.quizName}</h2> </Link>
 
-                    <button onClick={()=>deletequiz(quiz_id)}>delete</button>
+                    <button onClick={()=>deletequiz(quiz.quiz_id)}>delete</button>
                    
                
                     
@@ -57,7 +59,7 @@ const ViewQuiz=(props)=> {
         
         <div className="quizList">
             <input
-            disabled={!props.quiz_ids.length} 
+            disabled={!props.quizInfo} 
             onChange={(event)=>{
                 console.log(event);
                 setquiz_id(event.target.value)
@@ -78,7 +80,7 @@ const ViewQuiz=(props)=> {
 }
 
 const deletequiz=(quiz_id)=>{
-    axios.post('http://192.168.43.24:80/deletequiz',{quiz_id}).then(window.location.reload())
+    axios.post('http://192.168.43.91:80/deletequiz',{quiz_id}).then(window.location.reload())
 }
 
 //mapping state to props of component
@@ -86,7 +88,7 @@ const MapStateToProps=(state)=>{
     return{
 
         //quiz_ids will be available in the props of the component
-        quiz_ids : state.quiz_ids 
+        quizInfo : state.quizInfo
     }
 }
 

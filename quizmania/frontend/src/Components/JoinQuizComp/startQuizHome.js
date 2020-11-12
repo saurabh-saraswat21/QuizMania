@@ -5,7 +5,7 @@ import Direct from '../errComponents/DirectAccess'
 import{Link} from 'react-router-dom'
 import io from 'socket.io-client'
 import axios from 'axios'
-const ENDPOINT = "192.168.43.24:80"
+const ENDPOINT = "192.168.43.91:80"
 var socket
 export class startQuizHome extends Component {
      constructor(props){
@@ -51,7 +51,7 @@ export class startQuizHome extends Component {
      updateUserList=(quiz_id)=>{
 
         //  making get request to server and fetching the data
-         axios.get("http://192.168.43.24:80/getusers/"+quiz_id,{
+         axios.get("http://192.168.43.91:80/getusers/"+quiz_id,{
             
          }).then(response =>{
              
@@ -107,6 +107,7 @@ export class startQuizHome extends Component {
                     
                     <div className="quizinfobox">
                        <h1>Quiz ID : {quiz.quiz_id}</h1>
+                       <h1>Quiz Name : {quiz.quizName}</h1>
                         <h1>No of questions:{quiz.questions.length}</h1>
                         <h1> myname = {this.state.myusername} </h1>
                         <h2>user = {this.state.no_of_users} </h2>

@@ -1,21 +1,17 @@
-import React from 'react'
-import '../../App.css'
-import Cards from '../HomePageComp/Cards';
-import Footer from '../HomePageComp/Footer';
-import Title from '../HomePageComp/Title'
-import Navbar from '../partials/Navbar';
+import React from 'react';
+import { homeObjOne, homeObjTwo, homeObjFour } from './Data';
+import { InfoSection } from '../../Components';
+import Footer from '../Footer/Footer';
 
-function Home () {
-
-    return (
-        <>
-            <Navbar />
-            <Title />
-            <Cards />
-            <Footer />
-        </>
-    )
-
+function Home() {
+  return (
+    <>
+      <InfoSection {...homeObjOne} />
+      <InfoSection {...homeObjTwo} />
+      <InfoSection {...homeObjFour} />
+      <Footer/>
+    </>
+  );
 }
 
 export default Home;

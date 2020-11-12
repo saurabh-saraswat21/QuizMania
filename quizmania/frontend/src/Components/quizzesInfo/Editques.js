@@ -30,11 +30,13 @@ class EditQues extends Component {
     componentDidMount() {
         const QuizID = this.props.match.params.quiz_id
         const question = this.props.location.state.question
+        const quizName = this.props.location.state.quizName
         
         this.setState({
             quiz_id: QuizID,
             redirect : false,
             _id :question._id,
+            quizName: quizName,
             questionString: question.questionString,
             option1: question.option1,
             option2: question.option2,
@@ -186,7 +188,7 @@ class EditQues extends Component {
                     <form id="form">
 
                         {/* Basic input fields of the form */}
-                        <div className="quesfield"><input type="number" placeholder="QuizID" value={this.state.quiz_id} readOnly /></div>
+                        <div className="quesfield"><input type="text" placeholder="QuizID" value={this.state.quizName} readOnly /></div>
 
                         <div className="quesfield"><input type="text" id="questionString" placeholder="question" value={this.state.questionString} onChange={this.handleChange} /></div>
 
