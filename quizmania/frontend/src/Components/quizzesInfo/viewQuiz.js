@@ -31,13 +31,13 @@ const ViewQuiz=(props)=> {
             
             <div className="quiz" key = {quiz.quiz_id}>
 
-                    <img src="#" alt="quiz logo" className="quizimage" />
+            <h2>{quiz.quiz_id}</h2>
                     
                     {/* link every quiz id to view all the questions of the quiz */}
                     <Link to ={{
                         pathname :'/getquiz/'+quiz.quiz_id,
                         
-                    }}>{quiz.quizName}</Link>
+                    }}> <h2>{quiz.quizName}</h2> </Link>
 
                     <button onClick={()=>deletequiz(quiz.quiz_id)}>delete</button>
                    
