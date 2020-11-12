@@ -12,7 +12,8 @@ export const homeObjOne = {
     imgStart: '',
     img: require('../../images/svg-1.svg'),
     alt: 'Credit Card',
-    start: ''
+    start: '',
+    link: '/sign-up'
   };
   
   export const homeObjTwo = {
@@ -29,7 +30,8 @@ export const homeObjOne = {
     imgStart: '',
     img: require('../../images/svg-2.svg'),
     alt: 'Vault',
-    start: ''
+    start: '',
+    link: '/JoinQuiz'
   };
   
   export const homeObjThree = {
@@ -47,7 +49,8 @@ export const homeObjOne = {
     imgStart: 'start',
     img: require('../../images/svg-4.svg'),
     alt: 'Vault',
-    start: 'true'
+    start: 'true',
+    link: '/createquiz'
   };
   
   export const homeObjFour = {
@@ -64,5 +67,6 @@ export const homeObjOne = {
     imgStart: 'start',
     img: require('../../images/svg-3.svg'),
     alt: 'Vault',
-    start: 'true'
+    start: 'true',
+    link: '/sign-up'
   };

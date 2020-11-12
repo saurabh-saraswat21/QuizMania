@@ -42,7 +42,7 @@ function Navbar() {
         <Nav>
           <NavbarContainer>
             <NavLogo to='/' onClick={closeMobileMenu}>
-              <NavIcon />
+              <NavIcon/>
               QuizMania
             </NavLogo>
             <MobileIcon onClick={handleClick}>

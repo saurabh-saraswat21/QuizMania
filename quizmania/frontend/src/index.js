@@ -4,7 +4,6 @@ import App from './App';
 import thunk from 'redux-thunk'
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux'
-// import * as serviceWorker from './serviceWorker';
 import acessListReducer from './reducers/acessListReducer'
 import {fetchData} from './Actions/getQuizData'
 
