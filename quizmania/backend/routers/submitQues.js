@@ -9,24 +9,27 @@ module.exports = (app) => {
     app.use(bodyParser.json());
 
     app.post('/submitques', (req, res) => {
+        
         var ques = {
-            questionString: req.body.questionString,
-            option1: req.body.option1,
+            questionString: req.body.question.questionString,
+            option1: req.body.question.option1,
 
-            option2: req.body.option2,
+            option2: req.body.question.option2,
 
-            option3: req.body.option3,
+            option3: req.body.question.option3,
 
-            option4: req.body.option4,
+            option4: req.body.question.option4,
 
-            correct: req.body.correct
+            correct: req.body.question.correct
         }
-        var quiz_id = (req.body.quiz_id);
+        var quiz_id = (req.body.question.quiz_id);
         quizmodel.findOne({ quiz_id: quiz_id }, (err, response) => {
             if (err) return handleError(err);
             if (response == null) {
-                var newq = quizmodel({ quiz_id: quiz_id, questions: ques });
-                newq.save().then((result) => {
+                var newq = quizmodel({ quiz_id: quiz_id, quizName: req.body.quizName, questions: ques });
+                newq.save().then((result,err) => {
+                    if(err) console.log(err);
+                    else
                     console.log("new quiz created")
                 })
             }
@@ -38,10 +41,12 @@ module.exports = (app) => {
             }
 
         })
-        var newques = quesmodel(req.body).save()
+
+        var newques = quesmodel(req.body.question).save()
             .then(function (data) {
                 console.log("saved")
             });
+
 
     })
 
