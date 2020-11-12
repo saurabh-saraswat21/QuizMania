@@ -49,21 +49,12 @@ function Navbar() {
               {click ? <FaTimes /> : <FaBars />}
             </MobileIcon>
             <NavMenu onClick={handleClick} click={click}>
-              <NavItem>
-                <NavLinks to='/' onClick={closeMobileMenu}>
-                  Home
-                </NavLinks>
-              </NavItem>
-              <NavItem>
-                <NavLinks to='/services' onClick={closeMobileMenu}>
-                  Contact Us
-                </NavLinks>
-              </NavItem>
-              <NavItem>
-                <NavLinks to='/products' onClick={closeMobileMenu}>
-                  About Us
-                </NavLinks>
-              </NavItem>
+
+            <NavBtnLink to='/joinquiz'>
+                    <Button primary>JoinQuiz</Button>
+             </NavBtnLink>
+            
+             
               <NavItemBtn>
                 {button ? (
                   <NavBtnLink to='/sign-up'>
