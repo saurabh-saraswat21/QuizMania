@@ -11,10 +11,10 @@ function JoinQuiz() {
 
     return (
         <div className="joinquiz" >
-            <input type="text" placeholder="Enter Quiz ID to Join" onChange={(e)=>handleChange(e)}/>
+            <input type="number" placeholder="Enter Quiz ID to Join" onChange={(e)=>handleChange(e)}/>
             <Link to ={{
                 pathname: '/Quiz/enter_info/'+quiz_id
-            }} ><button disabled={!quiz_id}>JoinQuiz</button></Link>
+            }} target="_blank" ><button disabled={!quiz_id}>JoinQuiz</button></Link>
         </div>
     )
 }
