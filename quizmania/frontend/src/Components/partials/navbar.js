@@ -3,7 +3,7 @@ import React from 'react'
 
 // import '../../stylesheets/navbar.css'
 import { Link, NavLink } from 'react-router-dom'
-import SignedInLinks from './SignedInLinks'
+// import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 
 // Toggle function  for navbar
@@ -29,7 +29,6 @@ const Navbar = () => {
                     {/* <li><NavLink to='/'>Contact Us</NavLink></li> */}
                     <li><NavLink to='/JoinQuiz'>Join Quiz</NavLink></li>
                 </ul>
-                <SignedInLinks />
                 <SignedOutLinks />
             </div>
         </nav>

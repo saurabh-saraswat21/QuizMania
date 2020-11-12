@@ -34,11 +34,12 @@ module.exports = (app) => {
                 firstName,
                 lastName,
                 email,
-                password
+                password: passwordHash,
             });
-            newUser.save()
-                .then((res) => console.log(res))
-                .catch((err) => console.log(err));
+            const saveUser = await newUser.save();
+            res.json(saveUser);
+            // .then((res) => console.log(res))
+            // .catch((err) => console.log(err));
         }
         catch (err) {
             res.status(500).json({ error: err.message });
@@ -50,16 +51,19 @@ module.exports = (app) => {
     app.post('/login', async (req, res) => {
         try {
             const { email, password } = req.body;
+            console.log(req.body.password);
             //validate
             if (!email || !password)
                 res.status(400).json({ msg: "Enter all Field" });
             const userPresent = await userAuth.findOne({ email: email });
+
             if (!userPresent)
                 return res.status(400).json({ msg: 'No account find from this email id' });
             else
                 console.log("present")
             // password ValidityState
             const isPassCorrect = await bcrypt.compare(password, userPresent.password);
+            console.log(isPassCorrect)
             if (!isPassCorrect)
                 return res.status(400).json({ msg: 'Invalid Credentials' });
             const token = jwt.sign({ id: userPresent._id }, "fdfjnjbm");
@@ -67,7 +71,7 @@ module.exports = (app) => {
                 token,
                 userPresent: {
                     id: userPresent._id,
-                    displayName: userPresent.displayName,
+                    displayName: userPresent.firstName,
                 },
             });
         }
@@ -100,10 +104,10 @@ module.exports = (app) => {
             res.status(500).json({ error: err.message });
         }
     });
-    app.get("/", auth, async (req, res) => {
+    app.get("/auth", auth, async (req, res) => {
         const user = await userAuth.findById(req.user);
         res.json({
-            displayName: user.displayName,
+            displayName: user.firstName,
             id: user._id,
         });
     });
