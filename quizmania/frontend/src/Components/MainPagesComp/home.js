@@ -1,15 +1,20 @@
-import React from 'react'
-import {Link} from 'react-router-dom' 
+import React from 'react';
+import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
+import { InfoSection } from '../../Components';
+import Footer from '../Footer/Footer';
+import Navbar from '../Navbar/Navbar';
 
-const Home = () => {
-    return (
-        <div className="homePage">
-            <div className="btn container">
-
-                <div className="main-btn"><Link to ="/createquiz" >Create Quiz</Link> </div>
-                <div className="main-btn"><Link to ="/viewquiz">View Quiz</Link> </div>
-            </div>
-        </div>
-    )
+function Home() {
+  return (
+    <>
+      <Navbar />
+      <InfoSection {...homeObjOne} />
+      <InfoSection {...homeObjThree} />
+      <InfoSection {...homeObjTwo} />
+      <InfoSection {...homeObjFour} />
+      <Footer/>
+    </>
+  );
 }
-export default Home
+
+export default Home;

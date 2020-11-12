@@ -1,11 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
+import axios from 'axios'
 import {Link} from 'react-router-dom'
 
 
 const ViewQuiz=(props)=> {
+
+
+    
+    const[quiz_id,setquiz_id] = useState(null);
     // getting quiz id list from props
     const id_list =props.quiz_ids
+
+    
 
     // checking if list is empty
     const Quiz_List = id_list.length ?
@@ -29,6 +36,8 @@ const ViewQuiz=(props)=> {
                         pathname :'/getquiz/'+quiz_id,
                         
                     }}>{quiz_id}</Link>
+
+                    <button onClick={()=>deletequiz(quiz_id)}>delete</button>
                    
                
                     
@@ -45,13 +54,31 @@ const ViewQuiz=(props)=> {
 
     //main return component
     return(
+        
         <div className="quizList">
+            <input
+            disabled={!props.quiz_ids.length} 
+            onChange={(event)=>{
+                console.log(event);
+                setquiz_id(event.target.value)
+            }
+            
+            } type="number"/>
+
+            <Link to={{
+                pathname: '/getquiz/'+quiz_id
+            }}><button disabled={!quiz_id} >go</button></Link>
+            
             {Quiz_List}
             
         </div>
     )
 
    
+}
+
+const deletequiz=(quiz_id)=>{
+    axios.post('http://192.168.43.24:80/deletequiz',{quiz_id}).then(window.location.reload())
 }
 
 //mapping state to props of component
