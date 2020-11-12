@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import Navbar from '../Navbar/Navbar';
 import '../../stylesheets/insertques.css'
 
 class insertques extends Component {
@@ -144,7 +143,7 @@ class insertques extends Component {
 
         }
         //making request to backend server
-          axios.post('http://192.168.43.24:80/submitques/',question)
+          axios.post('http://192.168.43.91:80/submitques/',question)
       
       
         //redirect to the same page after saving question
@@ -155,7 +154,7 @@ class insertques extends Component {
     render() {
         return (
             <div className="insertques">
-                <Navbar/>
+               
                 <div className="insertform">
                     <h1>Enter Questions</h1>
                     <form id="form">
