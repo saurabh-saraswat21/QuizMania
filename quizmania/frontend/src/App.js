@@ -10,7 +10,6 @@ import createQuiz from './Components/HomePageComp/createQuiz';
 import insertques from './Components/HomePageComp/insertques';
 import viewQuiz from './Components/quizzesInfo/viewQuiz';
 import getQuiz from './Components/quizzesInfo/getQuiz';
-import joinQuiz from './Components/HomePageComp/joinQuiz'
 import startQuiz from './Components/JoinQuizComp/startQuizHome'
 import quizOngoing from './Components/JoinQuizComp/quizOngoing';
 import Userinfo from './Components/JoinQuizComp/userinfo';
@@ -23,8 +22,6 @@ import loginDashBoard from './Components/logincomponent/loginDashBoard';
 
 class App extends Component {
   render() {
-
-
     const defaultRoutes = () => {
       return (
         <div>
@@ -42,7 +39,6 @@ class App extends Component {
               <Route path='/insertques/:quiz_id' component={insertques} />
               <Route path='/edit/:quiz_id' component={Editques} />
               <Route path='/viewquiz' component={viewQuiz} />
-              <Route path='/JoinQuiz' component={joinQuiz} />
               <Route exact path='/Quiz/enter_info/:quiz_id' component={Userinfo} />
               <Route exact path='/startQuiz/:quiz_id' component={startQuiz} />
             </Switch>
