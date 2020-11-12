@@ -1,20 +1,20 @@
-import React from 'react'
-import '../../App.css'
-import Cards from '../HomePageComp/Cards';
-import Footer from '../HomePageComp/Footer';
-import Title from '../HomePageComp/Title'
+import React from 'react';
+import { homeObjOne, homeObjTwo, homeObjThree, homeObjFour } from './Data';
+import { InfoSection } from '../../Components';
+import Footer from '../Footer/Footer';
+import Navbar from '../Navbar/Navbar';
 
-function Home () {
-
-    return (
-        <>
-            
-            <Title />
-            <Cards />
-            <Footer />
-        </>
-    )
-
+function Home() {
+  return (
+    <>
+      <Navbar />
+      <InfoSection {...homeObjOne} />
+      <InfoSection {...homeObjThree} />
+      <InfoSection {...homeObjTwo} />
+      <InfoSection {...homeObjFour} />
+      <Footer/>
+    </>
+  );
 }
 
 export default Home;
