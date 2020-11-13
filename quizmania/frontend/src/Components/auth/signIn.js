@@ -24,7 +24,6 @@ export default function SignIn() {
                 token: loginRes.data.token,
                 user: loginRes.data.userPresent,
             });
-            caches.setItem("auth-token", loginRes.data.toke);
             localStorage.setItem("auth-token", loginRes.data.token);
             history.push("/");
         } catch (err) {

@@ -8,6 +8,8 @@ import Directacess from '../errComponents/DirectAccess'
 
 import '../../stylesheets/quiz.css'
 
+import { FcAlarmClock } from 'react-icons/fc'
+
 class quizOngoing extends Component {
 
     // constructor fr initally setting state values 
@@ -71,10 +73,11 @@ class quizOngoing extends Component {
             const quiz = Data.quiz
             const username = Data.username
 
+
             //  setting state of the component with the details of the quiz fetched
             this.setState({
                 quiz: quiz,
-                username: username,
+                username:username,
                 questions: quiz.questions,
 
             },
@@ -151,14 +154,14 @@ class quizOngoing extends Component {
 
         }
 
-    // start timer function takes total no of questions as input
+        // start timer function takes total no of questions as input
     startTimer = (numberOfQuestions) => {
 
         // setting the timer according to number of questions
-        const countDown = Date.now() + (numberOfQuestions * 60) * 500
-
-            // 2 sec more to cumpunsate the loading time 
-            + 2000;
+        const countDown = Date.now() + (numberOfQuestions * 60) * 500 
+        
+        // 2 sec more to cumpunsate the loading time 
+        + 2000;
 
 
         // setting the time interval that will keep executing again and again after a certain time limit
@@ -175,7 +178,7 @@ class quizOngoing extends Component {
 
                 // clear the interval
                 clearInterval(this.innerHTML);
-
+                
                 // setting time to zero
                 this.setState({
                     time: {
@@ -185,10 +188,10 @@ class quizOngoing extends Component {
                     }
                 },
 
-                    // end the quiz 
-                    () => {
-                        this.endQuiz();
-                    })
+                // end the quiz 
+                () => {
+                    this.endQuiz();
+                })
             }
 
             // if time is left 
@@ -204,10 +207,10 @@ class quizOngoing extends Component {
 
                 })
             }
-        },
-
-            // time interval of 1 sec
-            1000)
+        }, 
+        
+        // time interval of 1 sec
+        1000)
 
     }
 
@@ -445,16 +448,17 @@ class quizOngoing extends Component {
                             'questions'}>
 
                         <div className="details-container">
-                            <p>
-
-                                <span className="timer">
-                                    TimeLeft{/* getting time from the state */} {time.minutes}
+                            <div className="timer">
+                            <div className="time_text"><FcAlarmClock/>TimeLeft{/* getting time from the state */}</div> 
+                            <div className="time">{time.minutes}
                             :
-                            {time.seconds}</span >
-                                <span className="shiftBelow"> Score: {this.state.score}</span>
-                                <span className="shiftBelow"> Myname: {this.state.username}</span>
-
-                            </p>
+                            {time.seconds}
+                            </div>
+                            </div >
+                           { /*<span className="shiftBelow"> Score: {this.state.score}</span>*/} 
+                            <span className="shiftBelow"> Myname: {this.state.username}</span>
+                                
+                            
                             <p>
                                 <span>
                                     <span className="question-no">
@@ -464,14 +468,15 @@ class quizOngoing extends Component {
                             </p>
 
                         </div>
+                        <hr></hr>
                         <div className="questionString">
-
+                            
                             {/* Displaying current question string  */}
                             <p>{currentQuestion.questionString}</p>
                         </div>
                         <div className="options-container">
 
-                            {/* Displaying option */}
+                                    {/* Displaying option */}
                             <p onClick={this.handleSubmit} className="option">{currentQuestion.option1}</p>
                             <p onClick={this.handleSubmit} className="option">{currentQuestion.option2}</p>
 
