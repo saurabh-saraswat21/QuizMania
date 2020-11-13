@@ -9,9 +9,9 @@ const HostquizPage = (props) => {
         socket= io(ENDPOINT)
     })
 
-   const  startquiz=()=>{
-         socket.emit('start')
-     }
+   const  startquiz=(quiz_id)=>{
+         socket.emit('start',(quiz_id))
+    }
     let quiz =[];
     const quiz_id = props.match.params.quiz_id
     if(props.quiz) 
@@ -20,7 +20,7 @@ const HostquizPage = (props) => {
     return (
         <div>
 
-            <h1> Start  The QUiz NOW<button onClick={startquiz} >Start</button></h1>
+            <h1> Start  The QUiz NOW<button onClick={()=>startquiz(quiz_id)} >Start</button></h1>
             
         </div>
     )
