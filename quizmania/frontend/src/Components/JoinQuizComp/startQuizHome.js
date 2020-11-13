@@ -106,6 +106,7 @@ export class startQuizHome extends Component {
 
                     
                     <div className="quizinfobox">
+                       <h1>Waiting to start quiz</h1>
                        <h1>Quiz ID : {quiz.quiz_id}</h1>
                        <h1>Quiz Name : {quiz.quizName}</h1>
                         <h1>No of questions:{quiz.questions.length}</h1>
