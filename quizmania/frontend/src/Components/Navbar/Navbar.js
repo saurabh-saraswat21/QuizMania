@@ -22,10 +22,10 @@ function Navbar() {
   const signup = () => {
     history.push('/signup');
   }
-  const signin = () => {
-    console.log(userData);
-    history.push('/signin');
-  }
+  // const signin = () => {
+  //   console.log(userData);
+  //   history.push('/signin');
+  // }
   const logout = () => {
     // console.log(userData.user);
     setUserData({
@@ -73,8 +73,42 @@ function Navbar() {
                 <Button primary>JoinQuiz</Button>
               </NavBtnLink>
 
+              {(userData.user) ? (
+                <>
+                  <NavItemBtn>
+                    {button ? (
+                      <NavBtnLink onClick={logout}>
+                        <Button primary>LOG OUT</Button>
+                      </NavBtnLink>
+                    ) : (
+                        <NavBtnLink onClick={logout}>
+                          <Button onClick={closeMobileMenu} fontBig primary>
+                            LOG OUT
+                    </Button>
+                        </NavBtnLink>
+                      )}
+                  </NavItemBtn>
+                </>
+              ) : (
+                  <>
+                    <NavItemBtn>
+                      {button ? (
+                        <NavBtnLink onClick={signup}>
+                          <Button primary>SIGN UP</Button>
+                        </NavBtnLink>
+                      ) : (
+                          <NavBtnLink onClick={signup}>
+                            <Button onClick={closeMobileMenu} fontBig primary>
+                              SIGN UP
+                    </Button>
+                          </NavBtnLink>
+                        )}
+                    </NavItemBtn>
+                  </>
+                )
 
-              <NavItemBtn>
+              }
+              {/* <NavItemBtn>
                 {button ? (
                   <NavBtnLink to='/signup'>
                     <Button primary>SIGN UP</Button>
@@ -86,7 +120,7 @@ function Navbar() {
                     </Button>
                     </NavBtnLink>
                   )}
-              </NavItemBtn>
+              </NavItemBtn> */}
             </NavMenu>
           </NavbarContainer>
         </Nav>

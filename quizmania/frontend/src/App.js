@@ -16,7 +16,7 @@ import JoinQuiz from './Components/partials/JoinQuiz'
 import Navbar from './Components/Navbar/Navbar';
 import GlobalStyles from '../src/globalStyles'
 import createQuiz from './Components/HomePageComp/createQuiz'
-import login from './Components/logincomponent/login'
+// import login from './Components/logincomponent/login'
 import LoginDashBoard from './Components/logincomponent/loginDashBoard';
 import SignIn from './Components/auth/signIn';
 import SignUp from './Components/auth/signUp';
