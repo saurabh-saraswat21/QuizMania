@@ -72,6 +72,12 @@ export class startQuizHome extends Component {
          )
          
      }
+     startquiz=()=>{
+         this.setState({
+             redirect:true
+         })
+     }
+
      render() { 
         // getting quiz from the props because it is available because we have already mapped it
         const quiz = this.props.quiz;
