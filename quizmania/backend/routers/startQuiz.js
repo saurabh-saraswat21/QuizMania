@@ -78,6 +78,10 @@ module.exports = (app, server) => {
     io.on('connection', socket => {
         console.log("new socket connection");
 
+        socket.on('start',()=>{
+            io.emit('startquiz')
+        })
+        
         // handling a update socket event that is called from the client side on connection
         
         // data consist of the details of the  particular user like the username and the quiz id on which the user has joined
