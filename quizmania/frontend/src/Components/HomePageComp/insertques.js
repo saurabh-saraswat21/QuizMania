@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios';
 
 class insertques extends Component {
-    
-    
+
+
     // initial state with empty values  will be updated  and passed to be saved in the database
     state = {
 
@@ -16,7 +16,7 @@ class insertques extends Component {
         option4: '',
         correct: '',
 
-      
+
 
         // a universal flag that will enable submit btn  
         allflag: false
@@ -98,14 +98,14 @@ class insertques extends Component {
     }
 
 
-   
 
-     // this will check if the submit btn is to be set on or not by setting the all flag
+
+    // this will check if the submit btn is to be set on or not by setting the all flag
     checkSubmit = () => {
 
         // getting the value of the correctflag
         const allFlag = this.state.correctflag
-        
+
         // seeting the value of correct flag with the all flag 
         this.setState({
             allflag: allFlag
@@ -127,9 +127,9 @@ class insertques extends Component {
 
 
 
-     // after the submit button is pressed
+    // after the submit button is pressed
 
-     handleClick = (e) => {
+    handleClick = (e) => {
         // get the values from state and store in a variable  
         // so that it can be passed to the backend server to be stored in the database
 
@@ -144,18 +144,18 @@ class insertques extends Component {
 
         }
         //making request to backend server
-          axios.post('http://192.168.43.91:80/submitques/',question)
-      
-      
+        axios.post('http://192.168.0.104:80/submitques/', question)
+
+
         //redirect to the same page after saving question
-        this.props.history.push('/insertques/'+this.state.quiz_id)
+        this.props.history.push('/insertques/' + this.state.quiz_id)
     }
 
 
     render() {
         return (
-            <div className="insertques">
-                <div className="insertform">
+            <div >
+                <div >
 
                     <form id="form">
 
@@ -166,7 +166,8 @@ class insertques extends Component {
                         <div className="quesfield"><input type="text" id="option2" placeholder="option2" onChange={this.handleChange} /></div>
                         <div className="quesfield"><input type="text" id="option3" placeholder="option3" onChange={this.handleChange} /></div>
                         <div className="quesfield"><input type="text" id="option4" placeholder="option4" onChange={this.handleChange} /></div>
-                        <div className="quesfield">
+                        <br /><br />
+                        <div >
 
                             {/* The correct value dropdown */}
                             {/* disabled will be set to opposite value of correctflag */}
@@ -187,7 +188,7 @@ class insertques extends Component {
 
                         {/* The submit buttton that is enabled if both the correctflag and the all flag are true */}
                         <button disabled={!(this.state.allflag && this.state.correctflag)} className="submit btn" onClick={this.handleClick}>Submit</button>
-                   
+
                     </form>
                 </div>
             </div>
