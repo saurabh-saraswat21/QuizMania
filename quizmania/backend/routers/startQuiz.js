@@ -86,13 +86,16 @@ module.exports = (app, server) => {
         
         // data consist of the details of the  particular user like the username and the quiz id on which the user has joined
         socket.on('update_socket', (data) => {
+            const quiz_id = data.quiz_id
 
             // setting socket username to the username of the player to be used anywhere 
             socket.username = data.username;
 
             // setting socket quiz_id to the quiz id at which  the player has joined be used anywhere 
             
-            socket.quiz_id = data.quiz_id
+            socket.quiz_id = quiz_id
+            socket.join(quiz_id)
+            
 
             console.log(socket.username + "connected on quiz id " + socket.quiz_id);
             
