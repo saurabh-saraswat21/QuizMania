@@ -1,13 +1,27 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import axios from 'axios'
 import '../../stylesheets/quizDetails.css'
 
 
 class Quiz extends Component {
 
     state = {
-        showbtn: []
+        showbtn: [],
+        isRefreshed: this.props.location.state
+
+    }
+
+    update = () => {
+        window.location.reload()
+
+    }
+    delete = (id,question) =>{
+        axios.post('http://192.168.43.91:80/deleteques',{id,question}).then(
+            window.location.reload()
+        )
+
     }
     show = (index) => {
 
@@ -20,7 +34,7 @@ class Quiz extends Component {
         // toggling the  status 
         newShowbtn[index] = !currentStatus
 
-        // setting state with the new arrray
+        // setting state with the new array
         this.setState({
             showbtn: newShowbtn
         })
@@ -43,6 +57,7 @@ class Quiz extends Component {
 
             // getting questions from that quiz 
             const questions = quiz.questions
+            const quizName = quiz.quizName
 
             //checking if their exists some questions on that quiz and will store the whole data in "questionList"
             const questionsList = questions.length ? (
@@ -56,7 +71,15 @@ class Quiz extends Component {
                         //rendering a div of every question with the key value the id of that question
                         <div className="question-container" key={question._id}>
 
+                    
                             <h4>{question.questionString}</h4>
+                            <Link to={{
+                                    pathname: '/edit/' + quiz.quiz_id,
+                                    state: { question,quizName}
+
+                                }}><button>editquestion</button></Link>
+
+                                <button onClick={()=>this.delete(quiz.quiz_id,question)}>delete</button>
 
                             {/* Link is used for future use */}
                             <Link to="#">
@@ -69,6 +92,7 @@ class Quiz extends Component {
 
                             {/* classname is decided by the showbtn status at that index */}
                             <div className={this.state.showbtn[index] ? "boxactive" : "boxhidden " + index}>
+                                
                                 <li className="options">Option1:-{question.option1}</li>
                                 <li className="options">Option2:-{question.option2}</li>
                                 <li className="options">Option3:-{question.option3}</li>
@@ -92,8 +116,17 @@ class Quiz extends Component {
             return (
 
                 //rendering the questionList created above with all the data
+                
                 <div>
+                    <h1>{quizName}</h1>
+                    <Link to={{
+                        pathname: '/getquiz/'+this.props.match.params.quiz_id
+                    }}><button className={this.state.isRefreshed ? "refresh active" : "refresh"} onClick={this.update} > refresh to update</button></Link>
                     {questionsList}
+
+                    <Link to={{
+                        pathname:'/insertques/'+this.props.match.params.quiz_id
+                    }}> <button>ADD More Questions</button></Link>
                 </div>
             )
         }

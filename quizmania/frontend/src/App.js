@@ -4,12 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 // import various components to be rendered  
 import Home from './Components/MainPagesComp/home'
-import Navbar from './Components/partials/navbar';
-import createQuiz from './Components/HomePageComp/createQuiz';
 import insertques from './Components/HomePageComp/insertques';
 import viewQuiz from './Components/quizzesInfo/viewQuiz';
 import getQuiz from './Components/quizzesInfo/getQuiz';
-import joinQuiz from './Components/HomePageComp/joinQuiz'
 import startQuiz from './Components/JoinQuizComp/startQuizHome'
 import quizOngoing from './Components/JoinQuizComp/quizOngoing';
 import Userinfo from './Components/JoinQuizComp/userinfo';

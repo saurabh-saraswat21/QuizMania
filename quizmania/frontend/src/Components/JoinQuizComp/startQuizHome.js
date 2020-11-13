@@ -107,6 +107,7 @@ export class startQuizHome extends Component {
 
                     <div className="quizinfobox">
                         <h1>Quiz ID : {quiz.quiz_id}</h1>
+                        <h1>Quiz Name : {quiz.quizName}</h1>
                         <h1>No of questions:{quiz.questions.length}</h1>
                         <h1> myname = {this.state.myusername} </h1>
                         <h2>user = {this.state.no_of_users} </h2>
