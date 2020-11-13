@@ -111,18 +111,6 @@ export class startQuizHome extends Component {
                         <h1>No of questions:{quiz.questions.length}</h1>
                         <h1> myname = {this.state.myusername} </h1>
                         <h2>user = {this.state.no_of_users} </h2>
-                        {/* start button to start the quiz and passing the quiz as the state as it will be used  for displaying questions  */}
-                    <Link to={{
-                        
-                        // pathname is same without parameters to prevent the direct acess of the quiz 
-                        pathname : '/start',
-
-                        // the state will be available at the location of the component that renders after
-                        state: {quiz,username,all_users}
-                        
-                    }  }> <h2>Start</h2>
-                    
-                    </Link>
                     </div>
 
                 </div>
