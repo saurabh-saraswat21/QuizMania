@@ -78,8 +78,8 @@ module.exports = (app, server) => {
     io.on('connection', socket => {
         console.log("new socket connection");
 
-        socket.on('start',()=>{
-            io.emit('startquiz')
+        socket.on('start',(data)=>{
+            io.to(data).emit('startquiz')
         })
         
         // handling a update socket event that is called from the client side on connection
@@ -109,7 +109,7 @@ module.exports = (app, server) => {
             saveUser(userdata,socket.quiz_id).then(()=>{
                 
                 // after saved emiting the update userlist that the client side wil listen and update the number of users 
-                io.emit('update_user_list',socket.quiz_id)
+                io.to(quiz_id).emit('update_user_list',socket.quiz_id)
 
              })         
         })
@@ -157,7 +157,7 @@ module.exports = (app, server) => {
                     response.save().then(() => {
 
                         // again calling the update userlist event to be listen at client side
-                    io.emit('update_user_list',socket.quiz_id)
+                    io.to(socket.quiz_id).emit('update_user_list',socket.quiz_id)
 
                     console.log(socket.username + " disconnected");
                     
