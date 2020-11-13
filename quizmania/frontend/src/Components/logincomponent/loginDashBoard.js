@@ -7,6 +7,7 @@ function LoginDashBoard() {
         <div>
             <Link to ='/createquiz'><button>CreateQuiz</button></Link>
             <Link to ='/viewquiz'><button>ViewQuiz</button></Link>
+            <Link to ='/hostquiz'><button>Hostquiz</button></Link>
             <JoinQuiz/>
             
         </div>
