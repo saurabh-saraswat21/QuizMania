@@ -113,7 +113,7 @@
   transition: all 0.3s ease;
   line-height: 40px;
 }
-button {
+.quit-btn {
   float: right;
   display: flex;
 }
