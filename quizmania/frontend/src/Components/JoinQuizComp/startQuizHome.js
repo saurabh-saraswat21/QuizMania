@@ -12,6 +12,7 @@ export class startQuizHome extends Component {
          super(props)
          this.state= {
 
+            redirect : false,
              quiz_id : this.props.location.state ?this.props.location.state.quiz_id:null,
             
             //   the username is passed in the props by the HOC function below
