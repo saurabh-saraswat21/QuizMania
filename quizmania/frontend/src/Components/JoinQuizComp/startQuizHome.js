@@ -79,10 +79,24 @@ export class startQuizHome extends Component {
      }
 
      render() { 
+
+      
         // getting quiz from the props because it is available because we have already mapped it
         const quiz = this.props.quiz;
         const username = this.state.myusername
         const all_users = this.state.all_users;
+        if(this.state.redirect){
+
+         return   (
+                <Redirect to ={{
+                    pathname: "/start",
+                    state :{quiz,username,all_users}
+              
+                  }}/>
+            )
+        }
+
+
 
         // cross checking the quiz if it is undefined  
         if (quiz === undefined) {
