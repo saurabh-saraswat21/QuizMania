@@ -8,6 +8,8 @@ import Directacess from '../errComponents/DirectAccess'
 
 import '../../stylesheets/quiz.css'
 
+import { FcAlarmClock } from 'react-icons/fc'
+
 class quizOngoing extends Component {
 
     // constructor fr initally setting state values 
@@ -446,16 +448,17 @@ class quizOngoing extends Component {
                             'questions'}>
 
                         <div className="details-container">
-                            <p>
-
-                            <span className="timer">
-                            TimeLeft{/* getting time from the state */} {time.minutes}
+                            <div className="timer">
+                            <div className="time_text"><FcAlarmClock/>TimeLeft{/* getting time from the state */}</div> 
+                            <div className="time">{time.minutes}
                             :
-                            {time.seconds}</span >
-                            <span className="shiftBelow"> Score: {this.state.score}</span>
+                            {time.seconds}
+                            </div>
+                            </div >
+                           { /*<span className="shiftBelow"> Score: {this.state.score}</span>*/} 
                             <span className="shiftBelow"> Myname: {this.state.username}</span>
                                 
-                            </p>
+                            
                             <p>
                                 <span>
                                     <span className="question-no">
@@ -465,6 +468,7 @@ class quizOngoing extends Component {
                             </p>
 
                         </div>
+                        <hr></hr>
                         <div className="questionString">
                             
                             {/* Displaying current question string  */}
