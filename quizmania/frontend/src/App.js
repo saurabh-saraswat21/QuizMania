@@ -18,6 +18,8 @@ import GlobalStyles from '../src/globalStyles'
 import createQuiz from './Components/HomePageComp/createQuiz'
 import login from './Components/logincomponent/login'
 import LoginDashBoard from './Components/logincomponent/loginDashBoard';
+import hostquiz from './Components/JoinQuizComp/hostquiz';
+import HostquizPage from './Components/hostQuizComponent/HostquizPage';
 
 
 const defaultRoutes = () => {
@@ -33,8 +35,11 @@ const defaultRoutes = () => {
           <Route exact path='/login' component={login} />
           <Route exact path='/login/dashboard' component={LoginDashBoard} />
           <Route path='/createquiz' component={createQuiz} />
+          <Route path='/hostquiz/:quiz_id' component={HostquizPage} />
           <Route path='/joinquiz' component={JoinQuiz} />
+          <Route path='/hostquiz' component={hostquiz} />
           <Route path='/getQuiz/:quiz_id' component={getQuiz} />
+          
           <Route path='/insertques/:quiz_id' component={insertques} />
           <Route path='/edit/:quiz_id' component={Editques} />
           <Route path='/viewquiz' component={viewQuiz} />
