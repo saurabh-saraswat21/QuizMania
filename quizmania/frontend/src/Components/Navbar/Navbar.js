@@ -48,9 +48,19 @@ function Navbar() {
             </MobileIcon>
             <NavMenu onClick={handleClick} click={click}>
 
-            <NavBtnLink to='/joinquiz'>
-                    <Button primary>JoinQuiz</Button>
-             </NavBtnLink>
+            <NavItemBtn>
+                {button ? (
+                  <NavBtnLink to='/JoinQuiz'>
+                    <Button primary>Join Quiz</Button>
+                  </NavBtnLink>
+                ) : (
+                  <NavBtnLink to='/JoinQuiz'>
+                    <Button onClick={closeMobileMenu} fontBig primary>
+                      Join Quiz
+                    </Button>
+                  </NavBtnLink>
+                )}
+              </NavItemBtn>
             
              
               <NavItemBtn>
