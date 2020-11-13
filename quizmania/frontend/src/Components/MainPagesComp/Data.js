@@ -7,7 +7,7 @@ export const homeObjOne = {
     topLine: 'Welcome To',
     headline: 'QuizMania',
     description:
-      'A real-time quiz website which can create quizzes competitively and collaboratively by students. To Create Your Own',
+      'A real-time quiz website which can create quizzes competitively and collaboratively by students.',
     buttonLabel: 'Login Now',
     imgStart: '',
     img: require('../../images/svg-1.svg'),
