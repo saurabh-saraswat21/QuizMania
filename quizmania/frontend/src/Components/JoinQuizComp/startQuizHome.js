@@ -34,7 +34,9 @@ export class startQuizHome extends Component {
          }
                 // estabishing a new socket connection 
             socket = io(ENDPOINT)
-
+            socket.on('startquiz',()=>{
+                this.startquiz()
+            })
             // emmiting the update socket event 
             socket.emit('update_socket',socket_data)
             
@@ -44,6 +46,7 @@ export class startQuizHome extends Component {
                 // calling the update userlist function
                 this.updateUserList(quiz_id)
             })
+          
          }
         
      }
