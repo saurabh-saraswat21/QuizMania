@@ -1,9 +1,7 @@
 // import react 
 import React, { useState, useEffect } from 'react';
-
 //import router for routing
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-
 // import various components to be rendered  
 import Home from './Components/MainPagesComp/home'
 import Navbar from './Components/partials/navbar';
@@ -36,12 +34,12 @@ export default function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        'http://192.168.0.104:80/tokenIsValid',
+        'http://192.168.0.100:80/tokenIsValid',
         null,
         { headers: { "x-auth-token": token } }
       );
       if (tokenRes.data) {
-        const userRes = await Axios.get("http://localhost:5000/auth", {
+        const userRes = await Axios.get("http://192.168.0.100:80/auth", {
           headers: { "x-auth-token": token },
         });
         setUserData({

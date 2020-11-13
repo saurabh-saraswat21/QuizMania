@@ -28,7 +28,7 @@ module.exports = (app) => {
 
             const salt = await bcrypt.genSalt();
             const passwordHash = await bcrypt.hash(password, salt);
-            console.log(passwordHash);
+            // console.log(passwordHash);
 
             const newUser = new userAuth({
                 firstName,
@@ -38,6 +38,7 @@ module.exports = (app) => {
             });
             const saveUser = await newUser.save();
             res.json(saveUser);
+            console.log('user registered');
             // .then((res) => console.log(res))
             // .catch((err) => console.log(err));
         }
@@ -51,7 +52,7 @@ module.exports = (app) => {
     app.post('/login', async (req, res) => {
         try {
             const { email, password } = req.body;
-            console.log(req.body.password);
+            // console.log(req.body.password);
             //validate
             if (!email || !password)
                 res.status(400).json({ msg: "Enter all Field" });
@@ -59,11 +60,11 @@ module.exports = (app) => {
 
             if (!userPresent)
                 return res.status(400).json({ msg: 'No account find from this email id' });
-            else
-                console.log("present")
+            // else
+            //     console.log("present")
             // password ValidityState
             const isPassCorrect = await bcrypt.compare(password, userPresent.password);
-            console.log(isPassCorrect)
+            // console.log(isPassCorrect)
             if (!isPassCorrect)
                 return res.status(400).json({ msg: 'Invalid Credentials' });
             const token = jwt.sign({ id: userPresent._id }, "fdfjnjbm");
@@ -74,6 +75,7 @@ module.exports = (app) => {
                     displayName: userPresent.firstName,
                 },
             });
+            console.log('User logedin');
         }
         catch (err) {
             res.status(500).json({ error: err.message });

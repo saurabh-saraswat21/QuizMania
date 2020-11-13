@@ -21,8 +21,8 @@ export default function Signup() {
 
         try {
             const newUser = { firstName, lastName, email, password, password2 };
-            await Axios.post("http://192.168.0.104:80/register", newUser);
-            const loginRes = await Axios.post("http://192.168.0.104:80/login", {
+            await Axios.post("http://192.168.0.100:80/register", newUser);
+            const loginRes = await Axios.post("http://192.168.0.100:80/login", {
                 email,
                 password,
             });
@@ -74,62 +74,3 @@ export default function Signup() {
         </div>
     );
 }
-
-// class signIn extends Component {
-//     state = {
-//         firstName: '',
-//         lastName: '',
-//         email: '',
-//         password: ''
-//     }
-//     setUserData = useContext(UserContext);
-//     handleChange = (e) => {
-//         this.setState({
-//             [e.target.id]: e.target.value
-//         })
-//     }
-//     handleSubmit = async (e) => {
-//         e.preventDefault();
-//         console.log(this.state);
-//         await axios.post('http://192.168.0.104:80/register', this.state);
-//         const loginRes = await axios.post('http://192.168.0.104:80/login', { email: this.state.email, password: this.state.password });
-//         this.setUserData({
-//             token: loginRes.data.token,
-//             user: loginRes.data.user
-//         })
-//     }
-//     render() {
-//         return (
-            // <div className="container">
-            //     <form onSubmit={this.handleSubmit} className='Brown'>
-            //         <h5 className="white-text">Sign Up</h5>
-            //         <div className='input-field'>
-            //             <label htmlFor="firstName">First Name</label>
-            //             <input type="text" id="firstName" onChange={this.handleChange} />
-            //         </div>
-            //         <div className='input-field'>
-            //             <label htmlFor="lastName">First Name</label>
-            //             <input type="text" id="lastName" onChange={this.handleChange} />
-            //         </div>
-            //         <div className='input-field'>
-            //             <label htmlFor="email">Email</label>
-            //             <input type="email" id="email" onChange={this.handleChange} />
-            //         </div>
-            //         <div className='input-field'>
-            //             <label htmlFor="password">Password</label>
-            //             <input type="password" id="password" onChange={this.handleChange} />
-            //         </div>
-            //         <div className='input-field'>
-            //             <label htmlFor="password">Confirm Password</label>
-            //             <input type="password" id="password2" onChange={this.handleChange} />
-            //         </div>
-            //         <div className='input-field'>
-            //             <button className="btn white black-text">Sign Up</button>
-            //         </div>
-            //     </form>
-            // </div>
-//         )
-//     }
-// }
-
-// export default signIn

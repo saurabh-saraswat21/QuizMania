@@ -5,7 +5,7 @@ import Direct from '../errComponents/DirectAccess'
 import { Link } from 'react-router-dom'
 import io from 'socket.io-client'
 import axios from 'axios'
-const ENDPOINT = "192.168.0.104:80"
+const ENDPOINT = "192.168.0.100:80"
 var socket
 export class startQuizHome extends Component {
     constructor(props) {

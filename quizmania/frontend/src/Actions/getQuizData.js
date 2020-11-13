@@ -41,7 +41,7 @@ export const fetchData = () => {
     return (dispatch) => {
 
         // requesting backend server for data
-        fetch("http://192.168.0.104:80/viewquizes")
+        fetch("http://192.168.0.100:80/viewquizes")
 
             // converting  fetched data to JSON
             .then(res1 => res1.json())
