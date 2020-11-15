@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 //import router for routing
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
@@ -16,56 +16,91 @@ import JoinQuiz from './Components/partials/JoinQuiz'
 import Navbar from './Components/Navbar/Navbar';
 import GlobalStyles from '../src/globalStyles'
 import createQuiz from './Components/HomePageComp/createQuiz'
-import login from './Components/logincomponent/login'
+// import login from './Components/logincomponent/login'
 import LoginDashBoard from './Components/logincomponent/loginDashBoard';
-import hostquiz from './Components/JoinQuizComp/hostquiz';
-import HostquizPage from './Components/hostQuizComponent/HostquizPage';
+import SignIn from './Components/auth/signIn';
+import SignUp from './Components/auth/signUp';
+import UserContext from './context/userContext';
+import Axios from 'axios';
 
 
-const defaultRoutes = () => {
-  return (
-    <div>
-      <div className="App">
-      <Navbar/>
-
-        {/* Routing for the different pages */}
-        <Switch>
-
-          <Route exact path='/' component={Home} />
-          <Route exact path='/login' component={login} />
-          <Route exact path='/login/dashboard' component={LoginDashBoard} />
-          <Route path='/createquiz' component={createQuiz} />
-          <Route path='/hostquiz/:quiz_id' component={HostquizPage} />
-          <Route path='/joinquiz' component={JoinQuiz} />
-          <Route path='/hostquiz' component={hostquiz} />
-          <Route path='/getQuiz/:quiz_id' component={getQuiz} />
-          
-          <Route path='/insertques/:quiz_id' component={insertques} />
-          <Route path='/edit/:quiz_id' component={Editques} />
-          <Route path='/viewquiz' component={viewQuiz} />
-          <Route exact path='/Quiz/enter_info/:quiz_id' component={Userinfo} />
-          <Route exact path='/startQuiz/:quiz_id' component={startQuiz} />
-        </Switch>
-
-      </div>
-
-    </div>
-  )
-
-}
 
 function App() {
 
+  const [userData, setUserData] = useState({
+    token: undefined,
+    user: undefined
+  })
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      let token = localStorage.getItem("auth-token");
+      if (token === null) {
+        localStorage.setItem("auth-token", "");
+        token = "";
+      }
+      const tokenRes = await Axios.post(
+        'http://192.168.43.91:80/tokenIsValid',
+        null,
+        { headers: { "x-auth-token": token } }
+      );
+      if (tokenRes.data) {
+        const userRes = await Axios.get("http://192.168.43.91:80/auth", {
+          headers: { "x-auth-token": token },
+        });
+        setUserData({
+          token,
+          user: userRes.data,
+        });
+      }
+    };
+    checkLoggedIn();
+  }, []);
 
+  const defaultRoutes = () => {
+    return (
+      <div>
+        <div className="App">
+          <Navbar />
+
+          {/* Routing for the different pages */}
+          <Switch>
+
+            {(userData.user) ?
+              // if user login then this component is available
+              (<Route exact path='/' component={LoginDashBoard} />) :
+              //else this
+              (<Route exact path='/' component={Home} />)
+
+            }
+            <Route path='/createquiz' component={createQuiz} />
+            <Route path='/getQuiz/:quiz_id' component={getQuiz} />
+            <Route path='/insertques/:quiz_id' component={insertques} />
+            <Route path='/viewquiz' component={viewQuiz} />
+            <Route path='/joinquiz' component={JoinQuiz} />
+            <Route exact path='/login' component={SignIn} />
+            <Route path='/signup' component={SignUp} />
+            <Route path='/edit/:quiz_id' component={Editques} />
+            <Route exact path='/Quiz/enter_info/:quiz_id' component={Userinfo} />
+            <Route exact path='/startQuiz/:quiz_id' component={startQuiz} />
+          </Switch>
+
+        </div>
+
+      </div>
+    )
+
+  }
 
   return (
     <BrowserRouter>
-    <GlobalStyles/>
-    <Switch>
-      <Route path='/start' component ={quizOngoing}/>
-      <Route component={defaultRoutes} />
-    </Switch>
-  </BrowserRouter>
+      <UserContext.Provider value={{ userData, setUserData }}>
+        <GlobalStyles />
+        <Switch>
+          <Route path='/start' component={quizOngoing} />
+          <Route component={defaultRoutes} />
+        </Switch>
+      </UserContext.Provider>
+    </BrowserRouter>
   );
 }
 
