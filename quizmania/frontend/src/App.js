@@ -20,7 +20,6 @@ import createQuiz from './Components/HomePageComp/createQuiz'
 import LoginDashBoard from './Components/logincomponent/loginDashBoard';
 import SignIn from './Components/auth/signIn';
 import SignUp from './Components/auth/signUp';
-import User from './Components/auth/user';
 import UserContext from './context/userContext';
 import Axios from 'axios';
 
@@ -40,12 +39,12 @@ function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        'http://192.168.0.100:80/tokenIsValid',
+        'http://192.168.43.91:80/tokenIsValid',
         null,
         { headers: { "x-auth-token": token } }
       );
       if (tokenRes.data) {
-        const userRes = await Axios.get("http://192.168.0.100:80/auth", {
+        const userRes = await Axios.get("http://192.168.43.91:80/auth", {
           headers: { "x-auth-token": token },
         });
         setUserData({
@@ -68,7 +67,7 @@ function App() {
 
             {(userData.user) ?
               // if user login then this component is available
-              (<Route exact path='/' component={User} />) :
+              (<Route exact path='/' component={LoginDashBoard} />) :
               //else this
               (<Route exact path='/' component={Home} />)
 
@@ -80,7 +79,6 @@ function App() {
             <Route path='/joinquiz' component={JoinQuiz} />
             <Route exact path='/login' component={SignIn} />
             <Route path='/signup' component={SignUp} />
-            <Route exact path='/login/dashboard' component={LoginDashBoard} />
             <Route path='/edit/:quiz_id' component={Editques} />
             <Route exact path='/Quiz/enter_info/:quiz_id' component={Userinfo} />
             <Route exact path='/startQuiz/:quiz_id' component={startQuiz} />
