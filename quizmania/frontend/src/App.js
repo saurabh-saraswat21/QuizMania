@@ -16,8 +16,9 @@ import JoinQuiz from './Components/partials/JoinQuiz'
 import Navbar from './Components/Navbar/Navbar';
 import GlobalStyles from '../src/globalStyles'
 import createQuiz from './Components/HomePageComp/createQuiz'
-// import login from './Components/logincomponent/login'
 import LoginDashBoard from './Components/logincomponent/loginDashBoard';
+import hostquiz from './Components/JoinQuizComp/hostquiz';
+import HostquizPage from './Components/hostQuizComponent/HostquizPage';
 import SignIn from './Components/auth/signIn';
 import SignUp from './Components/auth/signUp';
 import UserContext from './context/userContext';
@@ -74,9 +75,11 @@ function App() {
             }
             <Route path='/createquiz' component={createQuiz} />
             <Route path='/getQuiz/:quiz_id' component={getQuiz} />
+            <Route path='/hostquiz/:quiz_id' component={HostquizPage} />
             <Route path='/insertques/:quiz_id' component={insertques} />
             <Route path='/viewquiz' component={viewQuiz} />
             <Route path='/joinquiz' component={JoinQuiz} />
+            <Route path='/hostquiz' component={hostquiz} />
             <Route exact path='/login' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/edit/:quiz_id' component={Editques} />
