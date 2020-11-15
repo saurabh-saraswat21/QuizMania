@@ -78,17 +78,24 @@ module.exports = (app, server) => {
     io.on('connection', socket => {
         console.log("new socket connection");
 
+        socket.on('start',(data)=>{
+            io.to(data).emit('startquiz')
+        })
+        
         // handling a update socket event that is called from the client side on connection
         
         // data consist of the details of the  particular user like the username and the quiz id on which the user has joined
         socket.on('update_socket', (data) => {
+            const quiz_id = data.quiz_id
 
             // setting socket username to the username of the player to be used anywhere 
             socket.username = data.username;
 
             // setting socket quiz_id to the quiz id at which  the player has joined be used anywhere 
             
-            socket.quiz_id = data.quiz_id
+            socket.quiz_id = quiz_id
+            socket.join(quiz_id)
+            
 
             console.log(socket.username + "connected on quiz id " + socket.quiz_id);
             
@@ -102,7 +109,7 @@ module.exports = (app, server) => {
             saveUser(userdata,socket.quiz_id).then(()=>{
                 
                 // after saved emiting the update userlist that the client side wil listen and update the number of users 
-                io.emit('update_user_list',socket.quiz_id)
+                io.to(quiz_id).emit('update_user_list',socket.quiz_id)
 
              })         
         })
@@ -150,7 +157,7 @@ module.exports = (app, server) => {
                     response.save().then(() => {
 
                         // again calling the update userlist event to be listen at client side
-                    io.emit('update_user_list',socket.quiz_id)
+                    io.to(socket.quiz_id).emit('update_user_list',socket.quiz_id)
 
                     console.log(socket.username + " disconnected");
                     

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../../stylesheets/startQuizHome.css'
 import { connect } from 'react-redux'
 import Direct from '../errComponents/DirectAccess'
-import{Link} from 'react-router-dom'
+import{Link,Redirect} from 'react-router-dom'
 import io from 'socket.io-client'
 import axios from 'axios'
 const ENDPOINT = "192.168.43.91:80"
@@ -12,6 +12,7 @@ export class startQuizHome extends Component {
          super(props)
          this.state= {
 
+            redirect : false,
              quiz_id : this.props.location.state ?this.props.location.state.quiz_id:null,
             
             //   the username is passed in the props by the HOC function below
@@ -33,7 +34,9 @@ export class startQuizHome extends Component {
          }
                 // estabishing a new socket connection 
             socket = io(ENDPOINT)
-
+            socket.on('startquiz',()=>{
+                this.startquiz()
+            })
             // emmiting the update socket event 
             socket.emit('update_socket',socket_data)
             
@@ -43,6 +46,7 @@ export class startQuizHome extends Component {
                 // calling the update userlist function
                 this.updateUserList(quiz_id)
             })
+          
          }
         
      }
@@ -72,11 +76,31 @@ export class startQuizHome extends Component {
          )
          
      }
+     startquiz=()=>{
+         this.setState({
+             redirect:true
+         })
+     }
+
      render() { 
+
+      
         // getting quiz from the props because it is available because we have already mapped it
         const quiz = this.props.quiz;
         const username = this.state.myusername
         const all_users = this.state.all_users;
+        if(this.state.redirect){
+
+         return   (
+                <Redirect to ={{
+                    pathname: "/start",
+                    state :{quiz,username,all_users}
+              
+                  }}/>
+            )
+        }
+
+
 
         // cross checking the quiz if it is undefined  
         if (quiz === undefined) {
@@ -106,23 +130,12 @@ export class startQuizHome extends Component {
 
                     
                     <div className="quizinfobox">
+                       <h1>Waiting to start quiz</h1>
                        <h1>Quiz ID : {quiz.quiz_id}</h1>
                        <h1>Quiz Name : {quiz.quizName}</h1>
                         <h1>No of questions:{quiz.questions.length}</h1>
                         <h1> myname = {this.state.myusername} </h1>
                         <h2>user = {this.state.no_of_users} </h2>
-                        {/* start button to start the quiz and passing the quiz as the state as it will be used  for displaying questions  */}
-                    <Link to={{
-                        
-                        // pathname is same without parameters to prevent the direct acess of the quiz 
-                        pathname : '/start',
-
-                        // the state will be available at the location of the component that renders after
-                        state: {quiz,username,all_users}
-                        
-                    }  }> <h2>Start</h2>
-                    
-                    </Link>
                     </div>
 
                 </div>
