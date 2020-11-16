@@ -81,6 +81,7 @@ module.exports = (app, server) => {
         socket.on('start',(data)=>{
             io.to(data).emit('startquiz')
         })
+  
         
         // handling a update socket event that is called from the client side on connection
         
@@ -107,9 +108,11 @@ module.exports = (app, server) => {
             //  saving the new user to the database
 
             saveUser(userdata,socket.quiz_id).then(()=>{
-                
+                var userlist = io.sockets.adapter.rooms[quiz_id]
+                var length = userlist ? userlist.length : 0
                 // after saved emiting the update userlist that the client side wil listen and update the number of users 
                 io.to(quiz_id).emit('update_user_list',socket.quiz_id)
+                io.emit('sent_update',length)
 
              })         
         })
@@ -158,6 +161,10 @@ module.exports = (app, server) => {
 
                         // again calling the update userlist event to be listen at client side
                     io.to(socket.quiz_id).emit('update_user_list',socket.quiz_id)
+                    var userlist = io.sockets.adapter.rooms[socket.quiz_id]
+                    var length = userlist ? userlist.length : 0
+                    io.emit('sent_update',length)
+
 
                     console.log(socket.username + " disconnected");
                     
