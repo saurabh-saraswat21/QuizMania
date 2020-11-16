@@ -36,6 +36,7 @@ const Hostquiz=(props)=> {
                     {/* link every quiz id to view all the questions of the quiz */}
                     <Link to ={{
                         pathname :'/hostquiz/'+quiz.quiz_id,
+                        state:quiz
                         
                     }}> HOST</Link>
 
