@@ -1,47 +1,33 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import React, {useState, useEffect } from 'react'
 import io from 'socket.io-client'
 const ENDPOINT = "192.168.43.91:80"
 var socket
 const HostquizPage = (props) => {
+    const [quizName,setQuizName]= useState(null)
   
     useEffect(()=>{
         socket= io(ENDPOINT)
+        // setQuiz(this.props.location.state)
+       setQuizName(props.location.state.quizName);
     })
 
    const  startquiz=(quiz_id)=>{
          socket.emit('start',(quiz_id))
     }
-    let quiz =[];
+    
     const quiz_id = props.match.params.quiz_id
-    if(props.quiz) 
-    quiz = props.quiz
+  
 
     return (
         <div>
+            <h1>QuizName : {quizName}</h1>
 
-            <h1> Start  The QUiz NOW<button onClick={()=>startquiz(quiz_id)} >Start</button></h1>
+        <h1>Share this Join Code to instantly join the quiz  {quiz_id}</h1>
+            <h1> Start  The QUiz NOW</h1>
+            <button onClick={()=>startquiz(quiz_id)} >Start</button>
             
         </div>
     )
 }
 
-const mapStateToProps = (state,defaultProps) => {
-
-    const id = parseInt(defaultProps.match.params.quiz_id)
-
-    //returning the particular quiz that is to be viewed
-    return {
-
-        // find method iterates every quiz in the quizzes and return that quiz whose id matches the id we get from the params above
-        quiz: state.quizzes.find(quiz => quiz.quiz_id === id),
-
-    }
-    
-}
-
-const mapDispatchToProps = {
-    
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(HostquizPage)
+export default (HostquizPage)
