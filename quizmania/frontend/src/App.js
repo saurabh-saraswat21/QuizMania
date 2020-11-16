@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
 //import router for routing
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch ,} from 'react-router-dom'
 
 // import various components to be rendered  
 import Home from './Components/MainPagesComp/home'
@@ -17,12 +16,12 @@ import Navbar from './Components/Navbar/Navbar';
 import GlobalStyles from '../src/globalStyles'
 import createQuiz from './Components/HomePageComp/createQuiz'
 import LoginDashBoard from './Components/logincomponent/loginDashBoard';
-import hostquiz from './Components/JoinQuizComp/hostquiz';
-import HostquizPage from './Components/hostQuizComponent/HostquizPage';
 import SignIn from './Components/auth/signIn';
 import SignUp from './Components/auth/signUp';
 import UserContext from './context/userContext';
 import Axios from 'axios';
+import hostquiz from './Components/JoinQuizComp/hostquiz';
+import HostquizPage from './Components/hostQuizComponent/HostquizPage';
 
 
 
@@ -32,61 +31,37 @@ function App() {
     token: undefined,
     user: undefined
   })
+  const checkLoggedIn = async () => {
+
+    let token = localStorage.getItem("auth-token");
+
+    if (token === null) {
+      localStorage.setItem("auth-token", "");
+      token = "";
+    }
+
+    const tokenRes = await Axios.post(
+      'http://192.168.0.100:80/tokenIsValid',
+      null,
+      { headers: { "x-auth-token": token } }
+    );
+
+    if (tokenRes.data) {
+      const userRes = await Axios.get("http://192.168.0.100:80/auth", {
+        headers: { "x-auth-token": token },
+      });
+
+      setUserData({
+        token,
+        user: userRes.data,
+      });
+
+    }
+  };
   useEffect(() => {
-    const checkLoggedIn = async () => {
-      let token = localStorage.getItem("auth-token");
-      if (token === null) {
-        localStorage.setItem("auth-token", "");
-        token = "";
-      }
-      const tokenRes = await Axios.post(
-        'http://192.168.43.91:80/tokenIsValid',
-        null,
-        { headers: { "x-auth-token": token } }
-      );
-      if (tokenRes.data) {
-        const userRes = await Axios.get("http://192.168.43.91:80/auth", {
-          headers: { "x-auth-token": token },
-        });
-        setUserData({
-          token,
-          user: userRes.data,
-        });
-      }
-    };
+    
     checkLoggedIn();
   }, []);
-
-    const loggedinRoutes = ()=>{
-      return(
-        <div>
-            <Route exact path='/' component={LoginDashBoard} />
-            <Route path='/createquiz' component={createQuiz} />
-            <Route path='/getQuiz/:quiz_id' component={getQuiz} />
-            <Route path='/hostquiz/:quiz_id' component={HostquizPage} />
-            <Route path='/insertques/:quiz_id' component={insertques} />
-            <Route path='/viewquiz' component={viewQuiz} />
-            <Route path='/joinquiz' component={JoinQuiz} />
-            <Route path='/hostquiz' component={hostquiz} />
-        </div>
-      )
-
-    }
-    const loggedOutRoutes = ()=>{
-      return(
-        <div>
-            <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/' component={SignIn} />
-            </Switch>
-           
-        </div>
-      )
-
-    }
-
-
-
 
   const defaultRoutes = () => {
     return (
@@ -99,13 +74,23 @@ function App() {
 
             {(userData.user) ?
               // if user login then this component is available
-              <Route component={loggedinRoutes}/> :(
+              (<Route exact path='/' component={LoginDashBoard} />) :
               //else this
-              <Route component={loggedOutRoutes}/> 
-             
-              )
+              (<Route exact path='/' component={Home} />)
+
             }
-            
+            <Route path='/createquiz' component={createQuiz} />
+            <Route path='/getQuiz/:quiz_id' component={getQuiz} />
+            <Route path='/insertques/:quiz_id' component={insertques} />
+            <Route path='/hostquiz/:quiz_id' component={HostquizPage} />
+            <Route path='/viewquiz' component={viewQuiz} />
+            <Route path='/hostquiz' component={hostquiz} />
+            <Route path='/joinquiz' component={JoinQuiz} />
+            <Route exact path='/login' component={SignIn} />
+            <Route path='/signup' component={SignUp} />
+            <Route path='/edit/:quiz_id' component={Editques} />
+            <Route exact path='/Quiz/enter_info/:quiz_id' component={Userinfo} />
+            <Route exact path='/startQuiz/:quiz_id' component={startQuiz} />
           </Switch>
 
         </div>
@@ -120,8 +105,8 @@ function App() {
       <UserContext.Provider value={{ userData, setUserData }}>
         <GlobalStyles />
         <Switch>
-          <Route path='/start' component={quizOngoing} />
-          <Route component={defaultRoutes} />
+          <Route path='/start' component={quizOngoing}  />
+          <Route component={defaultRoutes}  />
         </Switch>
       </UserContext.Provider>
     </BrowserRouter>
