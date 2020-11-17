@@ -5,7 +5,7 @@ import Direct from '../errComponents/DirectAccess'
 import{Link,Redirect} from 'react-router-dom'
 import io from 'socket.io-client'
 import axios from 'axios'
-const ENDPOINT = "192.168.43.24:80"
+const ENDPOINT = "192.168.43.91:80"
 var socket
 export class startQuizHome extends Component {
      constructor(props){
@@ -55,7 +55,7 @@ export class startQuizHome extends Component {
      updateUserList=(quiz_id)=>{
 
         //  making get request to server and fetching the data
-         axios.get("http://192.168.43.24:80/getusers/"+quiz_id,{
+         axios.get("http://192.168.43.91:80/getusers/"+quiz_id,{
             
          }).then(response =>{
              
