@@ -11,9 +11,7 @@ const HostquizPage = (props) => {
 
     useEffect(()=>{
         socket= io(ENDPOINT)
-        socket.on('sent_update',(data)=>{
-            console.log(data);
-            setUsers(data)
+        setQuizName(props.location.state.quizName);
         })
 
        setQuizName(props.location.state.quizName);
