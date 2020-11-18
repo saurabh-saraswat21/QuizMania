@@ -23,10 +23,31 @@ const HostquizPage = (props) => {
             }
 
         })
+        socket.on('a_quiz_ends',(data)=>{
+            const {username}= data
+            const {score,total} = data.scores
+
+            if(data && users){
+                const index = users.findIndex(user=>user.username===username)
+                if(index!==-1){
+                    const tempusers = users
+                    tempusers[index].score= score
+                    setUsers(tempusers)
+                }
+                const userdata = {
+                    username : username,
+                    score : score
+                }
+            
+            }
+           
         })
 
-       setQuizName(props.location.state.quizName);
+      
     })
+
+
+
 
    const  startquiz=(quiz_id)=>{
          socket.emit('start',(quiz_id))
