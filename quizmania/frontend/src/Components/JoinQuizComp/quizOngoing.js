@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-// is used to acess the passed state in the link tag in the instruction page 
-import { withRouter } from "react-router";
 
 // importing the error component  
 import Directacess from '../errComponents/DirectAccess'
