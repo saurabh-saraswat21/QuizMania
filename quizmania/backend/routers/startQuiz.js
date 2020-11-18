@@ -173,28 +173,36 @@ module.exports = (app, server) => {
 
         })
 
-            // setting socket quiz_id to the quiz id at which  the player has joined be used anywhere 
-            
+        socket.on('user_connected', (data) => {
+
+
+            const { quiz_id, username, user_id } = data
+            user.user_id = user_id
+
+            socket.username = username;
             socket.quiz_id = quiz_id
+            socket.user_id = user_id
+
             socket.join(quiz_id)
-            
+            host.notUpdated = true
+
+            user.disconnected = false;
 
             console.log(socket.username + "connected on quiz id " + socket.quiz_id);
-            
-            userdata = {
-                username : socket.username,
-                score : 0
+
+
+            const userData = {
+                username: username,
+                user_id: user_id
             }
 
-            //  saving the new user to the database
+            saveUser(userData, quiz_id).then((data) => {
 
-            saveUser(userdata,socket.quiz_id).then(()=>{
-                var userlist = io.sockets.adapter.rooms[quiz_id]
-                var length = userlist ? userlist.length : 0
-                // after saved emiting the update userlist that the client side wil listen and update the number of users 
-                io.to(quiz_id).emit('update_user_list',socket.quiz_id)
-                io.emit('sent_update',length)
+                io.to(quiz_id).emit('update_user_list', data)
 
+
+            })
+        })
              })         
         })
 
