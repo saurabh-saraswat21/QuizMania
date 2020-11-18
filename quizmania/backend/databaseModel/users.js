@@ -18,14 +18,13 @@ const userSchema = new schema({
     },
 
     // score of the player
-    score :{ 
+    user_id :{ 
         type:Number,
-        }
+        required : true
+     }
 
 })
 
-
-// userlist schema that contain all the users of a particular quiz 
 const usersListSchema = new schema ({
 
     // quiz_id of the quiz
@@ -35,8 +34,9 @@ const usersListSchema = new schema ({
     },
 
     // list of all users connected to the quiz
-    userList :{
-        type : [userSchema]
+    users :{
+        type : [userSchema],
+        required : true
     } 
 
 })
