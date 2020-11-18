@@ -8,6 +8,22 @@ const HostquizPage = (props) => {
     const [quizName,setQuizName]= useState(null)
     const[users,setUsers]= useState([])
 
+    const userlist = users.length?
+
+    (   users.map(user=>  
+        {
+                return(
+                    <div className = "userlist" key={user.user_id}>
+                        <h1>{user.username}</h1>
+                        <span>{user.score?"finished the quiz final score is "+user.score:""} </span>
+                    </div>
+                )
+        })
+           
+    )
+    :(
+        <h1>no users</h1>
+    )
 
     useEffect(()=>{
         socket= io(ENDPOINT)
