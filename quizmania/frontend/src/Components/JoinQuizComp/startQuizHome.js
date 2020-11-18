@@ -41,12 +41,15 @@ export class startQuizHome extends Component {
 
 
             socket = io(ENDPOINT)
+
             socket.on('startquiz',()=>{
                 this.startquiz()
             })
-            // emmiting the update socket event 
-            socket.emit('update_socket',socket_data)
-            
+           
+
+            socket.emit('user_connected', socket_data)
+
+
             // handling the event emiited from server side
              socket.on('update_user_list',(quiz_id)=>{
 
