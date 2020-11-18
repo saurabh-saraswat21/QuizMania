@@ -26,6 +26,14 @@ module.exports = (app, server) => {
     }
 
 
+    const getQuizData = (quiz_id) => {
+        return new Promise((resolve, reject) => {
+            usermodel.findOne({ quiz_id: quiz_id }).then((response, err) => {
+                if (err) reject(err)
+                resolve(response)
+            })
+        })
+    }
 //  method to save new users to the database 
   const saveUser = (userdata, quiz_id)=>{  
 
