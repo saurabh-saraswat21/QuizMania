@@ -115,23 +115,27 @@ export class startQuizHome extends Component {
 
         // if the quiz has value  then 
         else {
-            
+
 
             return (
+                
+                    <div className="Start_quiz_container">
 
-                <div className="Start_quiz_container">
 
-                    
-                    <div className="quizinfobox">
-                       <h1>Waiting to start quiz</h1>
-                       <h1>Quiz ID : {quiz.quiz_id}</h1>
-                       <h1>Quiz Name : {quiz.quizName}</h1>
-                        <h1>No of questions:{quiz.questions.length}</h1>
-                        <h1> myname = {this.state.myusername} </h1>
-                        <h2>user = {this.state.no_of_users} </h2>
+                        <div className="quizinfobox">
+                            <h1>Waiting to start quiz</h1>
+                            <h1>Quiz ID : {quiz.quiz_id}</h1>
+                            <h1>Quiz Name : {quiz.quizName}</h1>
+                            <h1>No of questions:{quiz.questions.length}</h1>
+                            <h1> myname = {this.state.myusername} </h1>
+                            <h2>user = {this.state.no_of_users} </h2>
+                        </div>
+
                     </div>
 
-                </div>
+               
+
+
             )
         }
     }
