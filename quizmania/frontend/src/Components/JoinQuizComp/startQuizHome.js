@@ -51,39 +51,20 @@ export class startQuizHome extends Component {
 
 
             // handling the event emiited from server side
-             socket.on('update_user_list',(quiz_id)=>{
+            socket.on('update_user_list', (data) => {
 
-                // calling the update userlist function
-                this.updateUserList(quiz_id)
-            })
-          
-         }
-        
-     }
-     
-    //  method to update userlist whenever called
-     updateUserList=(quiz_id)=>{
-
-        //  making get request to server and fetching the data
-         axios.get("http://192.168.43.91:80/getusers/"+quiz_id,{
-            
-         }).then(response =>{
-             
-            //  if the response is not empty 
-            if(response != null){
-
-                
-            var length = response.data.userList.length
-            var all_users = response.data.userList
-            
-                // updating the current state
                 this.setState({
-                    no_of_users: length,
-                    all_users : all_users
-                })            
+                    no_of_users: data.users.length,
+                    all_users : data.users
+                }, () => {
+                    socket.emit('client_is_updated', data)
+                })
+            })
+
+
         }
-        }
-         )
+
+    }
          
      }
      startquiz=()=>{
