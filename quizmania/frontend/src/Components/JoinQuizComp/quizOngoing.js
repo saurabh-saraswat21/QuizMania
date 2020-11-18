@@ -223,14 +223,21 @@ class QuizOngoing extends Component {
     endQuiz = () => {
 
         //  alerting that the quiz has ended
-        alert('quizENDED')
+        alert('QUIZ ENDED')
+
+        const quizdata = {
+            score : this.state.score,
+            total : this.state.numberOfQuestions
+        }
+        var socket = this.state.socket
+            socket.emit('quiz_ended',quizdata)
+        
 
         //  after a while
         setTimeout(() => {
-
-            //  close the new opened tab
-            window.close()
-
+            this.setState({
+                redirect: true
+            })
         },
 
             // half second wait 
