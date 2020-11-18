@@ -16,6 +16,13 @@ const HostquizPage = (props) => {
         socket.emit('host_connected',quiz_id)
         socket.emit('get_update')
 
+        socket.on('update',(data)=>{
+           console.log("host has recived update");
+            if(users!=data){
+                setUsers(data)
+            }
+
+        })
         })
 
        setQuizName(props.location.state.quizName);
