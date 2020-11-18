@@ -1,12 +1,17 @@
-import React ,{useState} from 'react'
+import React ,{useState,useEffect} from 'react'
 import { Link } from 'react-router-dom'
 
 import '../../stylesheets/userInfo.css'
 
+const generateuser_id= ()=>{
+    return  Math.floor(100000 + Math.random() * 900000)
+} 
 
 function Userinfo(props) {
     const [username, setusername] = useState("")
+    const [user_id, setuserID] = useState(generateuser_id)
     const quiz_id = props.match.params.quiz_id
+
     return (
         <div>
             <div className="player_info_box">
@@ -22,11 +27,13 @@ function Userinfo(props) {
                 <Link  to={{
 
                     pathname: '/startQuiz/'+quiz_id,
-                    state : {username,quiz_id}
+                    state : {username,quiz_id,user_id}
                   }
                 } >
 
                 <button> Go</button>
+
+                
                 </Link>
 
             </div>

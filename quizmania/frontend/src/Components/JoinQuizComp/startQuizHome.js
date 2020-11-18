@@ -2,101 +2,94 @@ import React, { Component } from 'react'
 import '../../stylesheets/startQuizHome.css'
 import { connect } from 'react-redux'
 import Direct from '../errComponents/DirectAccess'
-import{Link,Redirect} from 'react-router-dom'
 import io from 'socket.io-client'
-import axios from 'axios'
+import QuizOngoing from './quizOngoing'
 const ENDPOINT = "192.168.43.91:80"
+
+
+
 var socket
 export class startQuizHome extends Component {
-     constructor(props){
-         super(props)
-         this.state= {
+    constructor(props) {
+        super(props)
+        this.state = {
+            redirect: false,
+            user_id: this.props.location.state ? this.props.location.state.user_id : null,
 
-            redirect : false,
-             quiz_id : this.props.location.state ?this.props.location.state.quiz_id:null,
-            
+            quiz_id: this.props.location.state ? this.props.location.state.quiz_id : null,
+
             //   the username is passed in the props by the HOC function below
-             myusername : this.props.username,
 
-             no_of_users : 0
-             
-         }
-     }
+            myusername: this.props.username,
+
+            no_of_users: 0
+
+        }
+    }
 
 
 
      componentDidMount() {
 
          if(this.state.myusername){
-                const  socket_data = {
-                username : this.state.myusername,
-                quiz_id :this.state.quiz_id
-         }
-                // estabishing a new socket connection 
+            const socket_data = {
+                username: this.state.myusername,
+                quiz_id: this.state.quiz_id,
+                user_id: this.state.user_id
+            }
+
+
             socket = io(ENDPOINT)
+
             socket.on('startquiz',()=>{
                 this.startquiz()
             })
-            // emmiting the update socket event 
-            socket.emit('update_socket',socket_data)
-            
+           
+
+            socket.emit('user_connected', socket_data)
+
+
             // handling the event emiited from server side
-             socket.on('update_user_list',(quiz_id)=>{
+            socket.on('update_user_list', (data) => {
 
-                // calling the update userlist function
-                this.updateUserList(quiz_id)
-            })
-          
-         }
-        
-     }
-     
-    //  method to update userlist whenever called
-     updateUserList=(quiz_id)=>{
-
-        //  making get request to server and fetching the data
-         axios.get("http://192.168.43.91:80/getusers/"+quiz_id,{
-            
-         }).then(response =>{
-             
-            //  if the response is not empty 
-            if(response != null){
-
-                
-            var length = response.data.userList.length
-            var all_users = response.data.userList
-            
-                // updating the current state
                 this.setState({
-                    no_of_users: length,
-                    all_users : all_users
-                })            
-        }
-        }
-         )
-         
-     }
-     startquiz=()=>{
-         this.setState({
-             redirect:true
-         })
-     }
+                    no_of_users: data.users.length,
+                    all_users : data.users
+                }, () => {
+                    socket.emit('client_is_updated', data)
+                })
+            })
 
-     render() { 
 
-      
+        }
+
+    }
+
+    startquiz = () => {
+        this.setState({
+            redirect: true
+        })
+    }
+
+    render() {
+
+
         // getting quiz from the props because it is available because we have already mapped it
         const quiz = this.props.quiz;
         const username = this.state.myusername
         const all_users = this.state.all_users;
-        if(this.state.redirect){
+        const data = {
+            quiz : quiz,
+            username : username,
+            allusers: all_users,
+            socket : socket
+        }
+        if (this.state.redirect) {
 
-         return   (
-                <Redirect to ={{
-                    pathname: "/start",
-                    state :{quiz,username,all_users}
-              
-                  }}/>
+            return (
+
+                <QuizOngoing data = {data}/>
+
             )
         }
 
@@ -122,23 +115,27 @@ export class startQuizHome extends Component {
 
         // if the quiz has value  then 
         else {
-            
+
 
             return (
+                
+                    <div className="Start_quiz_container">
 
-                <div className="Start_quiz_container">
 
-                    
-                    <div className="quizinfobox">
-                       <h1>Waiting to start quiz</h1>
-                       <h1>Quiz ID : {quiz.quiz_id}</h1>
-                       <h1>Quiz Name : {quiz.quizName}</h1>
-                        <h1>No of questions:{quiz.questions.length}</h1>
-                        <h1> myname = {this.state.myusername} </h1>
-                        <h2>user = {this.state.no_of_users} </h2>
+                        <div className="quizinfobox">
+                            <h1>Waiting to start quiz</h1>
+                            <h1>Quiz ID : {quiz.quiz_id}</h1>
+                            <h1>Quiz Name : {quiz.quizName}</h1>
+                            <h1>No of questions:{quiz.questions.length}</h1>
+                            <h1> myname = {this.state.myusername} </h1>
+                            <h2>user = {this.state.no_of_users} </h2>
+                        </div>
+
                     </div>
 
-                </div>
+               
+
+
             )
         }
     }
