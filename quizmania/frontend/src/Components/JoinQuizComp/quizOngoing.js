@@ -74,6 +74,7 @@ class QuizOngoing extends Component {
             // getting quiz from the state if is not undefined
             const quiz = Data.quiz
             const username = Data.username
+            const socket = Data.socket
 
 
             //  setting state of the component with the details of the quiz fetched
@@ -81,6 +82,7 @@ class QuizOngoing extends Component {
                 quiz: quiz,
                 username:username,
                 questions: quiz.questions,
+                socket : socket
 
             },
 
