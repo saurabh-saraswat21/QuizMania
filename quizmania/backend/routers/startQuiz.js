@@ -44,6 +44,32 @@ module.exports = (app, server) => {
         else return false
     }
 
+    const deleteUser = (quiz_id, user_id) => {
+
+        return new Promise((resolve, reject) => {
+
+            usermodel.findOne({ quiz_id: quiz_id }, (err, response) => {
+                if (err) reject(err)
+                const retUser = checkIfSaved(response, user_id)
+                if (retUser) {
+                    usermodel.updateOne(
+                        { "quiz_id": quiz_id },
+
+                        {
+                            $pull: {
+                                "users": { "user_id": user_id }
+                            }
+                        }
+                    ).then((stats) => {
+
+                        resolve(stats)
+
+                    })
+                }
+            })
+
+        })
+    }
 //  method to save new users to the database 
   const saveUser = (userdata, quiz_id)=>{  
 
