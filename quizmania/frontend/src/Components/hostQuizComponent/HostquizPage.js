@@ -1,10 +1,12 @@
 import React, {useState, useEffect } from 'react'
 import io from 'socket.io-client'
 const ENDPOINT = "192.168.43.91:80"
+
 var socket
 const HostquizPage = (props) => {
+    const quiz_id = props.match.params.quiz_id
     const [quizName,setQuizName]= useState(null)
-    const[users,setUsers]= useState(0)
+    const[users,setUsers]= useState([])
 
 
     useEffect(()=>{
