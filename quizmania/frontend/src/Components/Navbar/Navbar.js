@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import UserContext from '../../context/userContext';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { Button } from '../../globalStyles';
@@ -14,6 +16,25 @@ import {
 } from './Navbar.elements';
 
 function Navbar() {
+  const { userData, setUserData } = useContext(UserContext);
+  const history = useHistory();
+
+  const signup = () => {
+    history.push('/signup');
+  }
+  // const signin = () => {
+  //   console.log(userData);
+  //   history.push('/signin');
+  // }
+  const logout = () => {
+    // console.log(userData.user);
+    setUserData({
+      token: undefined,
+      user: undefined
+    });
+    localStorage.setItem("auth-token", "");
+  }
+  // style
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -40,7 +61,7 @@ function Navbar() {
         <Nav>
           <NavbarContainer>
             <NavLogo to='/' onClick={closeMobileMenu}>
-              <NavIcon/>
+              <NavIcon />
               QuizMania
             </NavLogo>
             <MobileIcon onClick={handleClick}>
@@ -48,24 +69,58 @@ function Navbar() {
             </MobileIcon>
             <NavMenu onClick={handleClick} click={click}>
 
-            <NavBtnLink to='/joinquiz'>
-                    <Button primary>JoinQuiz</Button>
-             </NavBtnLink>
-            
-             
-              <NavItemBtn>
+              <NavBtnLink to='/joinquiz'>
+                <Button primary>JoinQuiz</Button>
+              </NavBtnLink>
+
+              {(userData.user) ? (
+                <>
+                  <NavItemBtn>
+                    {button ? (
+                      <NavBtnLink onClick={logout}>
+                        <Button primary>LOG OUT</Button>
+                      </NavBtnLink>
+                    ) : (
+                        <NavBtnLink onClick={logout}>
+                          <Button onClick={closeMobileMenu} fontBig primary>
+                            LOG OUT
+                    </Button>
+                        </NavBtnLink>
+                      )}
+                  </NavItemBtn>
+                </>
+              ) : (
+                  <>
+                    <NavItemBtn>
+                      {button ? (
+                        <NavBtnLink onClick={signup}>
+                          <Button primary>SIGN UP</Button>
+                        </NavBtnLink>
+                      ) : (
+                          <NavBtnLink onClick={signup}>
+                            <Button onClick={closeMobileMenu} fontBig primary>
+                              SIGN UP
+                    </Button>
+                          </NavBtnLink>
+                        )}
+                    </NavItemBtn>
+                  </>
+                )
+
+              }
+              {/* <NavItemBtn>
                 {button ? (
-                  <NavBtnLink to='/sign-up'>
+                  <NavBtnLink to='/signup'>
                     <Button primary>SIGN UP</Button>
                   </NavBtnLink>
                 ) : (
-                  <NavBtnLink to='/sign-up'>
-                    <Button onClick={closeMobileMenu} fontBig primary>
-                      SIGN UP
+                    <NavBtnLink to='/signup'>
+                      <Button onClick={closeMobileMenu} fontBig primary>
+                        SIGN UP
                     </Button>
-                  </NavBtnLink>
-                )}
-              </NavItemBtn>
+                    </NavBtnLink>
+                  )}
+              </NavItemBtn> */}
             </NavMenu>
           </NavbarContainer>
         </Nav>
