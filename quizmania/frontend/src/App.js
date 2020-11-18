@@ -8,7 +8,6 @@ import insertques from './Components/HomePageComp/insertques';
 import viewQuiz from './Components/quizzesInfo/viewQuiz';
 import getQuiz from './Components/quizzesInfo/getQuiz';
 import startQuiz from './Components/JoinQuizComp/startQuizHome'
-import quizOngoing from './Components/JoinQuizComp/quizOngoing';
 import Userinfo from './Components/JoinQuizComp/userinfo';
 import Editques from './Components/quizzesInfo/Editques';
 import JoinQuiz from './Components/partials/JoinQuiz'
@@ -22,6 +21,7 @@ import UserContext from './context/userContext';
 import Axios from 'axios';
 import hostquiz from './Components/JoinQuizComp/hostquiz';
 import HostquizPage from './Components/hostQuizComponent/HostquizPage';
+import QuizStats from './Components/JoinQuizComp/QuizStats';
 
 
 
@@ -86,6 +86,7 @@ function App() {
             <Route path='/viewquiz' component={viewQuiz} />
             <Route path='/hostquiz' component={hostquiz} />
             <Route path='/joinquiz' component={JoinQuiz} />
+            <Route path='/quizstats' component={QuizStats} />
             <Route exact path='/login' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/edit/:quiz_id' component={Editques} />
@@ -105,7 +106,6 @@ function App() {
       <UserContext.Provider value={{ userData, setUserData }}>
         <GlobalStyles />
         <Switch>
-          <Route path='/start' component={quizOngoing}  />
           <Route component={defaultRoutes}  />
         </Switch>
       </UserContext.Provider>
