@@ -417,6 +417,7 @@ class QuizOngoing extends Component {
         else {
 
             // getting details for rendering 
+           
 
             const {
 
@@ -521,4 +522,6 @@ class QuizOngoing extends Component {
     }
 
 }
-export default withRouter(quizOngoing)
+
+
+export default QuizOngoing
