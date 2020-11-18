@@ -2,7 +2,7 @@ module.exports = (app, server) => {
 
     // require necessary dependencies
     const mongoose = require('mongoose')
-    
+
     // require the user schema to save the users  
     const users_model = require("../databaseModel/users")
 
@@ -21,8 +21,8 @@ module.exports = (app, server) => {
         disconnected: true
     }
     var host = {
-        disconnected :true,
-        notUpdated :true
+        disconnected: true,
+        notUpdated: true
     }
 
 
@@ -71,8 +71,6 @@ module.exports = (app, server) => {
         })
     }
     //  method to save new users to the database 
-//  method to save new users to the database 
-    //  method to save new users to the database 
     const saveUser = (userData, quiz_id) => {
 
         //  returning promise to handle errors when function called
@@ -80,8 +78,6 @@ module.exports = (app, server) => {
         // resolve means success and reject means failure
         return new Promise((resolve, reject) => {
 
-            // finding the quizId if there is one 
-        // finding the quizId if there is one 
             // finding the quizId if there is one 
             usermodel.findOne({ quiz_id: quiz_id }, (err, response) => {
 
@@ -91,8 +87,6 @@ module.exports = (app, server) => {
 
 
                 // if there is no previous record of the user at the quiz id 
-            // if there is no previous record of the user at the quiz id 
-                // if there is no previous record of the user at the quiz id 
                 if (response == null) {
 
                     //  initializing new user to be stored
@@ -100,8 +94,6 @@ module.exports = (app, server) => {
                         quiz_id: quiz_id,
                         users: userData
                     })
-                    // save it as a new entry 
-                // save it as a new entry 
                     // save it as a new entry 
                     newuser.save().then((data) => {
                         console.log("saved");
@@ -112,8 +104,6 @@ module.exports = (app, server) => {
                 }
 
                 // if a entry already present 
-            // if a entry already present 
-                // if a entry already present 
                 else {
 
                     const retUser = checkIfSaved(response, userData.user_id)
@@ -122,8 +112,6 @@ module.exports = (app, server) => {
                         resolve(response)
                     }
                     else {
-                        // push the user to the userlist of the response   
-                // push the user to the userlist of the response   
                         // push the user to the userlist of the response   
                         response.users.push(userData)
 
@@ -146,7 +134,7 @@ module.exports = (app, server) => {
     }
 
 
-//  the method to handle all the realtime connection and events
+    //  the method to handle all the realtime connection and events
 
     // called when any new connection establish
     io.on('connection', socket => {
@@ -176,12 +164,14 @@ module.exports = (app, server) => {
 
         })
 
-        // data consist of the details of the  particular user like the username and the quiz id on which the user has joined
-        socket.on('update_socket', (data) => {
-            const quiz_id = data.quiz_id
+        socket.on('quiz_ended', (data) => {
+            const sentdata = {
+                scores: data,
+                username: socket.username
+            }
+            io.to("host" + socket.quiz_id).emit('a_quiz_ends', sentdata)
 
-            // setting socket username to the username of the player to be used anywhere 
-            socket.username = data.username;
+        })
 
             // setting socket quiz_id to the quiz id at which  the player has joined be used anywhere 
             
