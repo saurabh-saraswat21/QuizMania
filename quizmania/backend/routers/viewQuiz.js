@@ -30,6 +30,20 @@ app.post('/deletequiz',(req,res)=>{
 
 })
 
-
+app.post('/submitquiz',(req,res)=>{
+    const {userdata,quiz_id,total}= req.body
+    console.log(userdata);
+    console.log(quiz_id);
+    console.log(total);
+    
+    var newdata = new hostmodel({
+        quiz_id : quiz_id,
+        total_score : total, 
+        usersdata : userdata
+    })
+    newdata.save().then((res)=>{
+        console.log(res);
+    })
+})
 
 }
