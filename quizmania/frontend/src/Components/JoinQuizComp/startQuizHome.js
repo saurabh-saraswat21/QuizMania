@@ -72,8 +72,6 @@ export class startQuizHome extends Component {
     }
 
     render() {
-     render() { 
-    render() {
 
 
         // getting quiz from the props because it is available because we have already mapped it
