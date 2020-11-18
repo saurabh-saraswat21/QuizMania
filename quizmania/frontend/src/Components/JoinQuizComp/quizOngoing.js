@@ -386,10 +386,22 @@ class QuizOngoing extends Component {
         })
     }
 
-
-
-
     render() {
+      
+
+        if(this.state.redirect){
+            const quizdata = {
+                score : this.state.score,
+                total : this.state.numberOfQuestions
+            }
+            return(
+                <Redirect to = {{
+                    pathname : '/quizstats',
+                    state: quizdata
+                }}/>
+            )
+        }
+
 
         // if the state is not defined (direct acess)
 
