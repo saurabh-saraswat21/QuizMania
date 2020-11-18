@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Direct from '../errComponents/DirectAccess'
 import{Link,Redirect} from 'react-router-dom'
 import io from 'socket.io-client'
-import axios from 'axios'
+import QuizOngoing from './quizOngoing'
 const ENDPOINT = "192.168.43.91:80"
 var socket
 export class startQuizHome extends Component {
