@@ -61,9 +61,11 @@ class QuizOngoing extends Component {
 
 
     componentDidMount = () => {
-
+       
+        console.log("component did mount is called");
         // getting data from the location
-        const Data = this.props.location.state;
+        const Data = this.props.data
+        console.log(Data.socket);
 
         // checking if the data is undefined (in case of direct access)
 
