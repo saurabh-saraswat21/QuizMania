@@ -71,21 +71,27 @@ export class startQuizHome extends Component {
         })
     }
 
+    render() {
      render() { 
+    render() {
 
-      
+
         // getting quiz from the props because it is available because we have already mapped it
         const quiz = this.props.quiz;
         const username = this.state.myusername
         const all_users = this.state.all_users;
-        if(this.state.redirect){
+        const data = {
+            quiz : quiz,
+            username : username,
+            allusers: all_users,
+            socket : socket
+        }
+        if (this.state.redirect) {
 
-         return   (
-                <Redirect to ={{
-                    pathname: "/start",
-                    state :{quiz,username,all_users}
-              
-                  }}/>
+            return (
+
+                <QuizOngoing data = {data}/>
+
             )
         }
 
