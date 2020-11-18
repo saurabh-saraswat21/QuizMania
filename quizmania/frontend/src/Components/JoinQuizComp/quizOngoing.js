@@ -7,9 +7,10 @@ import Directacess from '../errComponents/DirectAccess'
 
 import '../../stylesheets/quiz.css'
 
+
 import { FcAlarmClock } from 'react-icons/fc'
 
-class quizOngoing extends Component {
+class QuizOngoing extends Component {
 
     // constructor fr initally setting state values 
     constructor(props) {
