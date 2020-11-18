@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import '../../stylesheets/startQuizHome.css'
 import { connect } from 'react-redux'
 import Direct from '../errComponents/DirectAccess'
-import{Link,Redirect} from 'react-router-dom'
 import io from 'socket.io-client'
 import QuizOngoing from './quizOngoing'
 const ENDPOINT = "192.168.43.91:80"
