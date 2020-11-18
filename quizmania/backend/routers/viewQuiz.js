@@ -1,8 +1,10 @@
 module.exports=(app)=>{
 
 const mongoose = require('mongoose')
-const model = require("../databaseModel/quizdata")
-const quizmodel = mongoose.model('quiz', model.QuizSchema);
+const Quizmodel = require("../databaseModel/quizdata")
+const HostQuizModelSchema = require("../databaseModel/hostquizdata")
+const quizmodel = mongoose.model('quiz', Quizmodel.QuizSchema);
+const hostmodel = mongoose.model('hostquiz', HostQuizModelSchema.hostquizDataScema);
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
