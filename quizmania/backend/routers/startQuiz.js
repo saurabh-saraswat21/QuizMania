@@ -150,15 +150,32 @@ module.exports = (app, server) => {
 
     // called when any new connection establish
     io.on('connection', socket => {
-        console.log("new socket connection");
 
-        socket.on('start',(data)=>{
+        socket.on('start', (data) => {
             io.to(data).emit('startquiz')
         })
-  
-        
-        // handling a update socket event that is called from the client side on connection
-        
+
+
+        socket.on('host_connected', (quiz_id) => {
+
+            socket.host_id = quiz_id
+            socket.join("host" + quiz_id)
+            host.disconnected = false
+
+            console.log("host of  quiz_id " + quiz_id + " connected");
+
+            if (!host.disconnected && host.notUpdated) {
+                getQuizData(socket.host_id).then((data) => {
+                    io.to("host" + data.quiz_id).emit('update', data.users)
+                    host.notUpdated = false
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }
+
+
+        })
+
         // data consist of the details of the  particular user like the username and the quiz id on which the user has joined
         socket.on('update_socket', (data) => {
             const quiz_id = data.quiz_id
