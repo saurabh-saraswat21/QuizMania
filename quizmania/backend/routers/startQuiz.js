@@ -70,56 +70,78 @@ module.exports = (app, server) => {
 
         })
     }
+    //  method to save new users to the database 
 //  method to save new users to the database 
-  const saveUser = (userdata, quiz_id)=>{  
+    //  method to save new users to the database 
+    const saveUser = (userData, quiz_id) => {
 
         //  returning promise to handle errors when function called
 
-            // resolve means success and reject means failure
-      return new Promise (function(resolve,reject){
+        // resolve means success and reject means failure
+        return new Promise((resolve, reject) => {
 
+            // finding the quizId if there is one 
         // finding the quizId if there is one 
-        usermodel.findOne({ quiz_id: quiz_id }, (err, response) => {
+            // finding the quizId if there is one 
+            usermodel.findOne({ quiz_id: quiz_id }, (err, response) => {
 
-            // if anytype of error occurs return with reject
-            if(err) reject(err)
+                // if anytype of error occurs return with reject
+                if (err) reject(err)
 
-            
 
+
+                // if there is no previous record of the user at the quiz id 
             // if there is no previous record of the user at the quiz id 
-            if (response == null) {
-                
-                //  initializing new user to be stored
-            var newuser = usermodel({
-                quiz_id: quiz_id,
-                userList: userdata
-            })
+                // if there is no previous record of the user at the quiz id 
+                if (response == null) {
+
+                    //  initializing new user to be stored
+                    var newuser = usermodel({
+                        quiz_id: quiz_id,
+                        users: userData
+                    })
+                    // save it as a new entry 
                 // save it as a new entry 
-                newuser.save().then(() => {
+                    // save it as a new entry 
+                    newuser.save().then((data) => {
+                        console.log("saved");
 
-                    // call the sucess function
-                    resolve()
-                })
-            }
+                        // call the sucess function
+                        resolve(data)
+                    })
+                }
 
+                // if a entry already present 
             // if a entry already present 
-            else {
+                // if a entry already present 
+                else {
 
+                    const retUser = checkIfSaved(response, userData.user_id)
+                    if (retUser) {
+                        console.log("Already exist");
+                        resolve(response)
+                    }
+                    else {
+                        // push the user to the userlist of the response   
                 // push the user to the userlist of the response   
-                response.userList.push(userdata)
+                        // push the user to the userlist of the response   
+                        response.users.push(userData)
 
-                // resave the updated response
-                response.save().then(() => {
+                        // resave the updated response
+                        response.save().then((data) => {
+                            console.log("saved");
+                            // call the sucess function
+                            resolve(data)
+                        })
+                    }
 
-                    // call the sucess function
-                    resolve()
-                })
-            }
+
+                }
+            })
+
         })
 
-      })
 
-       
 
     }
 
