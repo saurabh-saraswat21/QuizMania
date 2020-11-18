@@ -252,57 +252,25 @@ module.exports = (app, server) => {
                         console.log("host is disconnected");
                         host.notUpdated = true
                     }
-                        } 
-                    }
                     else {
                         host.notUpdated = true
                     }
-                       }    
-                    }
                 }, 2000);
             }
-                    } 
-            }
 
 
-                    // saving in the database
-                    response.save().then(() => {
-
-                        // again calling the update userlist event to be listen at client side
-                    io.to(socket.quiz_id).emit('update_user_list',socket.quiz_id)
-                    var userlist = io.sockets.adapter.rooms[socket.quiz_id]
-                    var length = userlist ? userlist.length : 0
-                    io.emit('sent_update',length)
 
 
-                    console.log(socket.username + " disconnected");
-                    
-                })
-                    
-            }                   
-            })
+
+
+
         })
     })
 
 
-    // handling the get request that client will make for updating userlists
-     app.get('/getusers/:quiz_id',(req,res)=>{
+ 
 
-        // geting the quiz_id 
-        const quiz_id = parseInt(req.params.quiz_id);
 
-        //  finding the  entries for the quiz id 
-        usermodel.findOne({quiz_id:quiz_id},(err,response)=>{
-            if(err) 
-                console.log(err);
-            else
-            //  sending the response
-            res.send(response)
-        })
-
-     })
-
-        
 
 
 }
