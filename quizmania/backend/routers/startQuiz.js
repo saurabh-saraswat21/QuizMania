@@ -203,11 +203,19 @@ module.exports = (app, server) => {
 
             })
         })
-             })         
+
+        socket.on('client_is_updated', (data) => {
+
+            if (host.notUpdated) {
+                io.to("host" + data.quiz_id).emit('update', data.users)
+                host.notUpdated = false
+            }
+
+
         })
 
-    
         // when socket disconnects like leave in behind or quiz is completed
+
         socket.on('disconnect', () => {
             
             // an empty array for the  users left
