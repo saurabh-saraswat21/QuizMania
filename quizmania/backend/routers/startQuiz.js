@@ -217,41 +217,53 @@ module.exports = (app, server) => {
         // when socket disconnects like leave in behind or quiz is completed
 
         socket.on('disconnect', () => {
-            
-            // an empty array for the  users left
-            var newuserList = []
-            
-            //  finding the quiz_id entry 
-            usermodel.findOne({quiz_id:socket.quiz_id},(err,response)=>{
-                
-                //  if response is not null which will be the case most of the times 
-                if(response!=null) 
-                { 
-                    // getiing the userlist  this currently has the diconnected user saved
-                    var userList = response.userList
-                    
-                    // checking every username of the userlist
-                    for (let i = 0; i < userList.length; i++) {
-                        var username = userList[i].username
 
-                        // if it not matches the username
-                       if(username != socket.username)
-                       {
+            if (socket.username) {
 
-                        const user ={     
-                            username: username,
-                             score:0
+                user.disconnected = true;
+                console.log(socket.username + "disconnected waiting for rejoin");
+                const { user_id, quiz_id } = socket;
+                setTimeout(() => {
+                    if (user.disconnected) {
+                        deleteUser(quiz_id, user_id).then((stats) => {
+
+                            console.log(socket.username + "disconnected");
+
+                            getQuizData(quiz_id).then((data) => {
+                                io.to("host" + data.quiz_id).emit('update', data.users)
+                                host.notUpdated = false
+                                io.to(quiz_id).emit('update_user_list', data)
+
+                            }).catch((err) => {
+                                console.log(err);
+                            })
+
+                        })
+                    }
+                    else {
+                        console.log(socket.username + "reconnected ");
+                    }
+                }, 2000);
+            }
+            if (socket.host_id) {
+                host.disconnected = true
+                setTimeout(() => {
+                    if (host.disconnected) {
+                        console.log("host is disconnected");
+                        host.notUpdated = true
+                    }
                         } 
-
-                        // push into the new user list 
-                        newuserList.push(user)
-                        console.log(newuserList);
+                    }
+                    else {
+                        host.notUpdated = true
+                    }
                        }    
-                        
+                    }
+                }, 2000);
+            }
                     } 
+            }
 
-                    //  setting the userlist of response with the new userlist created
-                    response.userList=newuserList
 
                     // saving in the database
                     response.save().then(() => {
