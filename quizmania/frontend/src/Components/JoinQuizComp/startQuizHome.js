@@ -6,22 +6,27 @@ import{Link,Redirect} from 'react-router-dom'
 import io from 'socket.io-client'
 import QuizOngoing from './quizOngoing'
 const ENDPOINT = "192.168.43.91:80"
+
+
+
 var socket
 export class startQuizHome extends Component {
-     constructor(props){
-         super(props)
-         this.state= {
+    constructor(props) {
+        super(props)
+        this.state = {
+            redirect: false,
+            user_id: this.props.location.state ? this.props.location.state.user_id : null,
 
-            redirect : false,
-             quiz_id : this.props.location.state ?this.props.location.state.quiz_id:null,
-            
+            quiz_id: this.props.location.state ? this.props.location.state.quiz_id : null,
+
             //   the username is passed in the props by the HOC function below
-             myusername : this.props.username,
 
-             no_of_users : 0
-             
-         }
-     }
+            myusername: this.props.username,
+
+            no_of_users: 0
+
+        }
+    }
 
 
 
