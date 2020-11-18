@@ -1,5 +1,6 @@
 import React, {useState, useEffect } from 'react'
 import io from 'socket.io-client'
+import axios from 'axios'
 const ENDPOINT = "192.168.43.91:80"
 
 var socket
@@ -70,7 +71,7 @@ const HostquizPage = (props) => {
          
     }
     
-    const quiz_id = props.match.params.quiz_id
+  
   
 
     return (
@@ -79,8 +80,9 @@ const HostquizPage = (props) => {
 
         <h1>Share this Join Code to instantly join the quiz  {quiz_id}</h1>
             <h1> Start  The QUiz NOW</h1>
-        <h1>current no of users :-{users}</h1>
+        <h1>current no of users :-{users.length}</h1>
             <button onClick={()=>startquiz(quiz_id)} >Start</button>
+             {userlist}
             
         </div>
     )
