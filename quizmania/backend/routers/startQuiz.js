@@ -16,6 +16,14 @@ module.exports = (app, server) => {
     const socket = require('socket.io');
     const io = socket(server);
 
+    var user = {
+        user_id: 0,
+        disconnected: true
+    }
+    var host = {
+        disconnected :true,
+        notUpdated :true
+    }
 
 
 //  method to save new users to the database 
