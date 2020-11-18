@@ -33,11 +33,13 @@ export class startQuizHome extends Component {
      componentDidMount() {
 
          if(this.state.myusername){
-                const  socket_data = {
-                username : this.state.myusername,
-                quiz_id :this.state.quiz_id
-         }
-                // estabishing a new socket connection 
+            const socket_data = {
+                username: this.state.myusername,
+                quiz_id: this.state.quiz_id,
+                user_id: this.state.user_id
+            }
+
+
             socket = io(ENDPOINT)
             socket.on('startquiz',()=>{
                 this.startquiz()
