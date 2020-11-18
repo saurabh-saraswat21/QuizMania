@@ -34,6 +34,16 @@ module.exports = (app, server) => {
             })
         })
     }
+
+
+    const checkIfSaved = (response, user_id) => {
+        if (response) {
+            return response.users.find(user => user.user_id === user_id)
+        }
+
+        else return false
+    }
+
 //  method to save new users to the database 
   const saveUser = (userdata, quiz_id)=>{  
 
