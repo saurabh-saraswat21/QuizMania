@@ -64,13 +64,12 @@ export class startQuizHome extends Component {
         }
 
     }
-         
-     }
-     startquiz=()=>{
-         this.setState({
-             redirect:true
-         })
-     }
+
+    startquiz = () => {
+        this.setState({
+            redirect: true
+        })
+    }
 
      render() { 
 
