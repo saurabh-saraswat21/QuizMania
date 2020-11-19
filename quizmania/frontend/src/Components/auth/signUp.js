@@ -47,27 +47,27 @@ export default function Signup() {
             <div className="register-container">
                 <form onSubmit={submit} className='Brown'>
                     <div className='register-input-field'>
-                        <input type="text" id="firstName" onChange={(e) => setFirstName(e.target.value)} required />
+                        <input type="text" id="firstName" onChange={(e) => setFirstName(e.target.value)} required autoComplete="off"/>
                         <span></span>
                         <label htmlFor="firstName">First Name</label>
                     </div>
                     <div className='register-input-field'>
-                        <input type="text" id="lastName" onChange={(e) => setLastName(e.target.value)} required/>
+                        <input type="text" id="lastName" onChange={(e) => setLastName(e.target.value)} required autoComplete="off"/>
                         <span></span>
                         <label htmlFor="lastName">Last Name</label>
                     </div>
                     <div className='register-input-field'>
-                        <input type="text" id="email" onChange={(e) => setEmail(e.target.value)} required/>
+                        <input type="text" id="email" onChange={(e) => setEmail(e.target.value)} required autoComplete="off"/>
                         <span></span>
                         <label htmlFor="email">Email</label>
                     </div>
                     <div className='register-input-field'>
-                        <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} required/>
+                        <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} required autoComplete="off"/>
                         <span></span>
                         <label htmlFor="password">Password</label>
                     </div>
                     <div className='register-input-field'>
-                        <input type="password" id="password2" onChange={(e) => setPassword2(e.target.value)} required/>
+                        <input type="password" id="password2" onChange={(e) => setPassword2(e.target.value)} required autoComplete="off"/>
                         <span></span>
                         <label htmlFor="password">Confirm Password</label>
                     </div>

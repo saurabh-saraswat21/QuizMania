@@ -1,4 +1,6 @@
-import React from 'react'    
+import React from 'react'
+import '../../stylesheets/quizstats.css'
+
 const QuizStats=(props)=> {
 const quizData = props.location.state
 const exit = ()=>{
@@ -6,9 +8,9 @@ const exit = ()=>{
     }
     if(quizData){
         return (
-            <div>
-                Your Quiz is finished 
-                Your final score is {quizData.score} out of {quizData.total}
+            <div className="quizend">
+                <h1>Your Quiz is finished</h1> 
+                <h3>Your final score is {quizData.score} out of {quizData.total}</h3>
                 <button onClick={exit}>Confirm And Exit</button>
             </div>
         )
