@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 
+import '../../stylesheets/viewQuiz.css';
+
 const ViewQuiz=(props)=> {
 
     var list =[] ;
@@ -31,7 +33,7 @@ const ViewQuiz=(props)=> {
             
             <div className="quiz" key = {quiz.quiz_id}>
 
-            <h2>{quiz.quiz_id}</h2>
+                <h2>{quiz.quiz_id}</h2>
                     
                     {/* link every quiz id to view all the questions of the quiz */}
                     <Link to ={{
@@ -40,12 +42,12 @@ const ViewQuiz=(props)=> {
                     }}> <h2>{quiz.quizName}</h2> </Link>
 
                     <button onClick={()=>deletequiz(quiz.quiz_id)}>delete</button>
-                   
+                    
                
                     
                 
                 
-                </div>
+            </div>
             )
         })
     )
@@ -80,7 +82,7 @@ const ViewQuiz=(props)=> {
 }
 
 const deletequiz=(quiz_id)=>{
-    axios.post('http://192.168.43.91:80/deletequiz',{quiz_id}).then(window.location.reload())
+    axios.post('http://192.168.43.135:80/deletequiz',{quiz_id}).then(window.location.reload())
 }
 
 //mapping state to props of component
