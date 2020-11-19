@@ -1,0 +1,43 @@
+.quizList{
+   background: #ecf0f1;
+   width: 55rem;
+   margin: auto;
+   margin-top: 5rem;
+   padding: 30px;
+   border-radius: 12px;
+}
+.header-container{
+   display: flex;
+   justify-content: space-between;
+}
+
+.title
+{
+   width: 12.5rem;
+   font-weight: 700;
+   padding: 0.2rem;
+   margin-bottom: 0.1rem;
+   text-align: center;
+}
+
+
+#hr{
+   margin-bottom: 20px;
+}
+
+.search-form .search-input,
+.search-form .search-btn
+{
+   padding: 2px;
+   border: none;
+   font-size: 24px;
+   background: white;
+   outline: none;
+}
+
+svg{
+   height: 0.8em;
+   color: blue;
+   padding: 0;
+}
+
