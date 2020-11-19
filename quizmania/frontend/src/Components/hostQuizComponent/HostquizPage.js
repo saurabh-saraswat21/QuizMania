@@ -28,21 +28,25 @@ const HostquizPage = (props) => {
 
     useEffect(()=>{
         socket= io(ENDPOINT)
-        setQuizName(props.location.state.quizName);
+        if(props.location.state){
+            const quizname= props.location.state.quizName
+        setQuizName(quizname);
+        }
+        
 
         socket.emit('host_connected',quiz_id)
         socket.emit('get_update')
 
         socket.on('update',(data)=>{
            console.log("host has recived update");
-            if(users!=data){
+            if(users!==data){
                 setUsers(data)
             }
 
         })
         socket.on('a_quiz_ends',(data)=>{
             const {username}= data
-            const {score,total} = data.scores
+            const {score} = data.scores
 
             if(data && users){
                 const index = users.findIndex(user=>user.username===username)
@@ -51,17 +55,14 @@ const HostquizPage = (props) => {
                     tempusers[index].score= score
                     setUsers(tempusers)
                 }
-                const userdata = {
-                    username : username,
-                    score : score
-                }
+               
             
             }
            
         })
 
       
-    })
+    },[props.location.state,quiz_id,users])
 
 
 
