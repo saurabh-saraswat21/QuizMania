@@ -145,9 +145,9 @@ class insertques extends Component {
 
         }
         //making request to backend server
-        axios.post('http://192.168.43.24:80/submitques/', {quizName,question}).then(
+        axios.post('http://192.168.0.100:80/submitques/', { quizName, question }).then(
 
-        window.location.reload()
+            window.location.reload()
         )
     }
 
@@ -190,7 +190,7 @@ class insertques extends Component {
                         </div>
 
                         {/* The submit buttton that is enabled if both the correctflag and the all flag are true */}
-                        
+
 
                     </form>
                     <button disabled={!(this.state.allflag && this.state.correctflag)} className="submitbtn" onClick={this.handleClick}>Submit</button>

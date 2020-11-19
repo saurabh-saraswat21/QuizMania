@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 //import router for routing
-import { BrowserRouter, Route, Switch ,} from 'react-router-dom'
+import { BrowserRouter, Route, Switch, } from 'react-router-dom'
 
 // import various components to be rendered  
 import Home from './Components/MainPagesComp/home'
@@ -47,7 +47,7 @@ function App() {
     );
 
     if (tokenRes.data) {
-      const userRes = await Axios.get("http://192.168.43.24:80/auth", {
+      const userRes = await Axios.get("http://192.168.0.100:80/auth", {
         headers: { "x-auth-token": token },
       });
 
@@ -59,7 +59,7 @@ function App() {
     }
   };
   useEffect(() => {
-    
+
     checkLoggedIn();
   }, []);
 
@@ -106,7 +106,7 @@ function App() {
       <UserContext.Provider value={{ userData, setUserData }}>
         <GlobalStyles />
         <Switch>
-          <Route component={defaultRoutes}  />
+          <Route component={defaultRoutes} />
         </Switch>
       </UserContext.Provider>
     </BrowserRouter>
