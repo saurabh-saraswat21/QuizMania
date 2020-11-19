@@ -1,4 +1,4 @@
-import React ,{useState,useEffect} from 'react'
+import React ,{useState} from 'react'
 import { Link } from 'react-router-dom'
 
 import '../../stylesheets/userInfo.css'
@@ -9,7 +9,7 @@ const generateuser_id= ()=>{
 
 function Userinfo(props) {
     const [username, setusername] = useState("")
-    const [user_id, setuserID] = useState(generateuser_id)
+    const [user_id] = useState(generateuser_id)
     const quiz_id = props.match.params.quiz_id
 
     return (

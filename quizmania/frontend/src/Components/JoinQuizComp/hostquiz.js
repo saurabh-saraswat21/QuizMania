@@ -39,13 +39,6 @@ const Hostquiz=(props)=> {
                         state:quiz
                         
                     }}> HOST</Link>
-
-                    
-                   
-               
-                    
-                
-                
                 </div>
             )
         })
