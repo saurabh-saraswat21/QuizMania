@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import UserContext from '../../context/userContext';
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorMsg";
+import '../../stylesheets/signin.css'
 
 export default function SignIn() {
     const [email, setEmail] = useState();
@@ -32,26 +33,27 @@ export default function SignIn() {
     };
     return (
         <div className="page">
-            <h2>Log in</h2>
+            <h2>Login</h2>
             {error && (
                 <ErrorNotice message={error} clearError={() => setError(undefined)} />
             )}
-            <div className="container">
+            {/* <div className="container"> */}
                 <form onSubmit={submit} className='Brown'>
-                    <h5 className="white-text">Sign In</h5>
                     <div className='input-field'>
+                        <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} required autoComplete="off" />
+                        <span></span>
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className='input-field'>
+                        <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} required/>
+                        <span></span>
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <div className='input-field'>
-                        <button className="btn white black-text">Log in</button>
+                    <div className="log-btn">
+                        <button className="btn white black-text">Login</button>
                     </div>
                 </form>
-            </div>
+            {/* </div> */}
         </div>
     );
 }
