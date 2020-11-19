@@ -1,6 +1,8 @@
 import React, {useState, useEffect } from 'react'
 import io from 'socket.io-client'
 import axios from 'axios'
+import '../../stylesheets/hostquizzpage.css'
+
 const ENDPOINT = "192.168.43.24:80"
 
 var socket
@@ -77,14 +79,15 @@ const HostquizPage = (props) => {
 
     return (
         <div>
-            <h1>QuizName : {quizName}</h1>
-
-        <h1>Share this Join Code to instantly join the quiz  {quiz_id}</h1>
-            <h1> Start  The QUiz NOW</h1>
-        <h1>current no of users :-{users.length}</h1>
-            <button onClick={()=>startquiz(quiz_id)} >Start</button>
-             {userlist}
-            
+            <div className="ready-host">
+            <h1>QuizName : <h2>{quizName}</h2> </h1>
+            <h1>QuizCode :  <h2>{quiz_id}</h2> </h1>
+            <h1>Current no. of Users: <h3>{users.length}</h3> </h1>
+            <button onClick={()=>startquiz(quiz_id)} >Start Quiz</button>
+        </div>
+        {/* <div>
+            {userlist}
+        </div> */}
         </div>
     )
 }
