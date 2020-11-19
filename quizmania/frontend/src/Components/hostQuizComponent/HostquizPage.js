@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from 'react'
 import io from 'socket.io-client'
 import axios from 'axios'
-const ENDPOINT = "192.168.43.91:80"
+const ENDPOINT = "192.168.43.24:80"
 
 var socket
 const HostquizPage = (props) => {

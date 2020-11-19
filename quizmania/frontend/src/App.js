@@ -47,7 +47,7 @@ function App() {
     );
 
     if (tokenRes.data) {
-      const userRes = await Axios.get("http://192.168.0.100:80/auth", {
+      const userRes = await Axios.get("http://192.168.43.24:80/auth", {
         headers: { "x-auth-token": token },
       });
 
