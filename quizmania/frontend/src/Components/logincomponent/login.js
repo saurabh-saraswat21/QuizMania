@@ -1,15 +1,21 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+// import React from 'react'
+// import {Link} from 'react-router-dom'
+// import SignIn from '../auth/signIn'
+// import InfoSection from '../InfoSection/InfoSection'
+// import { homeLogin } from '../MainPagesComp/Data.js';
+// import '../../stylesheets/login.css'
 
-function login() {
-    return (
-        <div>
-            <input type="text" placeholder="username" />
-            <input type="password" placeholder="password" />
-            <Link to = '/login/dashboard'><button>Submit</button></Link>
+// function login() {
+//     return (
+//         <div className="log">
+            
+//             <InfoSection {...homeLogin}/>
+//             <div className="signn">
+//                 <SignIn />
+//             </div>
 
-        </div>
-    )
-}
+//         </div>
+//     )
+// }
 
-export default login
+// export default login

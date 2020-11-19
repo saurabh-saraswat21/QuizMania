@@ -51,7 +51,10 @@ const ViewQuiz = (props) => {
         )
         // if Empty 
         : (
-            <h1>No quizzes</h1>
+            <div>
+                <h1> You have not created any quiz  </h1>
+                <Link to="/createquiz"> <button>Create Now</button> </Link>
+            </div>
         )
 
     //main return component

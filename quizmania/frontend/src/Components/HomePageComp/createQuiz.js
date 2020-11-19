@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import '../../stylesheets/createquizz.css'
 
 class createQuiz extends Component {
     
@@ -25,14 +26,10 @@ class createQuiz extends Component {
     }
     render() {
         
-        return (
-            
-
-            <div className="createQuiz">
-               
-                <div className="insertform">
+        return (   
+                <div className="quiznameform">
                     <form onSubmit={this.handleSubmit} id="createform">
-                        <div className="quesfield"><input type="text"  placeholder="New Quiz Name" onChange={this.handleChange} /></div>
+                        <div className="quizfield"><input type="text"  placeholder="New Quiz Name" onChange={this.handleChange} /></div>
                        <Link to ={{
                            pathname : "/insertques/" + this.state.quiz_id,
                            state : this.state.quizName
@@ -43,8 +40,6 @@ class createQuiz extends Component {
                     </form>
 
                 </div>
-
-            </div>
         )
     }   
 }

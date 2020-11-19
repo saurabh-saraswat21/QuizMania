@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import {Link} from 'react-router-dom'
+
 import '../../stylesheets/insertques.css'
 
 class insertques extends Component {
@@ -194,6 +196,7 @@ class insertques extends Component {
 
                     </form>
                     <button disabled={!(this.state.allflag && this.state.correctflag)} className="submitbtn" onClick={this.handleClick}>Submit</button>
+                    <Link to="/"><button className="finish-btn">Finish</button></Link>
                 </div>
             </div>
         )

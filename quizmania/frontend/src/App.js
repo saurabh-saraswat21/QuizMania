@@ -22,6 +22,7 @@ import Axios from 'axios';
 import hostquiz from './Components/JoinQuizComp/hostquiz';
 import HostquizPage from './Components/hostQuizComponent/HostquizPage';
 import QuizStats from './Components/JoinQuizComp/QuizStats';
+import login from './Components/logincomponent/login'
 
 
 

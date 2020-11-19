@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import io from 'socket.io-client'
 import axios from 'axios'
+import '../../stylesheets/hostquizzpage.css'
+
 const ENDPOINT = "192.168.0.100:80"
 
 var socket
@@ -25,23 +27,28 @@ const HostquizPage = (props) => {
             <h1>no users</h1>
         )
 
+
     useEffect(() => {
         socket = io(ENDPOINT)
-        setQuizName(props.location.state.quizName);
+        if (props.location.state) {
+            const quizname = props.location.state.quizName
+            setQuizName(quizname);
+        }
+
 
         socket.emit('host_connected', quiz_id)
         socket.emit('get_update')
 
         socket.on('update', (data) => {
             console.log("host has recived update");
-            if (users != data) {
+            if (users !== data) {
                 setUsers(data)
             }
 
         })
         socket.on('a_quiz_ends', (data) => {
             const { username } = data
-            const { score, total } = data.scores
+            const { score } = data.scores
 
             if (data && users) {
                 const index = users.findIndex(user => user.username === username)
@@ -50,17 +57,14 @@ const HostquizPage = (props) => {
                     tempusers[index].score = score
                     setUsers(tempusers)
                 }
-                const userdata = {
-                    username: username,
-                    score: score
-                }
+
 
             }
 
         })
 
 
-    })
+    }, [props.location.state, quiz_id, users])
 
 
 
@@ -75,14 +79,15 @@ const HostquizPage = (props) => {
 
     return (
         <div>
-            <h1>QuizName : {quizName}</h1>
-
-            <h1>Share this Join Code to instantly join the quiz  {quiz_id}</h1>
-            <h1> Start  The QUiz NOW</h1>
-            <h1>current no of users :-{users.length}</h1>
-            <button onClick={() => startquiz(quiz_id)} >Start</button>
+            <div className="ready-host">
+                <h1>QuizName : <h2>{quizName}</h2> </h1>
+                <h1>QuizCode :  <h2>{quiz_id}</h2> </h1>
+                <h1>Current no. of Users: <h3>{users.length}</h3> </h1>
+                <button onClick={() => startquiz(quiz_id)} >Start Quiz</button>
+            </div>
+            {/* <div>
             {userlist}
-
+        </div> */}
         </div>
     )
 }
