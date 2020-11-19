@@ -196,7 +196,7 @@ class insertques extends Component {
 
                     </form>
                     <button disabled={!(this.state.allflag && this.state.correctflag)} className="submitbtn" onClick={this.handleClick}>Submit</button>
-                    <Link to="/"><button>Finish</button></Link>
+                    <Link to="/"><button className="finish-btn">Finish</button></Link>
                 </div>
             </div>
         )

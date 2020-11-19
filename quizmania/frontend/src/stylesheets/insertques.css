@@ -12,6 +12,7 @@ body {
     width: 800px;
     background: #ECF0F1 ;
     border-radius: 10px;
+    height: 80vh;
 }
 
 .insertform h1 {
@@ -57,7 +58,7 @@ input {
 }
 
 .submitbtn {
-    margin: 0 auto; 
+    margin-left: 90px; 
     width:620px;
     height: 40px;
     border: 1px solid;
@@ -73,4 +74,21 @@ input {
 .submitbtn:hover {
     border-color: #2691d9;
     transition: .5s;
+}
+
+.finish-btn {
+
+    margin-left: 90px; 
+    margin-top: 8px;
+    width:620px;
+    height: 40px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+
 }

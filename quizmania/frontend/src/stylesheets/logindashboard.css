@@ -1,0 +1,46 @@
+.dash {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+
+}
+
+.dash-link{
+
+    padding-top: 10px;
+    text-align: center;
+}
+
+.dash-link button {
+
+    width: 80%;
+    height: 35px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    margin-top: 15px;
+
+}
+
+.dash-link button:hover{
+
+    border-color: #2691d9;
+    transition: .5s;
+
+}
+
+.dash h1{
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+}

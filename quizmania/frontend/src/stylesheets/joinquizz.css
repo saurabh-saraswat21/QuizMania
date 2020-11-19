@@ -4,6 +4,18 @@
     padding: 10px 0;
 }
 
+.joinquiz input{
+
+  height: 25px;
+
+}
+
+.joinquiz button{
+
+  height: 25px;
+
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

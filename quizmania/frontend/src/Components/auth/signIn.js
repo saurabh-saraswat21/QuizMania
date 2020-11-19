@@ -40,7 +40,7 @@ export default function SignIn() {
             {/* <div className="container"> */}
                 <form onSubmit={submit} className='Brown'>
                     <div className='input-field'>
-                        <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} required autoComplete="off" />
+                        <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} required />
                         <span></span>
                         <label htmlFor="email">Email</label>
                     </div>
