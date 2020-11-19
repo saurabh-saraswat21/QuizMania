@@ -52,7 +52,10 @@ const Hostquiz=(props)=> {
     )
     // if Empty 
     :(
-        <h1>No quizzes</h1>
+        <div>
+            <h1> There are no quiz to Host </h1>
+            <Link to ="/createquiz"> <button>Create Now</button> </Link>
+        </div>
     )
 
     //main return component
