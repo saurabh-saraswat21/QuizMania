@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom'
 
 import '../../stylesheets/viewQuiz.css';
 
+import { GiMagnifyingGlass } from 'react-icons/gi';
+
 const ViewQuiz=(props)=> {
 
     var list =[] ;
@@ -60,21 +62,34 @@ const ViewQuiz=(props)=> {
     return(
         
         <div className="quizList">
-            <input
-            disabled={!props.quizInfo} 
-            onChange={(event)=>{
-                console.log(event);
-                setquiz_id(event.target.value)
-            }
-            
-            } type="number"/>
 
-            <Link to={{
-                pathname: '/getquiz/'+quiz_id
-            }}><button disabled={!quiz_id} >go</button></Link>
-            
+            <div className="header-container">
+
+                <div className="title">
+                    <h1>Quiz List</h1>
+                </div>
+                <form className="search-form">
+                    <input className="search-input"
+                    disabled={!props.quizInfo} 
+                    onChange={(event)=>{
+                        console.log(event);
+                        setquiz_id(event.target.value)
+                    }
+                        
+                    } type="number"/>
+
+                    <Link to={{
+                        pathname: '/getquiz/'+quiz_id
+                    }}><button className="search-btn" disabled={!quiz_id} ><GiMagnifyingGlass/></button>
+                    </Link>    
+                </form>
+                
+                                        
+            </div>
+            <hr id="hr"/>
+
             {Quiz_List}
-            
+
         </div>
     )
 
