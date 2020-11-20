@@ -15,7 +15,7 @@ function Userinfo(props) {
     return (
         <div>
             <div className="player_info_box">
-                <input type="text" placeholder="enter your nickname" 
+                <input type="text" placeholder="Enter your username" 
                  onChange={(event)=>{
                      setusername(event.target.value)
                      console.log(username);

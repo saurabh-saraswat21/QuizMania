@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import io from 'socket.io-client'
-import axios from 'axios'
 import '../../stylesheets/hostquizzpage.css'
 
-const ENDPOINT = "192.168.0.100:80"
-
+const ENDPOINT = "192.168.43.24:80"
 
 var socket
 const HostquizPage = (props) => {
