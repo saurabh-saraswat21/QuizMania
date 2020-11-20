@@ -3,7 +3,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    height: 220px;
+    height: 230px;
     transform: translate(-50%, -50%);
     width: 400px;
     border-radius: 10px;
@@ -13,7 +13,7 @@
 
 .ready-host h1 {
 
-    margin: 12px 10px;
+    margin: 10px 10px;
     display: flex;
     font-weight: 500;
 
@@ -30,18 +30,6 @@ h1 h3{
     margin-left: 10px;
     font-weight: 500;
 }
-
-.userlist {
-
-    color: white;
-    font-size: 30px;
-
-}
-
-.username{
-    font-size: 8px;
-}
-
 
 .ready-host button {
 
