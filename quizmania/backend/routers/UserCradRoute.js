@@ -95,7 +95,7 @@ module.exports = (app) => {
             const token = req.header("x-auth-token");
             if (!token) return res.json(false);
 
-            const verified = jwt.verify(token, process.env.JWT_SECRET);
+            const verified = jwt.verify(token, "fdfjnjbm");
             if (!verified) return res.json(false);
 
             const user = await userAuth.findById(verified.id);

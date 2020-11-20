@@ -35,13 +35,12 @@ function App() {
   })
   const checkLoggedIn = async () => {
 
-    let token = cookie.get("auth-token");
+    const token = cookie.get("auth-token");
 
     if (token === null) {
       cookie.set("auth-token", "");
       token = "";
     }
-
     const tokenRes = await Axios.post(
       'http://192.168.0.100:80/tokenIsValid',
       null,
@@ -57,6 +56,7 @@ function App() {
         token,
         user: userRes.data,
       });
+      console.log(userData);
 
     }
   };
