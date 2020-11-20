@@ -1,15 +1,66 @@
 .Start_quiz_container{
-    border: 2px solid red;
-    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 250px;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    overflow: hidden;
+    border-radius: 10px;
     
 }
+
 .quizinfobox{
-    position: relative;
-    margin: 4% auto;
-    border: 2px solid white;
-    width: 60%;
+   
+    padding: 10px;
+
+}
+
+.quizinfobox .waiting{
+
     text-align: center;
-    outline: none;
-    border-radius: 2rem;
-    display: block;
+    padding-left: 20px;
+    border-bottom: 1px solid silver;
+    font-weight: 500;
+
+}
+
+.quizinfobox h1 {
+
+    display: flex;
+    font-weight: 500;
+
+}
+
+.quizinfobox .qid{
+
+    padding-top: 10px;
+
+}
+
+.qid h2 {
+
+    margin-top: 3px;
+    margin-left: 130px;
+
+}
+
+.qno h2 {
+
+    margin-left: 40px;
+
+}
+
+.qusername h2 {
+
+    margin-left: 123px;
+
+}
+
+.quser h2 {
+
+    margin-top: 8px;
+    margin-left: 190px;
+
 }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Direct from '../errComponents/DirectAccess'
 import io from 'socket.io-client'
 import QuizOngoing from './quizOngoing'
-const ENDPOINT = "192.168.43.91:80"
+const ENDPOINT = "192.168.43.24:80"
 
 
 
@@ -124,12 +124,12 @@ export class startQuizHome extends Component {
 
 
                     <div className="quizinfobox">
-                        <h1>Waiting to start quiz</h1>
-                        <h1>Quiz ID : {quiz.quiz_id}</h1>
-                        <h1>Quiz Name : {quiz.quizName}</h1>
-                        <h1>No of questions:{quiz.questions.length}</h1>
-                        <h1> myname = {this.state.myusername} </h1>
-                        <h2>user = {this.state.no_of_users} </h2>
+                        <h1 className="waiting">Waiting for Quiz to start</h1>
+                        <h1 className="qid">Quiz ID : <h2>{quiz.quiz_id}</h2></h1>
+                        <h1 className="qname">Quiz Name : <h2>{quiz.quizName}</h2></h1>
+                        <h1 className="qno">No. of Questions:<h2>{quiz.questions.length}</h2></h1>
+                        <h1 className="qusername">Username: <h2>{this.state.myusername}</h2> </h1>
+                        <h1 className="quser">Users: <h2>{this.state.no_of_users}</h2> </h1>
                     </div>
 
                 </div>
