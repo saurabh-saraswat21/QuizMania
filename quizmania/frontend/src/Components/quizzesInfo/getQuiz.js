@@ -71,15 +71,15 @@ class Quiz extends Component {
                         //rendering a div of every question with the key value the id of that question
                         <div className="question-container" key={question._id}>
 
-                    
+
                             <h4>{question.questionString}</h4>
                             <Link to={{
-                                    pathname: '/edit/' + quiz.quiz_id,
-                                    state: { question,quizName}
+                                pathname: '/edit/' + quiz.quiz_id,
+                                state: { question, quizName }
 
-                                }}><button>editquestion</button></Link>
+                            }}><button>editquestion</button></Link>
 
-                                <button onClick={()=>this.delete(quiz.quiz_id,question)}>delete</button>
+                            <button onClick={() => this.delete(quiz.quiz_id, question)}>delete</button>
 
                             {/* Link is used for future use */}
                             <Link to="#">
@@ -92,7 +92,7 @@ class Quiz extends Component {
 
                             {/* classname is decided by the showbtn status at that index */}
                             <div className={this.state.showbtn[index] ? "boxactive" : "boxhidden " + index}>
-                                
+
                                 <li className="options">Option1:-{question.option1}</li>
                                 <li className="options">Option2:-{question.option2}</li>
                                 <li className="options">Option3:-{question.option3}</li>
@@ -106,26 +106,26 @@ class Quiz extends Component {
                     )
                 })
             )
-                    //if questions doesnt exist just render no questions
+                //if questions doesnt exist just render no questions
                 : (
                     <h1> No questions</h1>
                 )
 
 
-                // the main return method of the component
+            // the main return method of the component
             return (
 
                 //rendering the questionList created above with all the data
-                
+
                 <div>
                     <h1>{quizName}</h1>
                     <Link to={{
-                        pathname: '/getquiz/'+this.props.match.params.quiz_id
+                        pathname: '/getquiz/' + this.props.match.params.quiz_id
                     }}><button className={this.state.isRefreshed ? "refresh active" : "refresh"} onClick={this.update} > refresh to update</button></Link>
                     {questionsList}
 
                     <Link to={{
-                        pathname:'/insertques/'+this.props.match.params.quiz_id
+                        pathname: '/insertques/' + this.props.match.params.quiz_id
                     }}> <button>ADD More Questions</button></Link>
                 </div>
             )
@@ -139,17 +139,17 @@ class Quiz extends Component {
 
 //Maping quiz to props that are stored in the store by dispatching action
 const MapStateToProps = (state, defaultProps) => {
-                                //defaultProps are the basic props of the component that can give access to route params 
-                                // so that we know which quiz to fetch
+    //defaultProps are the basic props of the component that can give access to route params 
+    // so that we know which quiz to fetch
 
     // getting  id from router params and cnverting to int so that is is able to be compared 
     const id = parseInt(defaultProps.match.params.quiz_id)
 
-//returning the particular quiz that is to be viewed
+    //returning the particular quiz that is to be viewed
     return {
 
-            // find method iterates every quiz in the quizzes and return that quiz whose id matches the id we get from the params above
-                quiz: state.quizzes.find(quiz => quiz.quiz_id === id),
+        // find method iterates every quiz in the quizzes and return that quiz whose id matches the id we get from the params above
+        quiz: state.quizzes.find(quiz => quiz.quiz_id === id),
 
     }
 

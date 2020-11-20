@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
-import {connect} from 'react-redux'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 
 import '../../stylesheets/viewQuiz.css';
 
@@ -10,12 +11,13 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 
 const ViewQuiz=(props)=> {
 
-    var list =[] ;
-    const[quiz_id,setquiz_id] = useState(null);
+
+    var list = [];
+    const [quiz_id, setquiz_id] = useState(null);
 
     // getting quiz id list from props
 
-    if(props.quizInfo){
+    if (props.quizInfo) {
         list = props.quizInfo
     }
 
@@ -58,9 +60,10 @@ const ViewQuiz=(props)=> {
         </div>
     )
 
+
     //main return component
-    return(
-        
+    return (
+
         <div className="quizList">
 
             <div className="header-container">
@@ -96,19 +99,20 @@ const ViewQuiz=(props)=> {
         </div>
     )
 
-   
+
 }
+
 
 const deletequiz=(quiz_id)=>{
     axios.post('http://192.168.43.24:80/deletequiz',{quiz_id}).then(window.location.reload())
 }
 
 //mapping state to props of component
-const MapStateToProps=(state)=>{
-    return{
+const MapStateToProps = (state) => {
+    return {
 
         //quiz_ids will be available in the props of the component
-        quizInfo : state.quizInfo
+        quizInfo: state.quizInfo
     }
 }
 
