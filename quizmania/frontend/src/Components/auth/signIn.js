@@ -19,7 +19,9 @@ export default function SignIn() {
         try {
             const loginUser = { email, password };
             const loginRes = await Axios.post(
+
                 "http://192.168.0.100:80/login",
+
                 loginUser
             );
             setUserData({

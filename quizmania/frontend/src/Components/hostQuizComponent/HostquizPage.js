@@ -5,6 +5,7 @@ import '../../stylesheets/hostquizzpage.css'
 
 const ENDPOINT = "192.168.0.100:80"
 
+
 var socket
 const HostquizPage = (props) => {
     const quiz_id = props.match.params.quiz_id
