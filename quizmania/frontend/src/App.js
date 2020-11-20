@@ -19,6 +19,7 @@ import SignIn from './Components/auth/signIn';
 import SignUp from './Components/auth/signUp';
 import UserContext from './context/userContext';
 import Axios from 'axios';
+import cookie from 'js-cookie';
 import hostquiz from './Components/JoinQuizComp/hostquiz';
 import HostquizPage from './Components/hostQuizComponent/HostquizPage';
 import QuizStats from './Components/JoinQuizComp/QuizStats';
@@ -34,10 +35,10 @@ function App() {
   })
   const checkLoggedIn = async () => {
 
-    let token = localStorage.getItem("auth-token");
+    let token = cookie.get("auth-token");
 
     if (token === null) {
-      localStorage.setItem("auth-token", "");
+      cookie.set("auth-token", "");
       token = "";
     }
 
