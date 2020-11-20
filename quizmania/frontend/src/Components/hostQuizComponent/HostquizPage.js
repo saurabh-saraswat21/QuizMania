@@ -80,13 +80,11 @@ const HostquizPage = (props) => {
     return (
         <div>
             <div className="ready-host">
-            <h1>QuizName : <h2>{quizName}</h2> </h1>
-            <h1>QuizCode :  <h2>{quiz_id}</h2> </h1>
-            <h1>Current no. of Users: <h3>{users.length}</h3> </h1>
-            <button onClick={()=>startquiz(quiz_id)} >Start Quiz</button>
-        </div>
-        <div>
-            {userlist}
+                <h1>QuizName : <h2>{quizName}</h2> </h1>
+                <h1>QuizCode :  <h2>{quiz_id}</h2> </h1>
+                <h1>Current no. of Users: <h3>{users.length}</h3> </h1>
+                <button onClick={()=>startquiz(quiz_id)} >Start Quiz</button>
+                <h1 className="userlist">User's List: <h6 className="username">{userlist}</h6> </h1>
         </div>
         </div>
     )
