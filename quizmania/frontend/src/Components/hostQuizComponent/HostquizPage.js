@@ -85,9 +85,9 @@ const HostquizPage = (props) => {
             <h1>Current no. of Users: <h3>{users.length}</h3> </h1>
             <button onClick={()=>startquiz(quiz_id)} >Start Quiz</button>
         </div>
-        {/* <div>
+        <div>
             {userlist}
-        </div> */}
+        </div>
         </div>
     )
 }
