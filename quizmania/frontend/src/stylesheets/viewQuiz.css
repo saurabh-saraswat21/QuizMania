@@ -1,0 +1,118 @@
+.quizList{
+   background: #ecf0f1;
+   width: 90%;
+   margin: auto;
+   margin-top: 5rem;
+   padding: 30px;
+   border-radius: 12px;
+}
+.header-container{
+   display: flex;
+   justify-content: space-between;
+}
+
+
+.title
+{
+   
+   font-weight: 700;
+   font-size: 2.5rem;
+   padding: 0.2rem;
+   margin-bottom: 0.1rem;
+   text-align: center;
+}
+
+
+#hr{
+   margin-bottom: 20px;
+}
+
+.search-form .search-input,
+.search-form .search-btn
+{
+   padding: 2px;
+   border: none;
+   font-size: 24px;
+   background: white;
+   outline: none;
+}
+.search-form{
+   width: 50%;
+}
+.search-form .search-input{
+width: 70%;
+}
+.search-form .search-btn,
+.search-form .search-input{
+   float: right;
+}
+.delete-btn{
+   width: 50px;
+   height: 40px;
+   background-color: #b8daff;
+   background: #cce5ff;
+   border: none;
+   outline: none;
+}
+
+#magnify{
+   height: 0.8em;
+   color: blue;
+   padding: 0;
+}
+
+#del-btn{
+   height: 2rem;
+   width: 1.5rem; 
+   outline: none;
+}
+
+
+.delete-btn:hover{
+   border: 1px solid red;
+   border-radius: 3px;
+   background: rgb(253, 201, 201);
+   color: red;
+}
+.quiz{
+   border: 1px solid grey;
+   border-radius: 5px;
+   display: flex;
+   justify-content: space-between;
+   line-height: 40px;
+   background-color: #b8daff;
+   background: #cce5ff;
+   margin: 0.8rem;
+   padding: 7px;
+}
+
+#headings{
+   display: flex;
+   justify-content: space-between;
+   width:56%;
+   margin-left: 3%;
+   padding: 5px;
+}
+
+.headingName{
+   font-size: 3.5vh;
+   font-weight: 700;
+
+}
+
+#quizName{
+   text-decoration: none;
+}
+
+
+/* -------------------------------  Mobile View ---------------------------------- */
+
+@media screen and (max-width: 768px){
+   .title, .headingName{
+      font-size: 1.5rem;
+   }
+
+   #quizID, #quizName{
+      font-size: 1rem;
+   }
+}
