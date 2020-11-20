@@ -23,11 +23,11 @@ export const getQuizDataSucess = (data) => {
 
 // failure action creator function
 
-export const getQuizDataFailure = (message)=>{
+export const getQuizDataFailure = (message) => {
 
     // return an actioon of type GET_QUIZ_DATA_FAILURE with the error message payload
     return {
-        type : 'GET_QUIZ_DATA_FAILURE',
+        type: 'GET_QUIZ_DATA_FAILURE',
         message
     }
 }
@@ -35,30 +35,31 @@ export const getQuizDataFailure = (message)=>{
 
 
 // The main action creator that will be used to fetch data
-export const  fetchData=()=>{
+export const fetchData = () => {
 
     // takes dispatch as an argument to be used to dipatch action
- return(dispatch)=>{
+    return (dispatch) => {
 
-    // requesting backend server for data
-    fetch("http://192.168.43.91:80/viewquizes")
+        // requesting backend server for data
+        fetch("http://192.168.0.100:80/viewquizes")
 
-    // converting  fetched data to JSON
-    .then(res1 =>res1.json())
 
-    .then(res2=>{
+            // converting  fetched data to JSON
+            .then(res1 => res1.json())
 
-        // if data fetchedd succesfully dispatch the success action with the response payload
-         dispatch(getQuizDataSucess(res2))
-        
-    })
+            .then(res2 => {
 
-    // if there is error dispatch the failure action with the error message 
-    .catch(err=>{
+                // if data fetchedd succesfully dispatch the success action with the response payload
+                dispatch(getQuizDataSucess(res2))
 
-        const errMsg  = err.message
+            })
 
-            dispatch(getQuizDataFailure(errMsg))
-    })
- }
+            // if there is error dispatch the failure action with the error message 
+            .catch(err => {
+
+                const errMsg = err.message
+
+                dispatch(getQuizDataFailure(errMsg))
+            })
+    }
 }

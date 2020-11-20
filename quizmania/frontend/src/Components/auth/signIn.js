@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from '../../context/userContext';
 import Axios from "axios";
+import cookie from 'js-cookie';
 import ErrorNotice from "../misc/ErrorMsg";
 import '../../stylesheets/signin.css'
 
@@ -18,14 +19,16 @@ export default function SignIn() {
         try {
             const loginUser = { email, password };
             const loginRes = await Axios.post(
-                "http://192.168.43.91:80/login",
+
+                "http://192.168.0.100:80/login",
+
                 loginUser
             );
             setUserData({
                 token: loginRes.data.token,
                 user: loginRes.data.userPresent,
             });
-            localStorage.setItem("auth-token", loginRes.data.token);
+            cookie.set("auth-token", loginRes.data.token, { expires: 1 });
             history.push("/");
         } catch (err) {
             err.response.data.msg && setError(err.response.data.msg);
@@ -38,21 +41,21 @@ export default function SignIn() {
                 <ErrorNotice message={error} clearError={() => setError(undefined)} />
             )}
             {/* <div className="container"> */}
-                <form onSubmit={submit} className='Brown'>
-                    <div className='input-field'>
-                        <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} required />
-                        <span></span>
-                        <label htmlFor="email">Email</label>
-                    </div>
-                    <div className='input-field'>
-                        <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} required/>
-                        <span></span>
-                        <label htmlFor="password">Password</label>
-                    </div>
-                    <div className="log-btn">
-                        <button className="btn white black-text">Login</button>
-                    </div>
-                </form>
+            <form onSubmit={submit} className='Brown'>
+                <div className='input-field'>
+                    <input type="email" id="email" onChange={(e) => setEmail(e.target.value)} required />
+                    <span></span>
+                    <label htmlFor="email">Email</label>
+                </div>
+                <div className='input-field'>
+                    <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} required />
+                    <span></span>
+                    <label htmlFor="password">Password</label>
+                </div>
+                <div className="log-btn">
+                    <button className="btn white black-text">Login</button>
+                </div>
+            </form>
             {/* </div> */}
         </div>
     );
