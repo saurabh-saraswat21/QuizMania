@@ -10,7 +10,7 @@ import getQuiz from './Components/quizzesInfo/getQuiz';
 import startQuiz from './Components/JoinQuizComp/startQuizHome'
 import Userinfo from './Components/JoinQuizComp/userinfo';
 import Editques from './Components/quizzesInfo/Editques';
-import JoinQuiz from './Components/partials/JoinQuiz'
+import JoinQuiz from './Components/partials/JoinQuizdash'
 import Navbar from './Components/Navbar/Navbar';
 import GlobalStyles from '../src/globalStyles'
 import createQuiz from './Components/HomePageComp/createQuiz'
@@ -24,6 +24,7 @@ import hostquiz from './Components/JoinQuizComp/hostquiz';
 import HostquizPage from './Components/hostQuizComponent/HostquizPage';
 import QuizStats from './Components/JoinQuizComp/QuizStats';
 import login from './Components/logincomponent/login'
+import JoinQuizComp from './Components/partials/JoinQuizComp';
 
 
 
@@ -42,15 +43,13 @@ function App() {
       token = "";
     }
     const tokenRes = await Axios.post(
-      'http://192.168.43.91:80/tokenIsValid',
+      'http://192.168.43.24:80/tokenIsValid',
       null,
       { headers: { "x-auth-token": token } }
     );
 
     if (tokenRes.data) {
-
-      const userRes = await Axios.get("http://192.168.43.91:80/auth", {
-
+      const userRes = await Axios.get("http://192.168.43.24:80/auth", {
         headers: { "x-auth-token": token },
       });
 
@@ -89,7 +88,7 @@ function App() {
             <Route path='/hostquiz/:quiz_id' component={HostquizPage} />
             <Route path='/viewquiz' component={viewQuiz} />
             <Route path='/hostquiz' component={hostquiz} />
-            <Route path='/joinquiz' component={JoinQuiz} />
+            <Route path='/joinquiz' component={JoinQuizComp} />
             <Route path='/quizstats' component={QuizStats} />
             <Route exact path='/login' component={SignIn} />
             <Route path='/signup' component={SignUp} />
