@@ -15,7 +15,8 @@ const HostquizPage = (props) => {
         (users.map(user => {
             return (
                 <div className="userlist" key={user.user_id}>
-                    <h1>{user.username}</h1>
+                    
+                    <h4>{user.username}</h4>
                     <span>{user.score ? "finished the quiz final score is " + user.score : ""} </span>
                 </div>
             )
@@ -83,9 +84,7 @@ const HostquizPage = (props) => {
             <h1>QuizCode :  <h2>{quiz_id}</h2> </h1>
             <h1>Current no. of Users: <h3>{users.length}</h3> </h1>
             <button onClick={()=>startquiz(quiz_id)} >Start Quiz</button>
-        </div>
-        <div>
-            {userlist}
+            <h1 className="userlist"> User's List : <h6 className="username">{userlist}</h6> </h1>
         </div>
         </div>
     )
