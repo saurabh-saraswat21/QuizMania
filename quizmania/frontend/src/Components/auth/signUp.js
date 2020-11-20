@@ -22,8 +22,8 @@ export default function Signup() {
 
         try {
             const newUser = { firstName, lastName, email, password, password2 };
-            await Axios.post("http://192.168.43.24:80/register", newUser);
-            const loginRes = await Axios.post("http://192.168.43.24:80/login", {
+            await Axios.post("http://192.168.43.91:80/register", newUser);
+            const loginRes = await Axios.post("http://192.168.43.91:80/login", {
                 email,
                 password,
             });
