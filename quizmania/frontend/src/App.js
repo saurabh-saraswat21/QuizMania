@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 //import router for routing
-import { BrowserRouter, Route, Switch ,} from 'react-router-dom'
+import { BrowserRouter, Route, Switch, } from 'react-router-dom'
 
 // import various components to be rendered  
 import Home from './Components/MainPagesComp/home'
@@ -19,6 +19,7 @@ import SignIn from './Components/auth/signIn';
 import SignUp from './Components/auth/signUp';
 import UserContext from './context/userContext';
 import Axios from 'axios';
+import cookie from 'js-cookie';
 import hostquiz from './Components/JoinQuizComp/hostquiz';
 import HostquizPage from './Components/hostQuizComponent/HostquizPage';
 import QuizStats from './Components/JoinQuizComp/QuizStats';
@@ -34,13 +35,12 @@ function App() {
   })
   const checkLoggedIn = async () => {
 
-    let token = localStorage.getItem("auth-token");
+    const token = cookie.get("auth-token");
 
     if (token === null) {
-      localStorage.setItem("auth-token", "");
+      cookie.set("auth-token", "");
       token = "";
     }
-
     const tokenRes = await Axios.post(
       'http://192.168.43.91:80/tokenIsValid',
       null,
@@ -48,7 +48,9 @@ function App() {
     );
 
     if (tokenRes.data) {
+
       const userRes = await Axios.get("http://192.168.43.91:80/auth", {
+
         headers: { "x-auth-token": token },
       });
 
@@ -56,11 +58,12 @@ function App() {
         token,
         user: userRes.data,
       });
+      // console.log(userData);
 
     }
   };
   useEffect(() => {
-    
+
     checkLoggedIn();
   }, []);
 
@@ -107,7 +110,7 @@ function App() {
       <UserContext.Provider value={{ userData, setUserData }}>
         <GlobalStyles />
         <Switch>
-          <Route component={defaultRoutes}  />
+          <Route component={defaultRoutes} />
         </Switch>
       </UserContext.Provider>
     </BrowserRouter>

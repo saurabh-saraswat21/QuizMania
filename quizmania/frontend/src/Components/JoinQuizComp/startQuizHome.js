@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import Direct from '../errComponents/DirectAccess'
 import io from 'socket.io-client'
 import QuizOngoing from './quizOngoing'
+
 const ENDPOINT = "192.168.43.91:80"
+
 
 
 
@@ -29,9 +31,9 @@ export class startQuizHome extends Component {
 
 
 
-     componentDidMount() {
+    componentDidMount() {
 
-         if(this.state.myusername){
+        if (this.state.myusername) {
             const socket_data = {
                 username: this.state.myusername,
                 quiz_id: this.state.quiz_id,
@@ -41,10 +43,10 @@ export class startQuizHome extends Component {
 
             socket = io(ENDPOINT)
 
-            socket.on('startquiz',()=>{
+            socket.on('startquiz', () => {
                 this.startquiz()
             })
-           
+
 
             socket.emit('user_connected', socket_data)
 
@@ -54,7 +56,7 @@ export class startQuizHome extends Component {
 
                 this.setState({
                     no_of_users: data.users.length,
-                    all_users : data.users
+                    all_users: data.users
                 }, () => {
                     socket.emit('client_is_updated', data)
                 })
@@ -79,16 +81,16 @@ export class startQuizHome extends Component {
         const username = this.state.myusername
         const all_users = this.state.all_users;
         const data = {
-            quiz : quiz,
-            username : username,
+            quiz: quiz,
+            username: username,
             allusers: all_users,
-            socket : socket
+            socket: socket
         }
         if (this.state.redirect) {
 
             return (
 
-                <QuizOngoing data = {data}/>
+                <QuizOngoing data={data} />
 
             )
         }
@@ -106,8 +108,8 @@ export class startQuizHome extends Component {
             )
 
         }
-        else if (! this.state.myusername){
-            return(
+        else if (!this.state.myusername) {
+            return (
                 <Direct></Direct>
             )
 
@@ -118,22 +120,22 @@ export class startQuizHome extends Component {
 
 
             return (
-                
-                    <div className="Start_quiz_container">
+
+                <div className="Start_quiz_container">
 
 
-                        <div className="quizinfobox">
-                            <h1>Waiting to start quiz</h1>
-                            <h1>Quiz ID : {quiz.quiz_id}</h1>
-                            <h1>Quiz Name : {quiz.quizName}</h1>
-                            <h1>No of questions:{quiz.questions.length}</h1>
-                            <h1> myname = {this.state.myusername} </h1>
-                            <h2>user = {this.state.no_of_users} </h2>
-                        </div>
-
+                    <div className="quizinfobox">
+                        <h1>Waiting to start quiz</h1>
+                        <h1>Quiz ID : {quiz.quiz_id}</h1>
+                        <h1>Quiz Name : {quiz.quizName}</h1>
+                        <h1>No of questions:{quiz.questions.length}</h1>
+                        <h1> myname = {this.state.myusername} </h1>
+                        <h2>user = {this.state.no_of_users} </h2>
                     </div>
 
-               
+                </div>
+
+
 
 
             )
@@ -159,7 +161,7 @@ const mapStateToProps = (state, defaultProps) => {
 
         // find method iterates every quiz in the quizzes and return that quiz whose id matches the id we get from the params above
         quiz: state.quizzes.find(quiz => quiz.quiz_id === id),
-        username : defaultProps.location.state?defaultProps.location.state.username:null
+        username: defaultProps.location.state ? defaultProps.location.state.username : null
 
     }
 }

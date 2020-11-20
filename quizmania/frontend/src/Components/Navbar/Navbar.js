@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import cookie from 'js-cookie';
 import UserContext from '../../context/userContext';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
@@ -32,7 +33,8 @@ function Navbar() {
       token: undefined,
       user: undefined
     });
-    localStorage.setItem("auth-token", "");
+    cookie.set("auth-token", "");
+    history.push('/');
   }
   // style
   const [click, setClick] = useState(false);
