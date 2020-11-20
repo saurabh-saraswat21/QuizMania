@@ -23,7 +23,6 @@ import cookie from 'js-cookie';
 import hostquiz from './Components/JoinQuizComp/hostquiz';
 import HostquizPage from './Components/hostQuizComponent/HostquizPage';
 import QuizStats from './Components/JoinQuizComp/QuizStats';
-import login from './Components/logincomponent/login'
 
 
 
@@ -35,7 +34,7 @@ function App() {
   })
   const checkLoggedIn = async () => {
 
-    const token = cookie.get("auth-token");
+    var token = cookie.get("auth-token");
 
     if (token === null) {
       cookie.set("auth-token", "");
