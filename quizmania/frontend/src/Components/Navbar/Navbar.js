@@ -34,6 +34,7 @@ function Navbar() {
       user: undefined
     });
     cookie.set("auth-token", "");
+    history.push('/');
   }
   // style
   const [click, setClick] = useState(false);

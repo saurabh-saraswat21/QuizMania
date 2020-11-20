@@ -58,7 +58,7 @@ function App() {
         token,
         user: userRes.data,
       });
-      console.log(userData);
+      // console.log(userData);
 
     }
   };
