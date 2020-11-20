@@ -42,13 +42,13 @@ function App() {
     }
 
     const tokenRes = await Axios.post(
-      'http://192.168.43.91:80/tokenIsValid',
+      'http://192.168.43.24:80/tokenIsValid',
       null,
       { headers: { "x-auth-token": token } }
     );
 
     if (tokenRes.data) {
-      const userRes = await Axios.get("http://192.168.43.91:80/auth", {
+      const userRes = await Axios.get("http://192.168.43.24:80/auth", {
         headers: { "x-auth-token": token },
       });
 
