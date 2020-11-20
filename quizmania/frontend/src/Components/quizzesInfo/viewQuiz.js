@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import '../../stylesheets/viewQuiz.css';
 
 import { GiMagnifyingGlass } from 'react-icons/gi';
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
 const ViewQuiz=(props)=> {
 
@@ -41,14 +42,10 @@ const ViewQuiz=(props)=> {
                     <Link to ={{
                         pathname :'/getquiz/'+quiz.quiz_id,
                         
-                    }}> <h2 id="quizName">{quiz.quizName}</h2> </Link>
+                    }} id="quizName" > <h2>{quiz.quizName}</h2> </Link>
 
-                    <button className="delete-btn" onClick={()=>deletequiz(quiz.quiz_id)}>delete</button>
-                    
-               
-                    
-                
-                
+                    <button className="delete-btn" onClick={()=>deletequiz(quiz.quiz_id)}><RiDeleteBin6Line id="del-btn"/></button>
+
             </div>
             )
         })
@@ -65,10 +62,10 @@ const ViewQuiz=(props)=> {
 
             <div className="header-container">
 
-                <div className="title">
-                    <h1>Quiz List</h1>
+                <div id="title">
+                    <h1 className="title">Quiz List</h1>
                 </div>
-                <form className="search-form">
+                <div className="search-form">
                     <input className="search-input"
                     disabled={!props.quizInfo} 
                     onChange={(event)=>{
@@ -80,14 +77,17 @@ const ViewQuiz=(props)=> {
 
                     <Link to={{
                         pathname: '/getquiz/'+quiz_id
-                    }}><button className="search-btn" disabled={!quiz_id} ><GiMagnifyingGlass/></button>
+                    }}><button className="search-btn" disabled={!quiz_id} ><GiMagnifyingGlass id="magnify"/></button>
                     </Link>    
-                </form>
+                </div>
                 
                                         
             </div>
             <hr id="hr"/>
-
+            <div id="headings">
+                <div className="headingName">QuizID</div>
+                <div className="headingName">QuizName</div>
+            </div>
             {Quiz_List}
 
         </div>
