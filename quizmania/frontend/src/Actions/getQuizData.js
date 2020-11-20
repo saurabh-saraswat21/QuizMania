@@ -40,8 +40,8 @@ export const fetchData = () => {
     // takes dispatch as an argument to be used to dipatch action
     return (dispatch) => {
 
-        // requesting backend server for data
-        fetch("http://192.168.0.100:80/viewquizes")
+    // requesting backend server for data
+    fetch("http://192.168.43.24:80/viewquizes")
 
 
             // converting  fetched data to JSON
