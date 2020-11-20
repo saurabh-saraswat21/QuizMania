@@ -78,12 +78,12 @@ function Navbar() {
                   <NavItemBtn>
                     {button ? (
                       <NavBtnLink onClick={logout}>
-                        <Button primary>LOG OUT</Button>
+                        <Button primary>Logout</Button>
                       </NavBtnLink>
                     ) : (
                         <NavBtnLink onClick={logout}>
                           <Button onClick={closeMobileMenu} fontBig primary>
-                            LOG OUT
+                            Logout
                     </Button>
                         </NavBtnLink>
                       )}
@@ -94,12 +94,12 @@ function Navbar() {
                     <NavItemBtn>
                       {button ? (
                         <NavBtnLink onClick={signup}>
-                          <Button primary>SIGN UP</Button>
+                          <Button primary>SignUp</Button>
                         </NavBtnLink>
                       ) : (
                           <NavBtnLink onClick={signup}>
                             <Button onClick={closeMobileMenu} fontBig primary>
-                              SIGN UP
+                              SignUp
                     </Button>
                           </NavBtnLink>
                         )}

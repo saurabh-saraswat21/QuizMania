@@ -22,6 +22,7 @@ import Axios from 'axios';
 import hostquiz from './Components/JoinQuizComp/hostquiz';
 import HostquizPage from './Components/hostQuizComponent/HostquizPage';
 import QuizStats from './Components/JoinQuizComp/QuizStats';
+import login from './Components/logincomponent/login'
 
 
 
@@ -47,7 +48,7 @@ function App() {
     );
 
     if (tokenRes.data) {
-      const userRes = await Axios.get("http://192.168.0.100:80/auth", {
+      const userRes = await Axios.get("http://192.168.43.24:80/auth", {
         headers: { "x-auth-token": token },
       });
 

@@ -58,7 +58,7 @@ export const NavMenu = styled.ul`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 90vh;
+    height: 95vh;
     position: absolute;
     top: 80px;
     left: ${({ click }) => (click ? 0 : '-100%')};
@@ -117,7 +117,7 @@ export const NavBtnLink = styled(Link)`
   align-items: center;
   text-decoration: none;
   padding: 8px 16px;
-  height: 100%;
+  height: 10%;
   width: 100%;
   border: none;
   outline: none;
