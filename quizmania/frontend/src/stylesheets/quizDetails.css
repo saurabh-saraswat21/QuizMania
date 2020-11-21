@@ -4,3 +4,37 @@
 .boxactive{
     display:block
 }
+
+.refresh {
+    display:none;
+ }
+
+.refresh.active {
+     display:block;
+}
+.get_quiz_Container {
+    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 700px;
+    transform: translate(-50%, -35%);
+    width: 70%;
+    background: white;
+    border-radius: 10px;
+
+}
+.get_quiz_Container .quiz_name{
+    margin-inline-start: 50%;
+    margin-top: 5%;
+}
+.single_question_container{
+display: flex;
+margin-top: 5%;
+margin-left: 35%;
+height: 40px;
+width: 60%;
+
+}
+
+

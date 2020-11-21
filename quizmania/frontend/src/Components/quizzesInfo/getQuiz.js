@@ -70,16 +70,18 @@ class Quiz extends Component {
 
                         //rendering a div of every question with the key value the id of that question
                         <div className="question-container" key={question._id}>
+                            
+                            <div className="single_question_container">
 
 
-                            <h4>{question.questionString}</h4>
+                            <h4 className="question">{question.questionString}</h4>
                             <Link to={{
                                 pathname: '/edit/' + quiz.quiz_id,
                                 state: { question, quizName }
 
                             }}><button>editquestion</button></Link>
 
-                            <button onClick={() => this.delete(quiz.quiz_id, question)}>delete</button>
+                            <button className="delete-button" onClick={() => this.delete(quiz.quiz_id, question)}>delete</button>
 
                             {/* Link is used for future use */}
                             <Link to="#">
@@ -91,7 +93,7 @@ class Quiz extends Component {
                             </Link>
 
                             {/* classname is decided by the showbtn status at that index */}
-                            <div className={this.state.showbtn[index] ? "boxactive" : "boxhidden " + index}>
+                            <div className={this.state.showbtn[index] ? "questions_box boxactive" : "questions_box boxhidden " + index}>
 
                                 <li className="options">Option1:-{question.option1}</li>
                                 <li className="options">Option2:-{question.option2}</li>
@@ -99,6 +101,9 @@ class Quiz extends Component {
                                 <li className="options">Option4:-{question.option4}</li>
                                 <li className="options correct ">Correct:-{question.correct}</li>
                             </div>
+
+                            </div>
+
 
                         </div>
 
@@ -117,8 +122,8 @@ class Quiz extends Component {
 
                 //rendering the questionList created above with all the data
 
-                <div>
-                    <h1>{quizName}</h1>
+                <div className="get_quiz_Container">
+                    <h1 className="quiz_name">{quizName}</h1>
                     <Link to={{
                         pathname: '/getquiz/' + this.props.match.params.quiz_id
                     }}><button className={this.state.isRefreshed ? "refresh active" : "refresh"} onClick={this.update} > refresh to update</button></Link>
