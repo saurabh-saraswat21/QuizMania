@@ -95,7 +95,7 @@
   margin: 3rem auto 2rem auto;
 }
 
-.btn-container button {
+.btn-container .quit-btn {
   background: #007bff;
   color: #fff;
   font-size: 18px;
@@ -117,7 +117,7 @@
   float: right;
   display: flex;
 }
-.btn-container button:hover {
+.btn-container .quit-btn:hover {
   background: #0263ca;
 }
 .questions.green {
