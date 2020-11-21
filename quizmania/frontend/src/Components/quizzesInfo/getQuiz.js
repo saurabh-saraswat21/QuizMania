@@ -79,27 +79,27 @@ class Quiz extends Component {
                                 pathname: '/edit/' + quiz.quiz_id,
                                 state: { question, quizName }
 
-                            }}><button>editquestion</button></Link>
+                            }}><button className="edit-dlt-view-btn edit-view">Edit</button></Link>
 
-                            <button className="delete-button" onClick={() => this.delete(quiz.quiz_id, question)}>delete</button>
+                            <button id="delete" className="edit-dlt-view-btn" onClick={() => this.delete(quiz.quiz_id, question)} >delete</button>
 
                             {/* Link is used for future use */}
                             <Link to="#">
 
                                 {/* Calling function  passing the current index  */}
-                                <button onClick={(e) => {
+                                <button className="edit-dlt-view-btn edit-view" onClick={(e) => {
                                     this.show(index)
                                 }} value="View more">viewmore</button>
                             </Link>
 
                             {/* classname is decided by the showbtn status at that index */}
-                            <div className={this.state.showbtn[index] ? "questions_box boxactive" : "questions_box boxhidden " + index}>
+                            <div className={this.state.showbtn[index] ? "questions_box boxactive" : "questions_box boxhidden " + index} id="options-container">
 
-                                <li className="options">Option1:-{question.option1}</li>
-                                <li className="options">Option2:-{question.option2}</li>
-                                <li className="options">Option3:-{question.option3}</li>
-                                <li className="options">Option4:-{question.option4}</li>
-                                <li className="options correct ">Correct:-{question.correct}</li>
+                                <p className="options">Option1:-{question.option1}</p>
+                                <p className="options">Option2:-{question.option2}</p>
+                                <p className="options">Option3:-{question.option3}</p>
+                                <p className="options">Option4:-{question.option4}</p>
+                                <p className="options correct">Correct:-{question.correct}</p>
                             </div>
 
                             </div>
@@ -123,15 +123,16 @@ class Quiz extends Component {
                 //rendering the questionList created above with all the data
 
                 <div className="get_quiz_Container">
-                    <h1 className="quiz_name">{quizName}</h1>
+                    <h1 className="quiz_name">QuizName: {quizName}</h1>
+                    <hr/> 
                     <Link to={{
                         pathname: '/getquiz/' + this.props.match.params.quiz_id
-                    }}><button className={this.state.isRefreshed ? "refresh active" : "refresh"} onClick={this.update} > refresh to update</button></Link>
+                    }}><button className={this.state.isRefreshed ? "refresh active" : "refresh"} onClick={this.update} id="refresh-btn">Update All</button></Link>
                     {questionsList}
 
                     <Link to={{
                         pathname: '/insertques/' + this.props.match.params.quiz_id
-                    }}> <button>ADD More Questions</button></Link>
+                    }}><button className="edit-dlt-view-btn" id="add">Add Questions</button></Link>
                 </div>
             )
         }
