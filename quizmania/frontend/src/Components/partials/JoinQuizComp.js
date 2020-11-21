@@ -1,8 +1,9 @@
 import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
+import '../../stylesheets/joinquizcomp.css'
 
 
-function JoinQuiz() {
+function JoinQuizComp() {
     const[quiz_id,setquiz_id]= useState(null);
     
     const handleChange=(e)=>{
@@ -10,7 +11,7 @@ function JoinQuiz() {
     }
 
     return (
-        <div className="joinquiz" >
+        <div className="joinquizcomp" >
             <input type="number" placeholder="Enter Quiz ID to Join" onChange={(e)=>handleChange(e)}/>
             <Link to ={{
                 pathname: '/Quiz/enter_info/'+quiz_id
@@ -19,4 +20,4 @@ function JoinQuiz() {
     )
 }
 
-export default JoinQuiz
+export default JoinQuizComp

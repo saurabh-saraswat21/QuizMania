@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import cookie from 'js-cookie';
 import UserContext from '../../context/userContext';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
@@ -32,7 +33,8 @@ function Navbar() {
       token: undefined,
       user: undefined
     });
-    localStorage.setItem("auth-token", "");
+    cookie.set("auth-token", "");
+    history.push('/');
   }
   // style
   const [click, setClick] = useState(false);
@@ -78,12 +80,12 @@ function Navbar() {
                   <NavItemBtn>
                     {button ? (
                       <NavBtnLink onClick={logout}>
-                        <Button primary>LOG OUT</Button>
+                        <Button primary>Logout</Button>
                       </NavBtnLink>
                     ) : (
                         <NavBtnLink onClick={logout}>
                           <Button onClick={closeMobileMenu} fontBig primary>
-                            LOG OUT
+                            Logout
                     </Button>
                         </NavBtnLink>
                       )}
@@ -94,12 +96,12 @@ function Navbar() {
                     <NavItemBtn>
                       {button ? (
                         <NavBtnLink onClick={signup}>
-                          <Button primary>SIGN UP</Button>
+                          <Button primary>SignUp</Button>
                         </NavBtnLink>
                       ) : (
                           <NavBtnLink onClick={signup}>
                             <Button onClick={closeMobileMenu} fontBig primary>
-                              SIGN UP
+                              SignUp
                     </Button>
                           </NavBtnLink>
                         )}

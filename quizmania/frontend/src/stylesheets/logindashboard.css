@@ -1,33 +1,25 @@
-.player_info_box {
-
+.dash {
     position: fixed;
     top: 50%;
     left: 50%;
-    height: 80px;
-    text-align: center;
+    height: 300px;
     transform: translate(-50%, -50%);
     width: 400px;
-    /* background: white; */
-    overflow: hidden;
+    background: white;
     border-radius: 10px;
 
 }
 
-.player_info_box input{
+.dash-link{
 
-    height: 30px;
-    margin-top: 10px;
-    width: 400px;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-
+    padding-top: 10px;
+    text-align: center;
 }
 
-.player_info_box button{
+.dash-link button {
 
-    width: 20%;
-    height: 30px;
+    width: 80%;
+    height: 35px;
     border: 1px solid;
     background: #2691d9;
     border-radius: 25px;
@@ -40,9 +32,15 @@
 
 }
 
-.player_info_box button:hover {
+.dash-link button:hover{
 
     border-color: #2691d9;
     transition: .5s;
 
+}
+
+.dash h1{
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
 }

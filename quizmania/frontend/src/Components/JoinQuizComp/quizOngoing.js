@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
-// is used to acess the passed state in the link tag in the instruction page 
-import { withRouter } from "react-router";
 
 // importing the error component  
 import Directacess from '../errComponents/DirectAccess'
 
 import '../../stylesheets/quiz.css'
 
+
 import { FcAlarmClock } from 'react-icons/fc'
 
-class quizOngoing extends Component {
+class QuizOngoing extends Component {
 
     // constructor fr initally setting state values 
     constructor(props) {
@@ -61,9 +61,11 @@ class quizOngoing extends Component {
 
 
     componentDidMount = () => {
-
+       
+        console.log("component did mount is called");
         // getting data from the location
-        const Data = this.props.location.state;
+        const Data = this.props.data
+        console.log(Data.socket);
 
         // checking if the data is undefined (in case of direct access)
 
@@ -72,6 +74,7 @@ class quizOngoing extends Component {
             // getting quiz from the state if is not undefined
             const quiz = Data.quiz
             const username = Data.username
+            const socket = Data.socket
 
 
             //  setting state of the component with the details of the quiz fetched
@@ -79,6 +82,7 @@ class quizOngoing extends Component {
                 quiz: quiz,
                 username:username,
                 questions: quiz.questions,
+                socket : socket
 
             },
 
@@ -219,14 +223,21 @@ class quizOngoing extends Component {
     endQuiz = () => {
 
         //  alerting that the quiz has ended
-        alert('quizENDED')
+        alert('QUIZ ENDED')
+
+        const quizdata = {
+            score : this.state.score,
+            total : this.state.numberOfQuestions
+        }
+        var socket = this.state.socket
+            socket.emit('quiz_ended',quizdata)
+        
 
         //  after a while
         setTimeout(() => {
-
-            //  close the new opened tab
-            window.close()
-
+            this.setState({
+                redirect: true
+            })
         },
 
             // half second wait 
@@ -375,10 +386,22 @@ class quizOngoing extends Component {
         })
     }
 
-
-
-
     render() {
+      
+
+        if(this.state.redirect){
+            const quizdata = {
+                score : this.state.score,
+                total : this.state.numberOfQuestions
+            }
+            return(
+                <Redirect to = {{
+                    pathname : '/quizstats',
+                    state: quizdata
+                }}/>
+            )
+        }
+
 
         // if the state is not defined (direct acess)
 
@@ -394,6 +417,7 @@ class quizOngoing extends Component {
         else {
 
             // getting details for rendering 
+           
 
             const {
 
@@ -498,4 +522,6 @@ class quizOngoing extends Component {
     }
 
 }
-export default withRouter(quizOngoing)
+
+
+export default QuizOngoing
