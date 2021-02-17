@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import io from 'socket.io-client'
 import '../../stylesheets/hostquizzpage.css'
 
-const ENDPOINT = "http://192.168.43.135:80"
+const ENDPOINT = "http://192.168.100.2:80"
 
 var socket
 const HostquizPage = (props) => {
