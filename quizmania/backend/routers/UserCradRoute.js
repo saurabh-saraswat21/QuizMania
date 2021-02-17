@@ -22,7 +22,7 @@ module.exports = (app) => {
 
             const exitingUser = await userAuth.findOne({ email: email })
             if (exitingUser)
-                return res.status(400).json({ msg: "user already exist with this email ID" });
+                return res.status(400).json({ msg: " A user already exist with this email ID" });
 
             //password hashing
 
@@ -38,7 +38,7 @@ module.exports = (app) => {
             });
             const saveUser = await newUser.save();
             res.json(saveUser);
-            console.log('user registered');
+            console.log('User registered');
             // .then((res) => console.log(res))
             // .catch((err) => console.log(err));
         }
@@ -55,11 +55,11 @@ module.exports = (app) => {
             // console.log(req.body.password);
             //validate
             if (!email || !password)
-                res.status(400).json({ msg: "Enter all Field" });
+                res.status(400).json({ msg: " All fields are required" });
             const userPresent = await userAuth.findOne({ email: email });
 
             if (!userPresent)
-                return res.status(400).json({ msg: 'No account find from this email id' });
+                return res.status(400).json({ msg: 'No user exists with this email id' });
             // else
             //     console.log("present")
             // password ValidityState
