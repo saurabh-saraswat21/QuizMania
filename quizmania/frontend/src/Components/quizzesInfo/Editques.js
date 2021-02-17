@@ -162,7 +162,7 @@ class EditQues extends Component {
 
         }
         //making request to backend server
-        axios.post('http://192.168.43.24:80/editques/', question).then(
+        axios.post('http://192.168.100.2:80/editques/', question).then(
             this.setState({
                 redirect: true
             })

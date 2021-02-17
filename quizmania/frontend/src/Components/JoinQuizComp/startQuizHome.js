@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Direct from '../errComponents/DirectAccess'
 import io from 'socket.io-client'
 import QuizOngoing from './quizOngoing'
-const ENDPOINT = "192.168.43.24:80"
+const ENDPOINT = "192.168.100.2:80"
 
 
 
