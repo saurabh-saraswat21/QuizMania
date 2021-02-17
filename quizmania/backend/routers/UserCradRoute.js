@@ -18,7 +18,7 @@ module.exports = (app) => {
             if (password.lenght < 5)
                 return res.status(400).json({ msg: "password is to short" });
             if (password !== password2)
-                return res.status(400).json({ msg: "password doen't match" });
+                return res.status(400).json({ msg: "Password doesn't match. " });
 
             const exitingUser = await userAuth.findOne({ email: email })
             if (exitingUser)
