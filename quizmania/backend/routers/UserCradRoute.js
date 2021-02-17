@@ -16,7 +16,7 @@ module.exports = (app) => {
             if (!email || !password || !firstName || !lastName || !password2)
                 return res.status(400).json({ msg: "Enter all Field" });
             if (password.lenght < 5)
-                return res.status(400).json({ msg: "password is to short" });
+                return res.status(400).json({ msg: "Password is too short. " });
             if (password !== password2)
                 return res.status(400).json({ msg: "Password doesn't match. " });
 
