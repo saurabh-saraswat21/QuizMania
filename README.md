@@ -23,7 +23,9 @@ In order to solve these problems, we have developed a Web-based online test syst
 
 1. Navigate to the main directory by: `cd quizmania`
 2. Navigate to backend directory by:  `cd backend`
-3. Next, start the backend service by: `npm start`
-4. Navigate to main directory again by: `cd ..`
-5. Navigate to frontend directory by: `cd frontend`
-6. And start our frontend service by: `npm start`
+3. Install backend dependencies by: `npm install`
+4. Next, start the backend service by: `npm start`
+5. Navigate to main directory again by: `cd ..`
+6. Navigate to frontend directory by: `cd frontend`
+7. Install frontend dependencies by: `npm install`
+8. And start our frontend service by: `npm start`
