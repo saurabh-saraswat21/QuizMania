@@ -10,7 +10,9 @@ In order to solve these problems, we have developed a Web-based online test syst
 
 ## To Run Our Project From Scratch:
 
-### First, ensure the following have been installed on your system:
+### First, Fork and Clone our repository in VSCode.
+
+### Next, ensure the following have been installed on your system:
 
 * NodeJS: [Follow this link to install NodeJS according to your Operating System](https://nodejs.org/en/download/)
 * MongoDB: [Follow this link to install MongoDB according to your Operating System](https://www.mongodb.com/try/download/community)
